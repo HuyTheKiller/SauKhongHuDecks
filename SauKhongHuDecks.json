@@ -1,0 +1,10 @@
+{
+	"id": "SKHDecks",
+	"name": "SauKhongHu Decks",
+	"author": ["HuyTheKiller"],
+	"description": "Adds 3 dedicated decks for SauKhongHu. Load this mod for more information.",
+	"prefix": "skh",
+	"main_file": "SauKhongHuDecks.lua",
+	"priority": 0,
+	"version": "1.0.0"
+}

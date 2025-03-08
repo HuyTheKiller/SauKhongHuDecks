@@ -85,7 +85,7 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
     config = {joker_slot = 1, hand_size = 2, extra = {ante_gain = 30}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
-    trigger_effect = function(self, args)
+    calculate = function(self, back, args)
 		if args.context == "final_scoring_step" then
 			local tot = args.chips + args.mult
 			args.chips = math.floor(tot / 2)

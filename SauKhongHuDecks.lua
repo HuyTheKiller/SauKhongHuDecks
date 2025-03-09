@@ -181,7 +181,7 @@ SMODS.Atlas({
 SMODS.Back({
 	key = "plot_hole",
 	atlas = "plot_hole_deck",
-	-- unlocked = false,
+	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
 	config = {hands = -3, discards = 1, extra = {ante_loss = 12}, vouchers = {"v_magic_trick"}, randomize_rank_suit = true},
 	calculate = function(self, back, context)

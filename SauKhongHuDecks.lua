@@ -29,7 +29,7 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.hand_size, G.GAME.win_ante}}
+        return {vars = {self.config.hand_size, G.GAME.win_ante + self.config.extra.ante_gain}}
     end,
 })
 
@@ -167,7 +167,7 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.joker_slot, self.config.hand_size, G.GAME.win_ante}}
+        return {vars = {self.config.joker_slot, self.config.hand_size, G.GAME.win_ante + self.config.extra.ante_gain}}
     end,
 })
 

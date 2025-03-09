@@ -34,8 +34,8 @@ return {
                 name = "Plot Hole Deck",
                 text = {
                     "{C:blue}#1#{} hands, {C:red}+#2#{} discard every round",
-                    "Start with 2 {C:dark_edition}Negative {C:eternal}Eternal",
-                    "{C:attention,T:j_oops}Oops! All 6s{} and from {C:attention}Ante -11{}",
+                    "Start with 2 {C:dark_edition}Negative {C:eternal}Eternal {C:attention,T:j_oops}Oops! All 6s{},",
+                    "{C:attention,T:v_magic_trick}Magic Trick{} and from {C:attention}Ante -11{}",
                     "{C:attention}Glassify{} all playing cards before scoring",
                     "Apply {C:attention}Erratic{} deck",
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:dark_edition}Disgusted{s:0.8,C:inactive}!%?!",

@@ -46,7 +46,7 @@ return {
             SKHDecks = {
                 name = "SauKhongHu Decks",
                 text = {
-                    "{s:1.3}Adds {s:1.3,C:attention}3 {s:1.3,C:dark_edition}decicated {s:1.3,C:attention}decks {s:1.3}for SauKhongHu.",
+                    "{s:1.3}Adds a set of {s:1.3,C:dark_edition}decicated {s:1.3,C:attention}decks {s:1.3}for SauKhongHu.",
                     " ",
                     "Special thanks to HuyCorn for designing the card backs.",
                 },

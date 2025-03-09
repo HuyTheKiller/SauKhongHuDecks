@@ -29,7 +29,7 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.hand_size}}
+        return {vars = {self.config.hand_size, G.GAME.win_ante}}
     end,
 })
 
@@ -85,12 +85,12 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
     config = {joker_slot = 1, hand_size = 2, extra = {ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
-    calculate = function(self, back, args)
-		if args.context == "final_scoring_step" then
-			local tot = args.chips + args.mult
-			args.chips = math.floor(tot / 2)
-			args.mult = math.floor(tot / 2)
-			update_hand_text({ delay = 0 }, { mult = args.mult, chips = args.chips })
+    calculate = function(self, back, context)
+		if context.context == "final_scoring_step" then
+			local tot = context.chips + context.mult
+			context.chips = math.floor(tot / 2)
+			context.mult = math.floor(tot / 2)
+			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
 
 			G.E_MANAGER:add_event(Event({
 				func = function()
@@ -137,7 +137,7 @@ SMODS.Back({
 				end,
 			}))
 			delay(0.6)
-			return args.chips, args.mult
+			return context.chips, context.mult
 		end
 	end,
 	apply = function(self, back)
@@ -167,7 +167,65 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.joker_slot, self.config.hand_size}}
+        return {vars = {self.config.joker_slot, self.config.hand_size, G.GAME.win_ante}}
+    end,
+})
+
+SMODS.Atlas({
+	key = "plot_hole_deck",
+	path = "PlotHole.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "plot_hole",
+	atlas = "plot_hole_deck",
+	-- unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
+	config = {hands = -3, discards = 1, extra = {ante_loss = 12}, vouchers = {"v_magic_trick"}, randomize_rank_suit = true},
+	calculate = function(self, back, context)
+		if context.before then
+			for c = #G.playing_cards, 1, -1 do
+				G.playing_cards[c]:set_ability(G.P_CENTERS["m_glass"])
+			end
+		end
+	end,
+	apply = function(self, back)
+		ease_ante(-self.config.extra.ante_loss)
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+        G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+		delay(0.4)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local oops = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_oops", "deck")
+				oops:set_eternal(true)
+				oops:set_edition({ negative = true }, true)
+				oops:add_to_deck()
+				G.jokers:emplace(oops)
+				oops:start_materialize()
+
+				local oops2 = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_oops", "deck")
+				oops2:set_eternal(true)
+				oops2:set_edition({ negative = true }, true)
+				oops2:add_to_deck()
+				G.jokers:emplace(oops2)
+				oops2:start_materialize()
+
+				return true
+			end,
+		}))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for c = #G.playing_cards, 1, -1 do
+					G.playing_cards[c]:set_ability(G.P_CENTERS["m_glass"])
+				end
+				return true
+			end,
+		}))
+	end,
+	loc_vars = function(self)
+        return {vars = {self.config.hands, self.config.discards}}
     end,
 })
 

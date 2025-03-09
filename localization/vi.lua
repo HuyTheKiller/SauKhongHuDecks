@@ -38,7 +38,7 @@ return {
                 text = {
                     "{C:blue}#1#{} tay bài, {C:red}+#2#{} lượt bỏ bài mỗi ván",
                     "Bắt đầu với 2 {C:attention,T:j_oops}Úi! Toàn 6 {C:dark_edition}Âm Bản {C:eternal}Vĩnh Hằng{},",
-                    "{C:attention,T:v_magic_trick}Ảo Thuật{} và chơi từ {C:attention}Ante -11{}",
+                    "{C:attention,T:v_magic_trick}Ảo Thuật{} và chơi từ {C:attention}Ante #3#{}",
                     "{C:attention}Hoá Kính{} mọi lá bài trước khi ghi điểm",
                     "Áp dụng bộ bài {C:attention}Hỗn Loạn{}",
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:dark_edition}Ghê Tởm{s:0.8,C:inactive}!?%!",

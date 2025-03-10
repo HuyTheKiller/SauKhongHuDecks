@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Apply Splash logic to Tsaunami Deck
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))'''
+position = "at"
+payload = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"'''
+match_indent = true

@@ -44,6 +44,16 @@ return {
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:dark_edition}Ghê Tởm{s:0.8,C:inactive}!?%!",
                 },
             },
+            b_skh_tsaunami = {
+                name = "Bộ Bài Sâu Sóng Thần",
+                text = {
+                    "Áp dụng {C:attention,T:j_splash}Bắn Toé{}",
+                    "Tái kích mọi lá bài đã chơi một lần",
+                    "cho mỗi lá {C:attention}Bắn Toé{} đang sở hữu",
+                    "Cho phép xuất hiện bản sao {C:attention}Bắn Toé{}",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rạo Rực{s:0.8,C:inactive}!!!",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

@@ -230,6 +230,41 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
+	key = "tsaunami_deck",
+	path = "Tsaunami.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "tsaunami",
+	atlas = "tsaunami_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
+	calculate = function(self, back, context)
+		if context.repetition and context.cardarea == G.play then
+			local splash_retrig = find_joker('Splash')
+			return {
+				message = localize("k_again_ex"),
+				repetitions = #splash_retrig,
+				card = card,
+			}
+		end
+	end,
+	apply = function(self, back)
+		SMODS.Joker:take_ownership('splash',
+			{
+				discovered = true,
+				in_pool = function(self, args)
+					return true, {allow_duplicates = true}
+				end,
+			},
+			true
+		)
+	end
+})
+
+SMODS.Atlas({
 	key = "modicon",
 	path = "icon.png",
 	px = 32,

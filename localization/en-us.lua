@@ -41,6 +41,16 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:dark_edition}Disgusted{s:0.8,C:inactive}!%?!",
                 },
             },
+            b_skh_tsaunami = {
+                name = "Tsaunami Deck",
+                text = {
+                    "Apply {C:attention,T:j_splash}Splash{}",
+                    "Retrigger all played cards once for",
+                    "each additional {C:attention}Splash{} owned",
+                    "Allow {C:attention}Splash{} clones to appear",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Excited{s:0.8,C:inactive}!!!",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

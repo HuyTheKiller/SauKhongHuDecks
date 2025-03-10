@@ -51,6 +51,17 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Excited{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_sauphanim = {
+                name = "Sauphanim Deck",
+                text = {
+                    "Start with {C:attention,T:j_marble}Marble Joker{},",
+                    "{C:attention,T:v_tarot_tycoon}Tarot Tycoon{} and an {C:attention}empty{} deck",
+                    "Earn {C:money}$#1#{} per {C:attention}Enhanced{} card",
+                    "scored before removing enhancement",
+                    "Apply {C:attention}Plasma{} deck",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:dark_edition}Disoriented{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

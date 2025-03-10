@@ -265,6 +265,119 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
+	key = "sauphanim_deck",
+	path = "Sauphanim.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "sauphanim",
+	atlas = "sauphanim_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
+	config = {extra = {dollars = 3}, vouchers = {"v_tarot_merchant", "v_tarot_tycoon"}, ante_scaling = 2},
+	calculate = function(self, back, context)
+		if context.individual and context.cardarea == G.play then
+			if context.other_card.ability.set == 'Enhanced' and not context.other_card.debuff then
+				local temp = context.other_card
+				G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
+					temp:set_ability(G.P_CENTERS.c_base)
+					return true
+				end}))
+				return { dollars = self.config.extra.dollars }
+			end
+		end
+		if context.context == "final_scoring_step" then
+			local tot = context.chips + context.mult
+			context.chips = math.floor(tot / 2)
+			context.mult = math.floor(tot / 2)
+			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local text = localize("k_balanced")
+					play_sound("gong", 0.94, 0.3)
+					play_sound("gong", 0.94 * 1.5, 0.2)
+					play_sound("tarot1", 1.5)
+					ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
+					ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
+					attention_text({
+						scale = 1.4,
+						text = text,
+						hold = 2,
+						align = "cm",
+						offset = { x = 0, y = -2.7 },
+						major = G.play,
+					})
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						blockable = false,
+						blocking = false,
+						delay = 4.3,
+						func = function()
+							ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
+							ease_colour(G.C.UI_MULT, G.C.RED, 2)
+							return true
+						end,
+					}))
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						blockable = false,
+						blocking = false,
+						no_delete = true,
+						delay = 6.3,
+						func = function()
+							G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] =
+								G.C.BLUE[1], G.C.BLUE[2], G.C.BLUE[3], G.C.BLUE[4]
+							G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] =
+								G.C.RED[1], G.C.RED[2], G.C.RED[3], G.C.RED[4]
+							return true
+						end,
+					}))
+					return true
+				end,
+			}))
+			delay(0.6)
+			return context.chips, context.mult
+		end
+	end,
+	apply = function(self, back)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for k, v in pairs(G.playing_cards) do
+                    v.to_remove = true
+                end
+                local i = 1
+                while i <= #G.playing_cards do
+                    if G.playing_cards[i].to_remove then
+                        G.playing_cards[i]:remove()
+                    else
+                        i = i + 1
+                    end
+                end
+				G.GAME.starting_deck_size = #G.playing_cards
+                return true
+			end
+		}))
+		delay(0.4)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local marble = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_marble", "deck")
+				marble:add_to_deck()
+				G.jokers:emplace(marble)
+				marble:start_materialize()
+
+				return true
+			end,
+		}))
+	end,
+	loc_vars = function(self)
+        return {vars = {self.config.extra.dollars}}
+    end,
+})
+
+SMODS.Atlas({
 	key = "modicon",
 	path = "icon.png",
 	px = 32,

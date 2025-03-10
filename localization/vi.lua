@@ -54,6 +54,17 @@ return {
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rạo Rực{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_sauphanim = {
+                name = "Bộ Bài Sâu Bệ Thần",
+                text = {
+                    "Bắt đầu với {C:attention,T:j_marble}Joker Cẩm Thạch{},",
+                    "{C:attention,T:v_tarot_tycoon}Trùm Tarot{} và bộ bài {C:attention}trống{}",
+                    "Nhân {C:money}$#1#{} mỗi lá {C:attention}cường hoá{}",
+                    "ghi điểm trước khí loại bỏ cường hoá",
+                    "Áp dụng bộ bài {C:attention}Plasma{}",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:dark_edition}Lúng Túng{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

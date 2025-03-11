@@ -395,10 +395,10 @@ SMODS.Back({
 		if context.individual and context.cardarea == G.play then
 			if not context.other_card.debuff then
 				local temp = context.other_card
-				if context.other_card:get_id() > 2 then
+				if SMODS.has_no_rank(temp) or temp:get_id() > 2 then
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							temp.base.id = math.max(2, temp.base.id - 1)
+							temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
 							local rank_suffix = get_rank_suffix(temp)
 							assert(SMODS.change_base(temp, nil, rank_suffix))
 
@@ -530,10 +530,10 @@ if CardSleeves then
 				if context.individual and context.cardarea == G.play then
 					if not context.other_card.debuff then
 						local temp = context.other_card
-						if context.other_card:get_id() > 2 then
+						if SMODS.has_no_rank(temp) or temp:get_id() > 2 then
 							G.E_MANAGER:add_event(Event({
 								func = function()
-									temp.base.id = math.max(2, temp.base.id - 1)
+									temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
 									local rank_suffix = get_rank_suffix(temp)
 									assert(SMODS.change_base(temp, nil, rank_suffix))
 		

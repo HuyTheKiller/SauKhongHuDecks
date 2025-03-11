@@ -59,7 +59,16 @@ return {
                     "Earn {C:money}$#1#{} per {C:attention}Enhanced{} card",
                     "scored before removing enhancement",
                     "Apply {C:attention}Plasma{} deck, earn no interest",
-                    "{s:0.8,C:inactive}I feel... {s:0.8,C:dark_edition}Disoriented{s:0.8,C:inactive}.",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Disoriented{s:0.8,C:inactive}.",
+                },
+            },
+            b_skh_weeormhole = {
+                name = "Weeormhole Deck",
+                text = {
+                    "Start with {C:attention,T:j_wee}Wee Joker{}",
+                    "Played cards {C:attention}lose{} a rank when scored",
+                    "Played 2s are {C:attention}destroyed{} after scoring",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
         },

@@ -380,6 +380,68 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
+	key = "weeormhole_deck",
+	path = "Weeormhole.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "weeormhole",
+	atlas = "weeormhole_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
+	calculate = function(self, back, context)
+		if context.individual and context.cardarea == G.play then
+			if not context.other_card.debuff then
+				local temp = context.other_card
+				if context.other_card:get_id() > 2 then
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							temp.base.id = math.max(2, temp.base.id - 1)
+							local rank_suffix = get_rank_suffix(temp)
+							assert(SMODS.change_base(temp, nil, rank_suffix))
+
+							return true
+						end
+					}))
+				else
+					if temp.ability.name == 'Glass Card' then 
+						temp:shatter()
+					else
+						temp:start_dissolve(nil, i == #G.hand.highlighted)
+					end
+					temp.to_remove = true
+				end
+			end
+		end
+		if context.context == "final_scoring_step" then
+			local i = 1
+			while i <= #G.playing_cards do
+				if G.playing_cards[i].to_remove then
+					G.playing_cards[i]:remove()
+				else
+					i = i + 1
+				end
+			end
+		end
+	end,
+	apply = function(self, back)
+		delay(0.4)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local wee = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_wee", "deck")
+				wee:add_to_deck()
+				G.jokers:emplace(wee)
+				wee:start_materialize()
+
+				return true
+			end,
+		}))
+	end,
+})
+
+SMODS.Atlas({
 	key = "modicon",
 	path = "icon.png",
 	px = 32,
@@ -388,4 +450,15 @@ SMODS.Atlas({
 
 SMODS.current_mod.description_loc_vars = function()
 	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+end
+
+function get_rank_suffix(card)
+    local rank_suffix = (card.base.id - 2) % 13 + 2
+    if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)
+    elseif rank_suffix == 11 then rank_suffix = 'Jack'
+    elseif rank_suffix == 12 then rank_suffix = 'Queen'
+    elseif rank_suffix == 13 then rank_suffix = 'King'
+    elseif rank_suffix == 14 then rank_suffix = 'Ace'
+    end
+    return rank_suffix
 end

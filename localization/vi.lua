@@ -62,7 +62,16 @@ return {
                     "Nhân {C:money}$#1#{} mỗi lá {C:attention}cường hoá{}",
                     "ghi điểm trước khí loại bỏ cường hoá",
                     "Áp dụng bộ bài {C:attention}Plasma{}, không nhận lãi",
-                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:dark_edition}Lúng Túng{s:0.8,C:inactive}.",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Lúng Túng{s:0.8,C:inactive}.",
+                },
+            },
+            b_skh_weeormhole = {
+                name = "Bộ Bài Lỗ Sâu Wee",
+                text = {
+                    "Bắt đầu với {C:attention,T:j_wee}Joker Nhỏ{}",
+                    "Lá đã chơi {C:attention}giảm đi{} 1 bậc khi ghi điểm",
+                    "Lá 2 bị {C:attention}phá huỷ{} sau khi ghi điểm",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
         },

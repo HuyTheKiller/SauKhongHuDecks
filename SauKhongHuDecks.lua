@@ -441,6 +441,76 @@ SMODS.Back({
 	end,
 })
 
+if CardSleeves then
+
+	SMODS.Atlas({
+		key = "tsaunami_sleeve",
+		path = "TsaunamiSleeve.png",
+		px = 71,
+		py = 95,
+	})
+
+	CardSleeves.Sleeve({
+		key = "tsaunami",
+		name = "Tsaunami Sleeve",
+		atlas = 'tsaunami_sleeve',
+		pos = { x = 0, y = 0 },
+		unlocked = false,
+		unlock_condition = { deck = "b_skh_tsaunami", stake = "stake_blue" },
+		calculate = function(self, sleeve, context)
+			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
+				if context.repetition and context.cardarea == G.play then
+					local splash_retrig = find_joker('Splash')
+					return {
+						message = localize("k_again_ex"),
+						repetitions = #splash_retrig,
+						card = card,
+					}
+				end
+			end
+		end,
+		apply = function(self, sleeve)
+			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
+				SMODS.Joker:take_ownership('splash',
+					{
+						discovered = true,
+						in_pool = function(self, args)
+							return true, {allow_duplicates = true}
+						end,
+					},
+					true
+				)
+			else
+				delay(0.4)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local splash = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_splash", "deck")
+						splash:add_to_deck()
+						G.jokers:emplace(splash)
+						splash:start_materialize()
+
+						local splash2 = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_splash", "deck")
+						splash2:add_to_deck()
+						G.jokers:emplace(splash2)
+						splash2:start_materialize()
+
+						return true
+					end,
+				}))
+			end
+		end,
+		loc_vars = function(self)
+			local key = self.key
+			if self.get_current_deck_key() == "b_skh_tsaunami" then
+				key = key .. "_alt"
+			else
+				key = self.key
+			end
+			return { key = key }
+		end,
+	})
+end
+
 SMODS.Atlas({
 	key = "modicon",
 	path = "icon.png",

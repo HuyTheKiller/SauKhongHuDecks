@@ -85,5 +85,25 @@ return {
                 },
             },
         },
+        Sleeve = {
+            sleeve_skh_tsaunami = {
+                name = "Bọc Bài Sâu Sóng Thần",
+                text = {
+                    "Áp dụng {C:attention,T:j_splash}Bắn Toé{}",
+                    "Tái kích mọi lá bài đã chơi một lần",
+                    "cho mỗi lá {C:attention}Bắn Toé{} đang sở hữu",
+                    "Cho phép xuất hiện bản sao {C:attention}Bắn Toé{}",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rạo Rực{s:0.8,C:inactive}!!!",
+                },
+            },
+            sleeve_skh_tsaunami_alt = {
+                name = "Bọc Bài Sâu Sóng Thần",
+                text = {
+                    "Bắt đầu với 2 bản sao",
+                    "của {C:attention,T:j_splash}Bắn Toé{}",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rất Rạo Rực{s:0.8,C:inactive}!!!",
+                },
+            },
+        },
     },
 }

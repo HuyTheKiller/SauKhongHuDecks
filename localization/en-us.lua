@@ -82,5 +82,25 @@ return {
                 },
             },
         },
+        Sleeve = {
+            sleeve_skh_tsaunami = {
+                name = "Tsaunami Sleeve",
+                text = {
+                    "Apply {C:attention,T:j_splash}Splash{}",
+                    "Retrigger all played cards once for",
+                    "each additional {C:attention}Splash{} owned",
+                    "Allow {C:attention}Splash{} clones to appear",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Excited{s:0.8,C:inactive}!!!",
+                },
+            },
+            sleeve_skh_tsaunami_alt = {
+                name = "Tsaunami Sleeve",
+                text = {
+                    "Start with 2 copies",
+                    "of {C:attention,T:j_splash}Splash{}",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Highly Excited{s:0.8,C:inactive}!!!",
+                },
+            },
+        },
     },
 }

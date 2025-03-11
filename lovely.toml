@@ -9,5 +9,8 @@ priority = 0
 target = "functions/state_events.lua"
 pattern = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))'''
 position = "at"
-payload = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"'''
+payload = '''
+local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
+if CardSleeves then splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami" or G.GAME.selected_sleeve == "sleeve_skh_tsaunami" end
+'''
 match_indent = true

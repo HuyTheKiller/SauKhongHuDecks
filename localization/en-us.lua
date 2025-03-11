@@ -101,6 +101,23 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Highly Excited{s:0.8,C:inactive}!!!",
                 },
             },
+            sleeve_skh_weeormhole = {
+                name = "Weeormhole Sleeve",
+                text = {
+                    "Start with {C:attention,T:j_wee}Wee Joker{}",
+                    "Played cards {C:attention}lose{} a rank when scored",
+                    "Played 2s are {C:attention}destroyed{} after scoring",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
+                },
+            },
+            sleeve_skh_weeormhole_alt = {
+                name = "Weeormhole Sleeve",
+                text = {
+                    "Start with a deck",
+                    "full of {C:attention}2s{}",
+                    "{s:0.8,C:inactive}We feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
+                },
+            },
         },
     },
 }

@@ -104,6 +104,23 @@ return {
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rất Rạo Rực{s:0.8,C:inactive}!!!",
                 },
             },
+            sleeve_skh_weeormhole = {
+                name = "Bọc Bài Lỗ Sâu Wee",
+                text = {
+                    "Bắt đầu với {C:attention,T:j_wee}Joker Nhỏ{}",
+                    "Lá đã chơi {C:attention}giảm đi{} 1 bậc khi ghi điểm",
+                    "Lá 2 bị {C:attention}phá huỷ{} sau khi ghi điểm",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
+                },
+            },
+            sleeve_skh_weeormhole_alt = {
+                name = "Bọc Bài Lỗ Sâu Wee",
+                text = {
+                    "Bắt đầu với",
+                    "bộ bài toàn {C:attention}2{}",
+                    "{s:0.8,C:inactive}Chúng tôi cảm thấy... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
+                },
+            },
         },
     },
 }

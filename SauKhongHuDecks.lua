@@ -509,6 +509,95 @@ if CardSleeves then
 			return { key = key }
 		end,
 	})
+
+	SMODS.Atlas({
+		key = "weeormhole_sleeve",
+		path = "WeeormholeSleeve.png",
+		px = 71,
+		py = 95,
+	})
+
+	CardSleeves.Sleeve({
+		key = "weeormhole",
+		name = "Weeormhole Sleeve",
+		atlas = 'weeormhole_sleeve',
+		pos = { x = 0, y = 0 },
+		config = {},
+		unlocked = false,
+		unlock_condition = { deck = "b_skh_weeormhole", stake = "stake_black" },
+		calculate = function(self, sleeve, context)
+			if self.get_current_deck_key() ~= "b_skh_weeormhole" then
+				if context.individual and context.cardarea == G.play then
+					if not context.other_card.debuff then
+						local temp = context.other_card
+						if context.other_card:get_id() > 2 then
+							G.E_MANAGER:add_event(Event({
+								func = function()
+									temp.base.id = math.max(2, temp.base.id - 1)
+									local rank_suffix = get_rank_suffix(temp)
+									assert(SMODS.change_base(temp, nil, rank_suffix))
+		
+									return true
+								end
+							}))
+						else
+							if temp.ability.name == 'Glass Card' then 
+								temp:shatter()
+							else
+								temp:start_dissolve(nil, i == #G.hand.highlighted)
+							end
+							temp.to_remove = true
+						end
+					end
+				end
+				if context.context == "final_scoring_step" then
+					local i = 1
+					while i <= #G.playing_cards do
+						if G.playing_cards[i].to_remove then
+							G.playing_cards[i]:remove()
+						else
+							i = i + 1
+						end
+					end
+				end
+			end
+		end,
+		apply = function(self, sleeve)
+			if self.get_current_deck_key() == "b_skh_weeormhole" then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						for _, card in ipairs(G.playing_cards) do
+							assert(SMODS.change_base(card, nil, self.config.only_one_rank))
+						end
+
+						return true
+					end
+				}))
+			else
+				delay(0.4)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local wee = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_wee", "deck")
+						wee:add_to_deck()
+						G.jokers:emplace(wee)
+						wee:start_materialize()
+
+						return true
+					end,
+				}))
+			end
+		end,
+		loc_vars = function(self)
+			local key = self.key
+			if self.get_current_deck_key() == "b_skh_weeormhole" then
+				key = key .. "_alt"
+				self.config = {only_one_rank = '2'}
+			else
+				key = self.key
+			end
+			return { key = key }
+		end,
+	})
 end
 
 SMODS.Atlas({

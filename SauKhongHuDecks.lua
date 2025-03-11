@@ -276,7 +276,7 @@ SMODS.Back({
 	atlas = "sauphanim_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
-	config = {extra = {dollars = 3}, vouchers = {"v_tarot_merchant", "v_tarot_tycoon"}, ante_scaling = 2},
+	config = {extra = {dollars = 1}, vouchers = {"v_tarot_merchant"}, ante_scaling = 2, no_interest = true},
 	calculate = function(self, back, context)
 		if context.individual and context.cardarea == G.play then
 			if context.other_card.ability.set == 'Enhanced' and not context.other_card.debuff then
@@ -343,6 +343,7 @@ SMODS.Back({
 		end
 	end,
 	apply = function(self, back)
+		G.GAME.bosses_used["bl_psychic"] = 2 -- Prevent Psychic from giving you a jumpscare at Ante 1
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				for k, v in pairs(G.playing_cards) do
@@ -364,6 +365,7 @@ SMODS.Back({
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				local marble = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_marble", "deck")
+				marble:set_perishable(true)
 				marble:add_to_deck()
 				G.jokers:emplace(marble)
 				marble:start_materialize()

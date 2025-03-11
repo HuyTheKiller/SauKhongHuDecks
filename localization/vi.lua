@@ -57,11 +57,11 @@ return {
             b_skh_sauphanim = {
                 name = "Bộ Bài Sâu Bệ Thần",
                 text = {
-                    "Bắt đầu với {C:attention,T:j_marble}Joker Cẩm Thạch{},",
-                    "{C:attention,T:v_tarot_tycoon}Trùm Tarot{} và bộ bài {C:attention}trống{}",
+                    "Bắt đầu với {C:attention,T:j_marble}Joker Cẩm Thạch {C:attention}Ngắn Hạn,",
+                    "{C:attention,T:v_tarot_tycoon}Thương Gia Tarot{} và bộ bài {C:attention}trống{}",
                     "Nhân {C:money}$#1#{} mỗi lá {C:attention}cường hoá{}",
                     "ghi điểm trước khí loại bỏ cường hoá",
-                    "Áp dụng bộ bài {C:attention}Plasma{}",
+                    "Áp dụng bộ bài {C:attention}Plasma{}, không nhận lãi",
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:dark_edition}Lúng Túng{s:0.8,C:inactive}.",
                 },
             },

@@ -405,23 +405,17 @@ SMODS.Back({
 							return true
 						end
 					}))
-				else
-					if temp.ability.name == 'Glass Card' then 
-						temp:shatter()
-					else
-						temp:start_dissolve(nil, i == #G.hand.highlighted)
-					end
-					temp.to_remove = true
 				end
 			end
 		end
-		if context.context == "final_scoring_step" then
-			local i = 1
-			while i <= #G.playing_cards do
-				if G.playing_cards[i].to_remove then
-					G.playing_cards[i]:remove()
-				else
-					i = i + 1
+		if context.destroy_card and context.cardarea == G.play then
+			if not context.destroying_card.debuff then
+				local temp = context.destroying_card
+				if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
+					return {
+						message = localize("wee_ex"),
+						remove = true
+					}
 				end
 			end
 		end
@@ -540,23 +534,17 @@ if CardSleeves then
 									return true
 								end
 							}))
-						else
-							if temp.ability.name == 'Glass Card' then 
-								temp:shatter()
-							else
-								temp:start_dissolve(nil, i == #G.hand.highlighted)
-							end
-							temp.to_remove = true
 						end
 					end
 				end
-				if context.context == "final_scoring_step" then
-					local i = 1
-					while i <= #G.playing_cards do
-						if G.playing_cards[i].to_remove then
-							G.playing_cards[i]:remove()
-						else
-							i = i + 1
+				if context.destroy_card and context.cardarea == G.play then
+					if not context.destroying_card.debuff then
+						local temp = context.destroying_card
+						if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
+							return {
+								message = localize("wee_ex"),
+								remove = true
+							}
 						end
 					end
 				end

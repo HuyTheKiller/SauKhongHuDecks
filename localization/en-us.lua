@@ -120,4 +120,9 @@ return {
             },
         },
     },
+    misc = {
+        dictionary = {
+            wee_ex = "WEE!",
+        },
+    },
 }

@@ -511,7 +511,6 @@ if CardSleeves then
 		py = 95,
 	})
 
-	if false then
 	CardSleeves.Sleeve({
 		key = "weeormhole",
 		name = "Weeormhole Sleeve",
@@ -586,7 +585,7 @@ if CardSleeves then
 			end
 			return { key = key }
 		end,
-	}) end
+	})
 end
 
 SMODS.Atlas({

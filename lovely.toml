@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Apply Splash logic to Tsaunami Deck
+# Apply Splash logic to Tsaunami Deck/Sleeve
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"

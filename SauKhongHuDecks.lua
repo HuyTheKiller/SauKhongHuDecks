@@ -399,7 +399,7 @@ SMODS.Back({
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
-							local rank_suffix = get_rank_suffix(temp)
+							local rank_suffix = skh_get_rank_suffix(temp)
 							assert(SMODS.change_base(temp, nil, rank_suffix))
 
 							return true
@@ -528,9 +528,9 @@ if CardSleeves then
 							G.E_MANAGER:add_event(Event({
 								func = function()
 									temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
-									local rank_suffix = get_rank_suffix(temp)
+									local rank_suffix = skh_get_rank_suffix(temp)
 									assert(SMODS.change_base(temp, nil, rank_suffix))
-		
+
 									return true
 								end
 							}))
@@ -599,7 +599,7 @@ SMODS.current_mod.description_loc_vars = function()
 	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
-function get_rank_suffix(card)
+function skh_get_rank_suffix(card)
     local rank_suffix = (card.base.id - 2) % 13 + 2
     if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)
     elseif rank_suffix == 11 then rank_suffix = 'Jack'

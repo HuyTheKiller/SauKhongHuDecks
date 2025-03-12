@@ -413,7 +413,7 @@ SMODS.Back({
 				local temp = context.destroying_card
 				if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 					return {
-						message = localize("wee_ex"),
+						message = localize("k_wee_ex"),
 						remove = true
 					}
 				end
@@ -542,7 +542,7 @@ if CardSleeves then
 						local temp = context.destroying_card
 						if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 							return {
-								message = localize("wee_ex"),
+								message = localize("k_wee_ex"),
 								remove = true
 							}
 						end

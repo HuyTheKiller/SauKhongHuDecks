@@ -122,7 +122,7 @@ return {
     },
     misc = {
         dictionary = {
-            wee_ex = "WEE!",
+            k_wee_ex = "WEE!",
         },
     },
 }

@@ -541,10 +541,6 @@ if CardSleeves then
 					if not context.destroying_card.debuff then
 						local temp = context.destroying_card
 						if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
-							-----------------------
-							temp:start_dissolve()-- Bandaid solution
-							temp.to_remove = true-- for Weeormhole Sleeve
-							-----------------------
 							return {
 								message = localize("wee_ex"),
 								remove = true
@@ -552,18 +548,6 @@ if CardSleeves then
 						end
 					end
 				end
-				-------------------------------------------------
-				if context.context == "final_scoring_step" then-- to prevent exploits
-					local i = 1								   --
-					while i <= #G.playing_cards do			   --
-						if G.playing_cards[i].to_remove then   --
-							G.playing_cards[i]:remove()		   --
-						else								   --
-							i = i + 1						   --
-						end									   --
-					end										   --
-				end											   --
-				-------------------------------------------------
 			end
 		end,
 		apply = function(self, sleeve)

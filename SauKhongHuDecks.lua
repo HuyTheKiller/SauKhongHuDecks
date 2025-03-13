@@ -709,6 +709,51 @@ SMODS.Back({
     end,
 })
 
+SMODS.Atlas({
+	key = "gluttonyworm_deck",
+	path = "SinGluttony.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "gluttonyworm",
+	atlas = "gluttonyworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_lustyworm'},
+	config = {vouchers = {"v_magic_trick"}, extra = {odds = 6}},
+	calculate = function(self, back, context)
+		if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					for k, v in pairs(G.playing_cards) do
+						if pseudorandom('gluttony_deck_chomp') < G.GAME.probabilities.normal/self.config.extra.odds then
+							card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex')})
+							v.to_remove = true
+						end
+					end
+					local i = 1
+					while i <= #G.playing_cards do
+						if G.playing_cards[i].to_remove then
+							G.playing_cards[i]:remove()
+						else
+							i = i + 1
+						end
+					end
+					return true
+				end
+			}))
+			-- return {
+			-- 	message = localize('k_chomp_ex'),
+			-- 	colour = G.C.YELLOW,
+			-- }
+		end
+	end,
+	loc_vars = function(self)
+		return {vars = {G.GAME.probabilities.normal, self.config.extra.odds}}
+	end
+})
+
 ----------------------------------------------------------------------------------
 
 SMODS.Atlas({

@@ -93,6 +93,16 @@ return {
                     "{s:0.8,C:inactive}Money... MONEY!!! THEY'RE ALL {s:0.8,C:legendary}MINE{s:0.8,C:inactive}!!!!!!",
                 },
             },
+            b_skh_gluttonyworm = {
+                name = "Gluttony Worm Deck",
+                text = {
+                    "Start with {C:attention,T:v_magic_trick}Magic Trick{}",
+                    "When {C:attention}Boss Blind{} is defeated, each",
+                    "playing card has {C:green}#1# in #2#{}",
+                    "chance to be eaten",
+                    "{s:0.8,C:inactive}I'd die if I stopped {s:0.8,C:legendary}eating{s:0.8,C:inactive}...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -146,6 +156,7 @@ return {
         dictionary = {
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Reproduced!",
+            k_chomp_ex = "Chomp!",
         },
     },
 }

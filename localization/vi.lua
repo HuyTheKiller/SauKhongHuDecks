@@ -96,6 +96,16 @@ return {
                     "{s:0.8,C:inactive}Tiền... TIỀN!!! TOÀN BỘ LÀ CỦA {s:0.8,C:legendary}TAAAAAA{s:0.8,C:inactive}!!!!!!",
                 },
             },
+            b_skh_gluttonyworm = {
+                name = "Bộ Bài Sâu Phàm Ăn",
+                text = {
+                    "Bắt đầu với {C:attention,T:v_magic_trick}Ảo Thuật{}",
+                    "Khi {C:attention}Boss Blind{} bị đánh bại, mỗi",
+                    "lá bài thường có xác suất",
+                    "{C:green}#1# trên #2#{} bị ăn mất",
+                    "{s:0.8,C:inactive}Ta sẽ chết nếu ngừng {s:0.8,C:legendary}ăn{s:0.8,C:inactive}...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -149,6 +159,7 @@ return {
         dictionary = {
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Sinh Sản!",
+            k_chomp_ex = "Măm!",
         },
     },
 }

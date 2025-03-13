@@ -77,11 +77,11 @@ return {
             b_skh_greedyworm = {
                 name = "Bộ Bài Sâu Tham Lam",
                 text = {
-                    "Khi {C:attention}Blind{} được chọn, mọi {C:attention}con dấu{}",
-                    "trở thành {C:attention,T:gold_seal}Con Dấu Vàng{}, mọi {}joker{} trở thành",
+                    "Khi {C:attention}Blind{} được chọn, mọi {C:attention}con dấu{} trở thành",
+                    "trở {C:attention}Con Dấu Vàng{}, mọi {C:attention}joker{} trở thành",
                     "{C:attention,T:rental}Cho Thuê{}, mọi {C:attention}cường hoá{} trở thành {C:attention,T:m_gold}Vàng{},",
                     "mọi {C:dark_edition}ấn bản{} cho {C:money}$#1#{} rồi bóc đi",
-                    "Nhận một {C:attention}Nhãn Đầu Tư{} khi",
+                    "Nhận một {C:attention,T:tag_investment}Nhãn Đầu Tư{} khi",
                     "{C:attention}Boss Blind{} bị đánh bại",
                     "{s:0.8,C:inactive}Tiền... TIỀN!!! TOÀN BỘ LÀ CỦA {s:0.8,C:legendary}TAAAAAA{s:0.8,C:inactive}!!!!!!",
                 },

@@ -604,6 +604,8 @@ SMODS.Atlas({
 SMODS.Back({
 	key = "greedyworm",
 	atlas = "greedyworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_lustyworm'},
 	config = {extra = {dollars = 8}},
 	calculate = function(self, back, context)
 		if context.setting_blind then

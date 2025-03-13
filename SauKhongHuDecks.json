@@ -2,7 +2,7 @@
 	"id": "SKHDecks",
 	"name": "SauKhongHu Decks",
 	"author": ["HuyTheKiller"],
-	"description": "Adds a set of dedicated decks for SauKhongHu. Load this mod for more information.",
+	"description": "Adds a set of themed decks for SauKhongHu. Load this mod for more information.",
 	"prefix": "skh",
 	"main_file": "SauKhongHuDecks.lua",
 	"priority": 0,

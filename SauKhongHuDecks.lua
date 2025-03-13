@@ -588,6 +588,77 @@ if CardSleeves then
 	})
 end
 
+-- ^^^^^^^^^^^^^^^^^^^^^^^^^ --
+--  7 divine entity decks    --
+-------------------------------
+-- 7 deadly sin decks (WIP)  --
+-- vvvvvvvvvvvvvvvvvvvvvvvvv --
+
+SMODS.Atlas({
+	key = "greedyworm_deck",
+	path = "SinGreedy.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "greedyworm",
+	atlas = "greedyworm_deck",
+	config = {extra = {dollars = 8}},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+			for i = 1, #G.jokers.cards do
+				G.jokers.cards[i]:set_rental(true)
+				if G.jokers.cards[i].edition then
+					G.jokers.cards[i]:set_edition(nil)
+					delay(0.1)
+					ease_dollars(self.config.extra.dollars)
+				end
+			end
+			for c = #G.playing_cards, 1, -1 do
+				local temp = G.playing_cards[c]
+				if not temp.debuff then
+					if temp.edition then
+						G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
+							temp:set_edition(nil)
+							return true
+						end}))
+						delay(0.1)
+						ease_dollars(self.config.extra.dollars)
+					end
+					if temp.seal then
+						G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
+							temp:set_seal("Gold")
+							return true
+						end}))
+					end
+					if temp.ability.set == "Enhanced" then
+						G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
+							temp:set_ability(G.P_CENTERS["m_gold"])
+							return true
+						end}))
+					end
+				end
+			end
+		end
+		if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+			G.E_MANAGER:add_event(Event({
+				func = (function()
+					add_tag(Tag('tag_investment'))
+					play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+					play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+					return true
+				end)
+			}))
+		end
+	end,
+	loc_vars = function(self)
+        return {vars = {self.config.extra.dollars}}
+    end,
+})
+
+----------------------------------------------------------------------------------
+
 SMODS.Atlas({
 	key = "modicon",
 	path = "icon.png",
@@ -599,7 +670,7 @@ SMODS.current_mod.description_loc_vars = function()
 	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
-function skh_get_rank_suffix(card)
+function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
     local rank_suffix = (card.base.id - 2) % 13 + 2
     if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)
     elseif rank_suffix == 11 then rank_suffix = 'Jack'

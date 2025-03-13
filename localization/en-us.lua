@@ -71,6 +71,18 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_greedyworm = {
+                name = "Greedy Worm Deck",
+                text = {
+                    "When {C:attention}Blind{} is selected, all {C:attention}seals{}",
+                    "become {C:attention,T:gold_seal}Gold Seal{}, all {}jokers{} become {C:attention,T:rental}Rental{},",
+                    "all {C:attention}enhancements{} become {C:attention,T:m_gold}Gold{}, strip",
+                    "all {C:dark_edition}editions{} for {C:money}$#1#{} each",
+                    "Gain an {C:attention}Investment Tag{}",
+                    "when {C:attention}Boss Blind{} is defeated",
+                    "{s:0.8,C:inactive}Money... MONEY!!! THEY'RE ALL {s:0.8,C:legendary}MINE{s:0.8,C:inactive}!!!!!!",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

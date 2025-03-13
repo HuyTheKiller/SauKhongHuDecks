@@ -74,6 +74,16 @@ return {
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_lustyworm = {
+                name = "Bộ Bài Sâu Dục Vọng",
+                text = {
+                    "Nếu tay bài đã chơi chứa",
+                    "{C:attention}Già{} và {C:attention}Đầm{}, tạo ra",
+                    "một lá {C:attention}Bồi{} đồng chất tiền hệ",
+                    "và đặt nó lên tay",
+                    "{s:0.8,C:inactive}Ta khao khát... rất khao khát {s:0.8,C:legendary}nó{s:0.8,C:inactive}...",
+                },
+            },
             b_skh_greedyworm = {
                 name = "Bộ Bài Sâu Tham Lam",
                 text = {
@@ -138,6 +148,7 @@ return {
     misc = {
         dictionary = {
             k_wee_ex = "WEE!",
+            k_reproduced_ex = "Sinh Sản!",
         },
     },
 }

@@ -588,11 +588,61 @@ if CardSleeves then
 	})
 end
 
--- ^^^^^^^^^^^^^^^^^^^^^^^^^ --
---  7 divine entity decks    --
--------------------------------
--- 7 deadly sin decks (WIP)  --
--- vvvvvvvvvvvvvvvvvvvvvvvvv --
+--------------------------------- ^^^^^^^^^^^^^^^^^^^^^^^^^ ---------------------------------
+---------------------------------  7 divine entity decks    ---------------------------------
+---------------------------------------------------------------------------------------------
+--------------------------------- 7 deadly sin decks (WIP)  ---------------------------------
+--------------------------------- vvvvvvvvvvvvvvvvvvvvvvvvv ---------------------------------
+
+SMODS.Atlas({
+	key = "lustyworm_deck",
+	path = "SinLusty.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "lustyworm",
+	atlas = "lustyworm_deck",
+	calculate = function(self, back, context)
+		if context.before then
+			local suits = {}
+			for i = 1, #context.full_hand do
+				local temp = context.full_hand[i]
+				if temp:get_id() == 13 then
+					suits[#suits+1] = temp.base.suit
+					for j = 1, #context.full_hand do
+						local temp2 = context.full_hand[j]
+						if temp2:get_id() == 12 then 
+							suits[#suits+1] = temp2.base.suit
+							break
+						end -- ooh, a rare case of using break end
+					end
+					break
+				end -- this is to optimize performance in some way by limiting iterations whenever possible
+			end
+			if #suits == 2 then
+				local new_jack = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+				assert(SMODS.change_base(new_jack, pseudorandom_element(suits, pseudoseed("lusty_deck_reproduce")), "Jack"))
+				new_jack:add_to_deck()
+				G.deck.config.card_limit = G.deck.config.card_limit + 1
+				table.insert(G.playing_cards, new_jack)
+				G.hand:emplace(new_jack)
+				new_jack.states.visible = nil
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						new_jack:start_materialize()
+						return true
+					end
+				}))
+				return {
+					message = localize('k_reproduced_ex'),
+					colour = G.C.RED,
+				}
+			end
+		end
+	end
+})
 
 SMODS.Atlas({
 	key = "greedyworm_deck",

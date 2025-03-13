@@ -71,6 +71,16 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_lustyworm = {
+                name = "Lusty Worm Deck",
+                text = {
+                    "If played hand contains a",
+                    "{C:attention}King{} and a {C:attention}Queen{}, create",
+                    "a {C:attention}Jack{} of a random parent",
+                    "suit and put it to hand",
+                    "{s:0.8,C:inactive}I crave... really crave for {s:0.8,C:legendary}it{s:0.8,C:inactive}...",
+                },
+            },
             b_skh_greedyworm = {
                 name = "Greedy Worm Deck",
                 text = {
@@ -135,6 +145,7 @@ return {
     misc = {
         dictionary = {
             k_wee_ex = "WEE!",
+            k_reproduced_ex = "Reproduced!",
         },
     },
 }

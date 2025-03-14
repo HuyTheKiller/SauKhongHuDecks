@@ -828,6 +828,79 @@ SMODS.Back({
 	end,
 })
 
+SMODS.Atlas({
+	key = "pridefulworm_deck",
+	path = "SinPrideful.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "pridefulworm",
+	atlas = "pridefulworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+			for i = 1, #G.jokers.cards do
+				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity <= 2 then
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							play_sound('tarot1')
+							card_eval_status_text(temp, 'extra', nil, nil, nil, {message = localize('k_weak_ex')})
+							temp.T.r = -0.2
+							temp:juice_up(0.3, 0.4)
+							temp.states.drag.is = true
+							temp.children.center.pinch.x = true
+							G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+								func = function()
+										G.jokers:remove_card(temp)
+										temp:remove()
+										temp = nil
+									return true; end}))
+							return true
+						end
+					}))
+					i = i - 1
+				end
+			end
+		end
+		if context.destroy_card and context.cardarea == G.play then
+			if not context.destroying_card.debuff then
+				local temp = context.destroying_card
+				if not SMODS.has_no_rank(temp) and temp:get_id() < 13 then
+					return {
+						message = localize("k_weak_ex"),
+						remove = true
+					}
+				end
+			end
+		end
+	end,
+	apply = function(self, back)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for k, v in pairs(G.playing_cards) do
+                    if v:get_id() < 13 then
+						v.to_remove = true
+					end
+                end
+                local i = 1
+                while i <= #G.playing_cards do
+                    if G.playing_cards[i].to_remove then
+                        G.playing_cards[i]:remove()
+                    else
+                        i = i + 1
+                    end
+                end
+				G.GAME.starting_deck_size = #G.playing_cards
+                return true
+			end
+		}))
+	end
+})
+
 ----------------------------------------------------------------------------------
 
 SMODS.Atlas({

@@ -123,6 +123,17 @@ return {
                     "{s:0.8,C:inactive}I'm... {s:0.8,C:legendary}tired{s:0.8,C:inactive}, let me sleep.",
                 },
             },
+            b_skh_pridefulworm = {
+                name = "Prideful Worm Deck",
+                text = {
+                    "Start with {C:attention}Aces{} and {C:attention}Kings{} in your deck",
+                    "{C:attention}Destroy{} all other scoring ranks",
+                    "When {C:attention}Blind{} is selected, {C:attention}destroy{}",
+                    "all {C:blue}Common{} and {C:green}Uncommon{} Jokers",
+                    "{s:0.8,C:legendary}Kneel down{s:0.8,C:inactive}! Have I",
+                    "{s:0.8,C:inactive}allowed you to look at me?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -178,6 +189,7 @@ return {
             k_reproduced_ex = "Reproduced!",
             k_chomp_ex = "Chomp!",
             k_killed_ex = "Killed!",
+            k_weak_ex = "Weaklings!",
         },
     },
 }

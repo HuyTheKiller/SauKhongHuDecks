@@ -128,6 +128,17 @@ return {
                     "{s:0.8,C:inactive}Ta... {s:0.8,C:legendary}mệt{s:0.8,C:inactive} rồi, để yên cho ta ngủ đi.",
                 },
             },
+            b_skh_pridefulworm = {
+                name = "Bộ Bài Sâu Kiêu Ngạo",
+                text = {
+                    "Bắt đầu với {C:attention}Át{} và {C:attention}Già{} trong bộ bài",
+                    "{C:attention}Phá huỷ{} mọi lá bậc khác ghi điểm",
+                    "Khi {C:attention}Blind{} được chọn, {C:attention}phá huỷ{}",
+                    "mọi Joker {C:blue}Thường{} và {C:green}Ít Phổ Biến{}",
+                    "{s:0.8,C:legendary}Quỳ xuống{s:0.8,C:inactive}! Ta đã cho phép",
+                    "{s:0.8,C:inactive}ngươi ngước nhìn ta chưa?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -183,6 +194,7 @@ return {
             k_reproduced_ex = "Sinh Sản!",
             k_chomp_ex = "Măm!",
             k_killed_ex = "Bị Giết!",
+            k_weak_ex = "Tép Riu!",
         },
     },
 }

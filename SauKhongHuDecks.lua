@@ -806,7 +806,7 @@ SMODS.Atlas({
 SMODS.Back({
 	key = "slothfulworm",
 	atlas = "slothfulworm_deck",
-	-- unlocked = false,
+	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
 				extra = {odds = 30, ante_loss = 1, win_ante_loss = 1}},

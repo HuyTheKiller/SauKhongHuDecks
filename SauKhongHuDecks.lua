@@ -723,10 +723,26 @@ SMODS.Back({
 					add_tag(Tag('tag_investment'))
 					play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
 					play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+					add_tag(Tag('tag_investment'))
+					play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+					play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
 					return true
 				end)
 			}))
 		end
+	end,
+	apply = function(self, back)
+		G.E_MANAGER:add_event(Event({
+			func = (function()
+				add_tag(Tag('tag_investment'))
+				play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+				play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+				add_tag(Tag('tag_investment'))
+				play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+				play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+				return true
+			end)
+		}))
 	end,
 	loc_vars = function(self)
         return {vars = {self.config.extra.dollars}}

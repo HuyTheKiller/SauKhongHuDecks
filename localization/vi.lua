@@ -91,7 +91,7 @@ return {
                     "trở {C:attention}Con Dấu Vàng{}, mọi {C:attention}Joker{} trở thành",
                     "{C:attention,T:rental}Cho Thuê{}, mọi {C:attention}cường hoá{} trở thành {C:attention,T:m_gold}Vàng{},",
                     "mọi {C:dark_edition}ấn bản{} cho {C:money}$#1#{} rồi bóc đi",
-                    "Nhận một {C:attention,T:tag_investment}Nhãn Đầu Tư{} khi",
+                    "Nhận hai {C:attention,T:tag_investment}Nhãn Đầu Tư{} khi",
                     "{C:attention}Boss Blind{} bị đánh bại",
                     "{s:0.8,C:inactive}Tiền... TIỀN!!! TOÀN BỘ LÀ CỦA {s:0.8,C:legendary}TAAAAAA{s:0.8,C:inactive}!!!!!!",
                 },

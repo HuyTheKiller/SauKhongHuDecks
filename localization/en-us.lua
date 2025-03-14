@@ -85,7 +85,7 @@ return {
                 name = "Greedy Worm Deck",
                 text = {
                     "When {C:attention}Blind{} is selected, all {C:attention}seals{} become",
-                    "{C:attention}Gold Seal{}, all {C:attention}jokers{} become {C:attention}Rental{},",
+                    "{C:attention}Gold Seal{}, all {C:attention}Jokers{} become {C:attention}Rental{},",
                     "all {C:attention}enhancements{} become {C:attention,T:m_gold}Gold{}, strip",
                     "all {C:dark_edition}editions{} for {C:money}$#1#{} each",
                     "Gain an {C:attention,T:tag_investment}Investment Tag{}",
@@ -106,8 +106,8 @@ return {
             b_skh_enviousworm = {
                 name = "Envious Worm Deck",
                 text = {
-                    "Joker {C:attention}rarity{} is proportional to {C:green}chance{} of",
-                    "being destroyed at end of round (bypass Eternal)",
+                    "Joker {C:attention}rarity{} is proportional to {C:green}chance{}",
+                    "of being destroyed at end of round",
                     "{s:0.8}({s:0.8,C:blue}Common{s:0.8} Jokers excluded)",
                     "{s:0.8,C:inactive}Your absurdly handsome faces",
                     "{s:0.8,C:inactive}urges me to {s:0.8,C:red}RIP{s:0.8,C:inactive} them off",

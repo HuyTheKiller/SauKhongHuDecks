@@ -88,7 +88,7 @@ return {
                 name = "Bộ Bài Sâu Tham Lam",
                 text = {
                     "Khi {C:attention}Blind{} được chọn, mọi {C:attention}con dấu{} trở thành",
-                    "trở {C:attention}Con Dấu Vàng{}, mọi {C:attention}joker{} trở thành",
+                    "trở {C:attention}Con Dấu Vàng{}, mọi {C:attention}Joker{} trở thành",
                     "{C:attention,T:rental}Cho Thuê{}, mọi {C:attention}cường hoá{} trở thành {C:attention,T:m_gold}Vàng{},",
                     "mọi {C:dark_edition}ấn bản{} cho {C:money}$#1#{} rồi bóc đi",
                     "Nhận một {C:attention,T:tag_investment}Nhãn Đầu Tư{} khi",
@@ -109,11 +109,12 @@ return {
             b_skh_enviousworm = {
                 name = "Bộ Bài Sâu Đố Kị",
                 text = {
-                    "{C:attention}Độ hiếm{} Joker tỉ lệ thuận với {C:green}xác suất{}",
-                    "bị phá huỷ ở cuối ván (kể cả Vĩnh Hằng)",
+                    "{C:attention}Độ hiếm{} Joker tỉ lệ thuận với",
+                    "{C:green}xác suất{} bị phá huỷ ở cuối ván",
                     "{s:0.8}(Ngoại trừ Joker {s:0.8,C:blue}Thường{s:0.8})",
-                    "{s:0.8,C:inactive}Cái bản mặt đẹp đẽ đến chết tiệt của chúng mày",
-                    "{s:0.8,C:inactive}khiến ta muốn {s:0.8,C:red}XÉ TOẠC{s:0.8,C:inactive} chúng ra",
+                    "{s:0.8,C:inactive}Cái bản mặt đẹp đẽ đến chết tiệt",
+                    "{s:0.8,C:inactive}của chúng mày khiến ta muốn",
+                    "{s:0.8,C:red}XÉ TOẠC{s:0.8,C:inactive} chúng ra",
                 },
             },
             b_skh_slothfulworm = {

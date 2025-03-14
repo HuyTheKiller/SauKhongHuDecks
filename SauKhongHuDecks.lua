@@ -589,9 +589,9 @@ if CardSleeves then
 end
 
 --------------------------------- ^^^^^^^^^^^^^^^^^^^^^^^^^ ---------------------------------
----------------------------------  7 divine entity decks    ---------------------------------
+---------------------------------   7 divine entity decks   ---------------------------------
 ---------------------------------------------------------------------------------------------
---------------------------------- 7 deadly sin decks (WIP)  ---------------------------------
+---------------------------------    7 deadly sin decks     ---------------------------------
 --------------------------------- vvvvvvvvvvvvvvvvvvvvvvvvv ---------------------------------
 
 SMODS.Atlas({
@@ -826,6 +826,95 @@ SMODS.Back({
 		return {vars = {self.config.joker_slot, self.config.consumable_slot, self.config.hands,
 						self.config.discards, 8 - self.config.extra.win_ante_loss}}
 	end,
+})
+
+SMODS.Atlas({
+	key = "wrathfulworm_deck",
+	path = "SinWrathful.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "wrathfulworm",
+	atlas = "wrathfulworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+	config = {extra = {hands = 3, xchips = 2, xmult = 2, odds = 6, smash = false}},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+			G.E_MANAGER:add_event(Event({func = function()
+				ease_discard(-G.GAME.current_round.discards_left, nil, true)
+				ease_hands_played(self.config.extra.hands)
+				return true end }))
+		end
+		if context.before then
+			self.config.extra.smash = false
+			if pseudorandom("wrathful_smash") < G.GAME.probabilities.normal/self.config.extra.odds then
+				self.config.extra.smash = true
+			end
+		end
+		if context.destroy_card and context.cardarea == G.play then
+			return {
+				remove = self.config.extra.smash and true or false
+			}
+		end
+		if context.context == "final_scoring_step" and self.config.extra.smash then
+			context.chips = context.chips * self.config.extra.xchips
+			context.mult = context.mult * self.config.extra.xmult
+			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local text = localize("k_smash_ex")
+					play_sound("gong", 0.94, 0.3)
+					play_sound("gong", 0.94 * 1.5, 0.2)
+					play_sound("tarot1", 1.5)
+					ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
+					ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
+					attention_text({
+						scale = 1.4,
+						text = text,
+						hold = 2,
+						align = "cm",
+						offset = { x = 0, y = -2.7 },
+						major = G.play,
+					})
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						blockable = false,
+						blocking = false,
+						delay = 4.3,
+						func = function()
+							ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
+							ease_colour(G.C.UI_MULT, G.C.RED, 2)
+							return true
+						end,
+					}))
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						blockable = false,
+						blocking = false,
+						no_delete = true,
+						delay = 6.3,
+						func = function()
+							G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] =
+								G.C.BLUE[1], G.C.BLUE[2], G.C.BLUE[3], G.C.BLUE[4]
+							G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] =
+								G.C.RED[1], G.C.RED[2], G.C.RED[3], G.C.RED[4]
+							return true
+						end,
+					}))
+					return true
+				end,
+			}))
+			delay(0.6)
+			return context.chips, context.mult
+		end
+	end,
+	loc_vars = function(self)
+		return {vars = {self.config.extra.hands, self.config.extra.xchips, self.config.extra.xmult}}
+	end
 })
 
 SMODS.Atlas({

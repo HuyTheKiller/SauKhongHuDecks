@@ -128,6 +128,17 @@ return {
                     "{s:0.8,C:inactive}Ta... {s:0.8,C:legendary}mệt{s:0.8,C:inactive} rồi, để yên cho ta ngủ đi.",
                 },
             },
+            b_skh_wrathfulworm = {
+                name = "Bộ Bài Sâu Phẫn Nộ",
+                text = {
+                    "Khi {C:attention}Blind{} được chọn, thêm",
+                    "{C:blue}+#1#{} tay bài và {C:attention}mất{}",
+                    "toàn bộ {C:attention}lượt bỏ bài{}",
+                    "Xác suất {C:green}không rõ{} để {C:attention}phá huỷ{} mọi",
+                    "lá ghi điểm cho {X:blue,C:white}X#2#{} Chip và {X:red,C:white}X#3#{} Nhân",
+                    "{s:0.8,C:inactive}Ta chỉ muốn {s:0.8,C:legendary}ĐẬP PHÁ{s:0.8,C:inactive}!!!",
+                },
+            },
             b_skh_pridefulworm = {
                 name = "Bộ Bài Sâu Kiêu Ngạo",
                 text = {
@@ -195,6 +206,7 @@ return {
             k_chomp_ex = "Măm!",
             k_killed_ex = "Bị Giết!",
             k_weak_ex = "Tép Riu!",
+            k_smash_ex = "ĐẬP PHÁ!",
         },
     },
 }

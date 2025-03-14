@@ -123,6 +123,17 @@ return {
                     "{s:0.8,C:inactive}I'm... {s:0.8,C:legendary}tired{s:0.8,C:inactive}, let me sleep.",
                 },
             },
+            b_skh_wrathfulworm = {
+                name = "Wrathful Worm Deck",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "gain {C:blue}+#1#{} hands and",
+                    "{C:attention}lose{} all {C:attention}discards{}",
+                    "{C:green}Unknown{} chance to {C:attention}destroy{} all",
+                    "scoring cards for {X:blue,C:white}X#2#{} Chips and {X:red,C:white}X#3#{} Mult",
+                    "{s:0.8,C:inactive}I just want to {s:0.8,C:legendary}SMASH{s:0.8,C:inactive}!!!",
+                },
+            },
             b_skh_pridefulworm = {
                 name = "Prideful Worm Deck",
                 text = {
@@ -190,6 +201,7 @@ return {
             k_chomp_ex = "Chomp!",
             k_killed_ex = "Killed!",
             k_weak_ex = "Weaklings!",
+            k_smash_ex = "SMASH!",
         },
     },
 }

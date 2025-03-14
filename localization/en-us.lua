@@ -103,6 +103,16 @@ return {
                     "{s:0.8,C:inactive}I'd die if I stopped {s:0.8,C:legendary}eating{s:0.8,C:inactive}...",
                 },
             },
+            b_skh_enviousworm = {
+                name = "Envious Worm Deck",
+                text = {
+                    "Joker {C:attention}rarity{} is proportional to {C:green}chance{} of",
+                    "being destroyed at end of round (bypass Eternal)",
+                    "{s:0.8}({s:0.8,C:blue}Common{s:0.8} Jokers excluded)",
+                    "{s:0.8,C:inactive}Your absurdly handsome faces",
+                    "{s:0.8,C:inactive}urges me to {s:0.8,C:red}RIP{s:0.8,C:inactive} them off",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -157,6 +167,7 @@ return {
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Reproduced!",
             k_chomp_ex = "Chomp!",
+            k_killed_ex = "Killed!",
         },
     },
 }

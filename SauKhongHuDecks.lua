@@ -754,6 +754,48 @@ SMODS.Back({
 	end
 })
 
+SMODS.Atlas({
+	key = "enviousworm_deck",
+	path = "SinEnvious.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "enviousworm",
+	atlas = "enviousworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
+	config = {extra = {odds_common = nil,   odds_uncommon = 150,
+					   odds_rare = 100,      odds_cry_epic = 80, -- envious_roulette is too janky
+					   odds_legendary = 60, odds_cry_exotic = 40, -- so I have to manually increase the odds
+					   odds_cry_candy = 10, odds_cry_cursed = nil}}, -- to an absurd amount
+	calculate = function(self, back, context)
+		if context.end_of_round then
+			-- local i = 1
+			for i = 1, #G.jokers.cards do
+				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity == 2 then
+					envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+				elseif temp.config.center.rarity == 3 then
+					envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i)
+				elseif temp.config.center.rarity == 4 then
+					envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i)
+				end
+				if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
+					if temp.config.center.rarity == 'cry_epic' then
+						envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i)
+					elseif temp.config.center.rarity == 'cry_exotic' then
+						envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i)
+					elseif temp.config.center.rarity == 'cry_candy' then
+						envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i)
+					end
+				end
+			end
+		end
+	end,
+})
+
 ----------------------------------------------------------------------------------
 
 SMODS.Atlas({
@@ -776,4 +818,27 @@ function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod
     elseif rank_suffix == 14 then rank_suffix = 'Ace'
     end
     return rank_suffix
+end
+
+function envious_roulette(card, odd_seed, odd_type, iteration) -- Gros Michel logic - copy-pasted and modified
+	if pseudorandom(odd_seed) < G.GAME.probabilities.normal/odd_type then
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				-- play_sound('tarot1')
+				card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_killed_ex')})
+				card.T.r = -0.2
+				card:juice_up(0.3, 0.4)
+				card.states.drag.is = true
+				card.children.center.pinch.x = true
+				G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+					func = function()
+							G.jokers:remove_card(card)
+							card:remove()
+							card = nil
+						return true; end}))
+				return true
+			end
+		}))
+		iteration = iteration - 1
+	end
 end

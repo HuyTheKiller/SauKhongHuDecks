@@ -106,6 +106,16 @@ return {
                     "{s:0.8,C:inactive}Ta sẽ chết nếu ngừng {s:0.8,C:legendary}ăn{s:0.8,C:inactive}...",
                 },
             },
+            b_skh_enviousworm = {
+                name = "Bộ Bài Sâu Đố Kị",
+                text = {
+                    "{C:attention}Độ hiếm{} Joker tỉ lệ thuận với {C:green}xác suất{}",
+                    "bị phá huỷ ở cuối ván (kể cả Vĩnh Hằng)",
+                    "{s:0.8}(Ngoại trừ Joker {s:0.8,C:blue}Thường{s:0.8})",
+                    "{s:0.8,C:inactive}Cái bản mặt đẹp đẽ đến chết tiệt của chúng mày",
+                    "{s:0.8,C:inactive}khiến ta muốn {s:0.8,C:red}XÉ TOẠC{s:0.8,C:inactive} chúng ra",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -160,6 +170,7 @@ return {
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Sinh Sản!",
             k_chomp_ex = "Măm!",
+            k_killed_ex = "Bị Giết!",
         },
     },
 }

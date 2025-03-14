@@ -844,7 +844,7 @@ SMODS.Back({
 		if context.setting_blind then
 			for i = 1, #G.jokers.cards do
 				local temp = G.jokers.cards[i]
-				if temp.config.center.rarity <= 2 then
+				if temp.config.center.rarity == 1 or temp.config.center.rarity == 2 then
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							play_sound('tarot1')

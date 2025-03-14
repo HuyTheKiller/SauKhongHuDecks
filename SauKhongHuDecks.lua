@@ -8,9 +8,9 @@ SMODS.Atlas({
 SMODS.Back({
     key = "saukhonghu",
     atlas = "saukhonghu_deck",
-    config = {hand_size = 1, extra = {ante_gain = 8}},
+    config = {hand_size = 1, extra = {win_ante_gain = 8}},
     apply = function(self, back)
-		G.GAME.win_ante = G.GAME.win_ante + self.config.extra.ante_gain
+		G.GAME.win_ante = G.GAME.win_ante + self.config.extra.win_ante_gain
         delay(0.4)
 		G.E_MANAGER:add_event(Event({
 			func = function()
@@ -29,7 +29,7 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.hand_size, 8 + self.config.extra.ante_gain}}
+        return {vars = {self.config.hand_size, 8 + self.config.extra.win_ante_gain}}
     end,
 })
 
@@ -84,7 +84,7 @@ SMODS.Back({
     atlas = "absolute_cinema_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
-    config = {joker_slot = 1, hand_size = 2, extra = {ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
+    config = {joker_slot = 1, hand_size = 2, extra = {win_ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
     calculate = function(self, back, context)
 		if context.context == "final_scoring_step" then
 			local tot = context.chips + context.mult
@@ -141,7 +141,7 @@ SMODS.Back({
 		end
 	end,
 	apply = function(self, back)
-        G.GAME.win_ante = G.GAME.win_ante + self.config.extra.ante_gain
+        G.GAME.win_ante = G.GAME.win_ante + self.config.extra.win_ante_gain
 		delay(0.4)
 		G.E_MANAGER:add_event(Event({
 			func = function()
@@ -167,7 +167,7 @@ SMODS.Back({
 		}))
 	end,
     loc_vars = function(self)
-        return {vars = {self.config.joker_slot, self.config.hand_size, 8 + self.config.extra.ante_gain}}
+        return {vars = {self.config.joker_slot, self.config.hand_size, 8 + self.config.extra.win_ante_gain}}
     end,
 })
 
@@ -613,7 +613,7 @@ SMODS.Back({
 					suits[#suits+1] = temp.base.suit
 					for j = 1, #context.full_hand do
 						local temp2 = context.full_hand[j]
-						if temp2:get_id() == 12 then 
+						if temp2:get_id() == 12 then
 							suits[#suits+1] = temp2.base.suit
 							break
 						end -- ooh, a rare case of using break end
@@ -766,9 +766,9 @@ SMODS.Back({
 	atlas = "enviousworm_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
-	config = {extra = {odds_common = nil,   odds_uncommon = 150,
+	config = {extra = {odds_common = nil,    odds_uncommon = 150,
 					   odds_rare = 100,      odds_cry_epic = 80, -- envious_roulette is too janky
-					   odds_legendary = 60, odds_cry_exotic = 40, -- so I have to manually increase the odds
+					   odds_legendary = 60,  odds_cry_exotic = 40, -- so I have to manually increase the odds
 					   odds_cry_candy = 100, odds_cry_cursed = nil}}, -- to an absurd amount
 	calculate = function(self, back, context)
 		if context.end_of_round then

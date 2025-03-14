@@ -116,6 +116,17 @@ return {
                     "{s:0.8,C:inactive}khiến ta muốn {s:0.8,C:red}XÉ TOẠC{s:0.8,C:inactive} chúng ra",
                 },
             },
+            b_skh_slothfulworm = {
+                name = "Bộ Bài Sâu Lười Biếng",
+                text = {
+                    "{C:attention}#1#{} ô Joker, {C:attention}#2#{} ô tiêu thụ",
+                    "{C:blue}#3#{} tay bài, {C:red}#4#{} lượt bỏ bài",
+                    "mỗi ván",
+                    "Xác suất {C:green}không rõ{} bị {C:attention}lùi{} Ante",
+                    "Đánh bại {C:attention}Ante #5#{} để thắng",
+                    "{s:0.8,C:inactive}Ta... {s:0.8,C:legendary}mệt{s:0.8,C:inactive} rồi, để yên cho ta ngủ đi.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

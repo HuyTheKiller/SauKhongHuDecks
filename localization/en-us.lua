@@ -113,6 +113,16 @@ return {
                     "{s:0.8,C:inactive}urges me to {s:0.8,C:red}RIP{s:0.8,C:inactive} them off",
                 },
             },
+            b_skh_slothfulworm = {
+                name = "Slothful Worm Deck",
+                text = {
+                    "{C:attention}#1#{} Joker slots, {C:attention}#2#{} consumable slot",
+                    "{C:blue}#3#{} hand, {C:red}#4#{} discards every round",
+                    "{C:green}Unknown{} chance to {C:attention}drop{} Ante",
+                    "Beat {C:attention}Ante #5#{} to win",
+                    "{s:0.8,C:inactive}I'm... {s:0.8,C:legendary}tired{s:0.8,C:inactive}, let me sleep.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

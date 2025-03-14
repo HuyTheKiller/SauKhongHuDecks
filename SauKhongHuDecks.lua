@@ -796,6 +796,38 @@ SMODS.Back({
 	end,
 })
 
+SMODS.Atlas({
+	key = "slothfulworm_deck",
+	path = "SinSlothful.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "slothfulworm",
+	atlas = "slothfulworm_deck",
+	-- unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
+				extra = {odds = 30, ante_loss = 1, win_ante_loss = 1}},
+	calculate = function(self, back, context)
+		if context.end_of_round then
+			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds then
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+		end
+	end,
+	apply = function(self, back)
+		G.GAME.win_ante = G.GAME.win_ante - self.config.extra.win_ante_loss
+	end,
+	loc_vars = function(self)
+		return {vars = {self.config.joker_slot, self.config.consumable_slot, self.config.hands,
+						self.config.discards, 8 - self.config.extra.win_ante_loss}}
+	end,
+})
+
 ----------------------------------------------------------------------------------
 
 SMODS.Atlas({

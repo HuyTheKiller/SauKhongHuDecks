@@ -1,3 +1,25 @@
+SMODS.Sound({
+	key = "wee",
+	path = "wee.ogg",
+	pitch = 0.7,
+	volume = 0.3
+})
+
+SMODS.Sound({
+	key = "chomp",
+	path = "chomp.ogg",
+	pitch = 0.7,
+	volume = 0.3
+})
+
+SMODS.Sound({
+	key = "smash",
+	path = "smash.ogg",
+	pitch = 0.7,
+	volume = 0.3
+})
+
+----------------------------------------------------------------------------------------------------
 SMODS.Atlas({
 	key = "saukhonghu_deck",
 	path = "SauKhongHu.png",
@@ -414,6 +436,7 @@ SMODS.Back({
 				if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 					return {
 						message = localize("k_wee_ex"),
+						sound = "skh_wee",
 						remove = true
 					}
 				end
@@ -543,6 +566,7 @@ if CardSleeves then
 						if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 							return {
 								message = localize("k_wee_ex"),
+								sound = "skh_wee",
 								remove = true
 							}
 						end
@@ -728,6 +752,7 @@ SMODS.Back({
 				func = function()
 					for k, v in pairs(G.playing_cards) do
 						if pseudorandom('gluttony_deck_chomp') < G.GAME.probabilities.normal/self.config.extra.odds then
+							play_sound("skh_chomp", 0.7, 0.3)
 							card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex')})
 							v.to_remove = true
 						end
@@ -870,6 +895,7 @@ SMODS.Back({
 					play_sound("gong", 0.94, 0.3)
 					play_sound("gong", 0.94 * 1.5, 0.2)
 					play_sound("tarot1", 1.5)
+					play_sound("skh_smash", 0.7, 0.3)
 					ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
 					ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
 					attention_text({

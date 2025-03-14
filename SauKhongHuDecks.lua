@@ -767,9 +767,9 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
 	config = {extra = {odds_common = nil,    odds_uncommon = 150,
-					   odds_rare = 100,      odds_cry_epic = 80, -- envious_roulette is too janky
-					   odds_legendary = 60,  odds_cry_exotic = 40, -- so I have to manually increase the odds
-					   odds_cry_candy = 100, odds_cry_cursed = nil}}, -- to an absurd amount
+					   odds_rare = 100,      odds_cry_epic = 80,
+					   odds_legendary = 60,  odds_cry_exotic = 40,
+					   odds_cry_candy = 100, odds_cry_cursed = nil}},
 	calculate = function(self, back, context)
 		if context.end_of_round then
 			-- local i = 1

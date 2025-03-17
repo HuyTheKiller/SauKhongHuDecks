@@ -106,7 +106,7 @@ SMODS.Back({
     atlas = "absolute_cinema_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
-    config = {joker_slot = 1, hand_size = 2, extra = {win_ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
+    config = {joker_slot = 5, hand_size = 8, extra = {win_ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
     calculate = function(self, back, context)
 		if context.context == "final_scoring_step" then
 			local tot = context.chips + context.mult

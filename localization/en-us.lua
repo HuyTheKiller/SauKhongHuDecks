@@ -213,8 +213,8 @@ return {
             k_killed_ex = "Killed!",
             k_weak_ex = "Weaklings!",
             k_smash_ex = "SMASH!",
-            k_humbled_ex = "Humbled!",
-            k_not_humbled_ex = "Not Humbled!",
+            k_humbled_ex = "Humble!",
+            k_not_humbled_ex = "Not Humble!",
         },
     },
 }

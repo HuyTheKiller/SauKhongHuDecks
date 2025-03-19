@@ -150,6 +150,17 @@ return {
                     "{s:0.8,C:inactive}ngươi ngước nhìn ta chưa?",
                 },
             },
+            b_skh_humbleworm = {
+                name = "Bộ Bài Sâu Nhún Nhường",
+                text = {
+                    "{X:dark_edition,C:white}X#1#{} Chip và Nhân",
+                    "nếu tay bài đã chơi là {C:attention}Sảnh{}",
+                    "hoặc cao hơn, nếu không thì",
+                    "{X:dark_edition,C:white}X#2#{} Chip và Nhân",
+                    -- "{s:0.8,C:legendary}Kneel down{s:0.8,C:inactive}! Have I",
+                    -- "{s:0.8,C:inactive}allowed you to look at me?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -207,6 +218,8 @@ return {
             k_killed_ex = "Bị Giết!",
             k_weak_ex = "Tép Riu!",
             k_smash_ex = "ĐẬP PHÁ!",
+            k_humbled_ex = "Nhường!",
+            k_not_humbled_ex = "Không Nhường!",
         },
     },
 }

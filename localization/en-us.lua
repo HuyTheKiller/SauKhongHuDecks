@@ -145,6 +145,17 @@ return {
                     "{s:0.8,C:inactive}allowed you to look at me?",
                 },
             },
+            b_skh_humbleworm = {
+                name = "Humble Worm Deck",
+                text = {
+                    "{X:dark_edition,C:white}X#1#{} Chips and Mult",
+                    "if played hand is {C:attention}Straight{}",
+                    "or higher, otherwise",
+                    "{X:dark_edition,C:white}X#2#{} Chips and Mult",
+                    -- "{s:0.8,C:legendary}Kneel down{s:0.8,C:inactive}! Have I",
+                    -- "{s:0.8,C:inactive}allowed you to look at me?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -202,6 +213,8 @@ return {
             k_killed_ex = "Killed!",
             k_weak_ex = "Weaklings!",
             k_smash_ex = "SMASH!",
+            k_humbled_ex = "Humbled!",
+            k_not_humbled_ex = "Not Humbled!",
         },
     },
 }

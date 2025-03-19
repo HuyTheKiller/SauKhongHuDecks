@@ -130,7 +130,7 @@ return {
                     "gain {C:blue}+#1#{} hands and",
                     "{C:attention}lose{} all {C:attention}discards{}",
                     "{C:green}Unknown{} chance to {C:attention}destroy{} all",
-                    "scoring cards for {X:blue,C:white}X#2#{} Chips and {X:red,C:white}X#3#{} Mult",
+                    "scoring cards for {X:dark_edition,C:white}X#2#{} Chips and Mult",
                     "{s:0.8,C:inactive}I just want to {s:0.8,C:legendary}SMASH{s:0.8,C:inactive}!!!",
                 },
             },

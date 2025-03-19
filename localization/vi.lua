@@ -135,7 +135,7 @@ return {
                     "{C:blue}+#1#{} tay bài và {C:attention}mất{}",
                     "toàn bộ {C:attention}lượt bỏ bài{}",
                     "Xác suất {C:green}không rõ{} để {C:attention}phá huỷ{} mọi",
-                    "lá ghi điểm cho {X:blue,C:white}X#2#{} Chip và {X:red,C:white}X#3#{} Nhân",
+                    "lá ghi điểm cho {X:dark_edition,C:white}X#2#{} Chip và Nhân",
                     "{s:0.8,C:inactive}Ta chỉ muốn {s:0.8,C:legendary}ĐẬP PHÁ{s:0.8,C:inactive}!!!",
                 },
             },

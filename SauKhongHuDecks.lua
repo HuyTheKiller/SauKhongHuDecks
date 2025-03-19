@@ -881,7 +881,7 @@ SMODS.Back({
 	atlas = "wrathfulworm_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
-	config = {extra = {hands = 3, xchips = 2, xmult = 2, odds = 6, smash = false}},
+	config = {extra = {hands = 3, xchipmult = 2, odds = 6, smash = false}},
 	calculate = function(self, back, context)
 		if context.setting_blind then
 			G.E_MANAGER:add_event(Event({func = function()
@@ -901,8 +901,8 @@ SMODS.Back({
 			}
 		end
 		if context.context == "final_scoring_step" and self.config.extra.smash then
-			context.chips = context.chips * self.config.extra.xchips
-			context.mult = context.mult * self.config.extra.xmult
+			context.chips = context.chips * self.config.extra.xchipmult
+			context.mult = context.mult * self.config.extra.xchipmult
 			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
 
 			G.E_MANAGER:add_event(Event({
@@ -955,7 +955,7 @@ SMODS.Back({
 		end
 	end,
 	loc_vars = function(self)
-		return {vars = {self.config.extra.hands, self.config.extra.xchips, self.config.extra.xmult}}
+		return {vars = {self.config.extra.hands, self.config.extra.xchipmult}}
 	end
 })
 

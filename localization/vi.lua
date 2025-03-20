@@ -173,6 +173,14 @@ return {
                     "{s:0.8,C:inactive}Luôn luôn có người {s:0.8,C:legendary}giỏi hơn{s:0.8,C:inactive}...",
                 },
             },
+            b_skh_diligentworm = {
+                name = "Bộ Bài Sâu Siêng Năng",
+                text = {
+                    "{X:red,C:white}X#1#{} Nhân cho {C:attention}tay bài cuối cùng",
+                    "của ván, nếu không thì {X:red,C:white}X#2#{} Nhân",
+                    "{s:0.8,C:legendary}Thăm ngàn{s:0.8,C:inactive}, kiệp ngần...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -232,6 +240,8 @@ return {
             k_smash_ex = "ĐẬP PHÁ!",
             k_humbled_ex = "Nhường!",
             k_not_humbled_ex = "Không Nhường!",
+            k_not_enough_ex = "Không Đủ!",
+            k_complete_ex = "Hoàn Thành!",
         },
     },
 }

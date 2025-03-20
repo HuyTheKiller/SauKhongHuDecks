@@ -168,6 +168,14 @@ return {
                     "{s:0.8,C:inactive}There's always a {s:0.8,C:legendary}better {s:0.8,C:inactive}one...",
                 },
             },
+            b_skh_diligentworm = {
+                name = "Diligent Worm Deck",
+                text = {
+                    "{X:red,C:white}X#1#{} Mult on {C:attention}final hand{}",
+                    "of round, otherwise {X:red,C:white}X#2#{} Mult",
+                    "{s:0.8,C:legendary}Working{s:0.8,C:inactive}, saving money...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -227,6 +235,8 @@ return {
             k_smash_ex = "SMASH!",
             k_humbled_ex = "Humble!",
             k_not_humbled_ex = "Not Humble!",
+            k_not_enough_ex = "Not Enough!",
+            k_complete_ex = "Complete!",
         },
     },
 }

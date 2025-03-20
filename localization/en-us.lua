@@ -212,8 +212,8 @@ return {
             sleeve_skh_tsaunami_alt = {
                 name = "Tsaunami Sleeve",
                 text = {
-                    "Start with 2 copies",
-                    "of {C:attention,T:j_splash}Splash{}",
+                    "Start with 2 {C:dark_edition}Negative{}",
+                    "copies of {C:attention,T:j_splash}Splash{}",
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Highly Excited{s:0.8,C:inactive}!!!",
                 },
             },

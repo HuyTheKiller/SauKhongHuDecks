@@ -218,7 +218,7 @@ return {
                 name = "Bọc Bài Sâu Sóng Thần",
                 text = {
                     "Bắt đầu với 2 bản sao",
-                    "của {C:attention,T:j_splash}Bắn Toé{}",
+                    "{C:dark_edition}Âm Bản{} của {C:attention,T:j_splash}Bắn Toé{}",
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}Rất Rạo Rực{s:0.8,C:inactive}!!!",
                 },
             },

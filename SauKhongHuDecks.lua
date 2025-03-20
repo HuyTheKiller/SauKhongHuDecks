@@ -502,11 +502,13 @@ if CardSleeves then
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						local splash = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_splash", "deck")
+						splash:set_edition({ negative = true }, true)
 						splash:add_to_deck()
 						G.jokers:emplace(splash)
 						splash:start_materialize()
 
 						local splash2 = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_splash", "deck")
+						splash2:set_edition({ negative = true }, true)
 						splash2:add_to_deck()
 						G.jokers:emplace(splash2)
 						splash2:start_materialize()

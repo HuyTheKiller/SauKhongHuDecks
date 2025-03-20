@@ -187,6 +187,15 @@ return {
                     "{s:0.8,C:inactive}knowing when to stop means {s:0.8,C:legendary}wise{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_generousworm = {
+                name = "Generous Worm Deck",
+                text = {
+                    "Start with {C:attention,T:j_credit_card}Credit Card{}",
+                    "{X:red,C:white}X#1#{} Mult when at least {C:red}-$15{} in debt",
+                    "{X:red,C:white}X#2#{} Mult when at least {C:red}-$20{} in debt",
+                    "{s:0.8,C:inactive}To give away means to {s:0.8,C:legendary}receive{s:0.8,C:inactive}...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -248,6 +257,8 @@ return {
             k_not_humbled_ex = "Not Humble!",
             k_not_enough_ex = "Not Enough!",
             k_complete_ex = "Complete!",
+            k_generous_ex = "Generous!",
+            k_super_generous_ex = "Super Generous!",
         },
     },
 }

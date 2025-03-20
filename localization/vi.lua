@@ -192,6 +192,15 @@ return {
                     "{s:0.8,C:inactive}biết dừng là {s:0.8,C:legendary}khôn ngoan{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_generousworm = {
+                name = "Bộ Bài Sâu Hào Phóng",
+                text = {
+                    "Bắt đầu với {C:attention,T:j_credit_card}Thẻ Tín Dụng{}",
+                    "{X:red,C:white}X#1#{} Nhân nếu nợ ít nhất {C:red}$15{}",
+                    "{X:red,C:white}X#2#{} Nhân nếu nợ ít nhất {C:red}$20{}",
+                    "{s:0.8,C:inactive}Cho đi là để {s:0.8,C:legendary}nhận lại{s:0.8,C:inactive}...",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -253,6 +262,8 @@ return {
             k_not_humbled_ex = "Không Nhường!",
             k_not_enough_ex = "Không Đủ!",
             k_complete_ex = "Hoàn Thành!",
+            k_generous_ex = "Hào Phóng!",
+            k_super_generous_ex = "Siêu Hào Phóng!",
         },
     },
 }

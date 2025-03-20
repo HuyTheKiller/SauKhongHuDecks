@@ -166,7 +166,7 @@ return {
             SKHDecks = {
                 name = "Bộ Bài SauKhongHu",
                 text = {
-                    "{s:1.3}Thêm một nhóm {s:1.3,C:attention} bộ bài {s:1.3,C:dark_edition}đặc thù {s:1.3}cho Sâu Không Hư.",
+                    "{s:1.3}Thêm một nhóm {s:1.3,C:attention}bộ bài {s:1.3,C:dark_edition}đặc thù {s:1.3}cho Sâu Không Hư.",
                     " ",
                     "Lời cảm ơn chân thành đến HuyCorn cho việc thiết kế mặt sau bộ bài.",
                 },

@@ -171,8 +171,9 @@ return {
             b_skh_diligentworm = {
                 name = "Diligent Worm Deck",
                 text = {
-                    "{X:red,C:white}X#1#{} Mult on {C:attention}final hand{}",
-                    "of round, otherwise {X:red,C:white}X#2#{} Mult",
+                    "{X:red,C:white}X#1#{} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round,",
+                    "otherwise {X:red,C:white}X#2#{} Mult",
                     "{s:0.8,C:legendary}Working{s:0.8,C:inactive}, saving money...",
                 },
             },

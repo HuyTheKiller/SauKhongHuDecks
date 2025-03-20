@@ -176,8 +176,9 @@ return {
             b_skh_diligentworm = {
                 name = "Bộ Bài Sâu Siêng Năng",
                 text = {
-                    "{X:red,C:white}X#1#{} Nhân cho {C:attention}tay bài cuối cùng",
-                    "của ván, nếu không thì {X:red,C:white}X#2#{} Nhân",
+                    "{X:red,C:white}X#1#{} Nhân cho {C:attention}tay bài",
+                    "{C:attention}cuối cùng{} của ván, nếu",
+                    "không thì {X:red,C:white}X#2#{} Nhân",
                     "{s:0.8,C:legendary}Thăm ngàn{s:0.8,C:inactive}, kiệp ngần...",
                 },
             },

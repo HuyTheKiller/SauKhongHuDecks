@@ -1048,8 +1048,8 @@ SMODS.Atlas({
 SMODS.Back({
 	key = "humbleworm",
 	atlas = "humbleworm_deck",
-	-- unlocked = false,
-	-- unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
 	config = {extra = {percent = 0.5, anti_humble = nil}},
 	calculate = function(self, back, context)
 		if context.before then

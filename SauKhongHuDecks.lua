@@ -1039,6 +1039,62 @@ SMODS.Back({
 --------------------------------- vvvvvvvvvvvWIPvvvvvvvvvvv ---------------------------------
 
 SMODS.Atlas({
+	key = "virginworm_deck",
+	path = "VirtueVirgin.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "virginworm",
+	atlas = "virginworm_deck",
+	config = {extra = {hand_this_round = localize("k_none"), hand_lock = false}},
+	calculate = function(self, back, context)
+		if context.before then
+			if not self.config.extra.hand_lock then
+				self.config.extra.hand_this_round = localize(context.scoring_name, "poker_hands")
+				self.config.extra.hand_lock = true
+			else
+				if self.config.extra.hand_this_round ~= localize(context.scoring_name, "poker_hands") then
+					for k, v in ipairs(context.scoring_hand) do
+						if not v.debuff then
+							v:set_debuff(true)
+						end
+					end
+				end
+			end
+		end
+		if context.end_of_round then
+			self.config.extra.hand_this_round = localize("k_none")
+			self.config.extra.hand_lock = false
+		end
+		if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+			for c = #G.playing_cards, 1, -1 do
+				if G.playing_cards[c].debuff then
+					G.playing_cards[c]:set_debuff(false)
+				end
+			end
+		end
+	end,
+	apply = function(self, back)
+        delay(0.4)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local card_sharp = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_card_sharp", "deck")
+				card_sharp:add_to_deck()
+				G.jokers:emplace(card_sharp)
+				card_sharp:start_materialize()
+
+				return true
+			end,
+		}))
+	end,
+	loc_vars = function(self)
+		return {vars = {self.config.extra.hand_this_round}}
+	end
+})
+
+SMODS.Atlas({
 	key = "humbleworm_deck",
 	path = "VirtueHumble.png",
 	px = 71,

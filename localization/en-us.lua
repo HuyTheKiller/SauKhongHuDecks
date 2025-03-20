@@ -145,6 +145,18 @@ return {
                     "{s:0.8,C:inactive}allowed you to look at me?",
                 },
             },
+            b_skh_virginworm = {
+                name = "Virgin Worm Deck",
+                text = {
+                    "Start with {C:attention,T:j_card_sharp}Card Sharp{}",
+                    "{C:attention}Debuff{} all hand types except",
+                    "{C:attention}first hand{} of round",
+                    "until end of Ante",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive})",
+                    "{s:0.8,C:inactive}Do you think the cloud is",
+                    "{s:0.8,C:inactive}as {s:0.8,C:legendary}soft {s:0.8,C:inactive}as cotton candy?",
+                },
+            },
             b_skh_humbleworm = {
                 name = "Humble Worm Deck",
                 text = {

@@ -1252,6 +1252,51 @@ SMODS.Back({
 	end
 })
 
+SMODS.Atlas({
+	key = "abstemiousworm_deck",
+	path = "VirtueAbstemious.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "abstemiousworm",
+	atlas = "abstemiousworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
+	config = {joker_slot = -1, consumable_slot = -1},
+	apply = function(self, back)
+		local first_suit = pseudorandom_element({'Spades','Hearts','Clubs','Diamonds'}, pseudoseed('abstemious_remove1'))
+		local seconds_suits = {}
+		for k, v in ipairs({'Spades','Hearts','Clubs','Diamonds'}) do
+			if v ~= first_suit then seconds_suits[#seconds_suits+1] = v end
+		end
+		local second_suit = pseudorandom_element(seconds_suits, pseudoseed('abstemious_remove2'))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for k, v in pairs(G.playing_cards) do
+                    if v.base.suit == first_suit or v.base.suit == second_suit then
+						v.to_remove = true
+					end
+                end
+                local i = 1
+                while i <= #G.playing_cards do
+                    if G.playing_cards[i].to_remove then
+                        G.playing_cards[i]:remove()
+                    else
+                        i = i + 1
+                    end
+                end
+				G.GAME.starting_deck_size = #G.playing_cards
+                return true
+			end
+		}))
+	end,
+	loc_vars = function(self)
+		return {vars = {self.config.joker_slot, self.config.consumable_slot}}
+	end
+})
+
 ---------------------------------------------------------------------------------------------
 
 SMODS.Atlas({

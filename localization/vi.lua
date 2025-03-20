@@ -182,6 +182,16 @@ return {
                     "{s:0.8,C:legendary}Thăm ngàn{s:0.8,C:inactive}, kiệp ngần...",
                 },
             },
+            b_skh_abstemiousworm = {
+                name = "Bộ Bài Sâu Tiết Chế",
+                text = {
+                    "{C:attention}#1#{} ô Joker, {C:attention}#2#{} ô tiêu thụ",
+                    "{C:attention}Loại bỏ{} 2 chất ngẫu nhiên",
+                    "khỏi bộ bài khởi đầu",
+                    "{s:0.8,C:inactive}Biết đủ là {s:0.8,C:legendary}hạnh phúc{s:0.8,C:inactive},",
+                    "{s:0.8,C:inactive}biết dừng là {s:0.8,C:legendary}khôn ngoan{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

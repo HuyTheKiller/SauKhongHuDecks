@@ -177,6 +177,16 @@ return {
                     "{s:0.8,C:legendary}Working{s:0.8,C:inactive}, saving money...",
                 },
             },
+            b_skh_abstemiousworm = {
+                name = "Abstemious Worm Deck",
+                text = {
+                    "{C:attention}#1#{} Joker slot, {C:attention}#2#{} consumable slot",
+                    "{C:attention}Remove{} 2 random suits",
+                    "from starting deck",
+                    "{s:0.8,C:inactive}Knowing what is enough means {s:0.8,C:legendary}happiness{s:0.8,C:inactive},",
+                    "{s:0.8,C:inactive}knowing when to stop means {s:0.8,C:legendary}wise{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

@@ -1333,8 +1333,12 @@ SMODS.Back({
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
 	config = {extra = {xchipmult = 3, odds = 1, calm = false, in_game = false}},
 	calculate = function(self, back, context)
-		if context.before then
+		if G.GAME.facing_blind then
 			self.config.extra.in_game = true
+		else
+			self.config.extra.in_game = false
+		end
+		if context.before then
 			self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
 			self.config.extra.calm = false
 			if pseudorandom("patient_calm") < G.GAME.probabilities.normal/self.config.extra.odds then
@@ -1364,9 +1368,6 @@ SMODS.Back({
 			}))
 			delay(0.6)
 			return context.chips, context.mult
-		end
-		if context.end_of_round then
-			self.config.extra.in_game = false
 		end
 	end,
 	apply = function(self, back)

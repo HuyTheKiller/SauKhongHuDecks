@@ -30,3 +30,16 @@ if G.GAME.selected_back.effect.center.key == "b_skh_kindworm" and
 end
 '''
 match_indent = true
+
+# Apply Patient Worm loc handling when exiting to Menu
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''G.FUNCS.go_to_menu = function(e)'''
+position = "after"
+payload = '''
+  if G.GAME.selected_back.effect.center.key == "b_skh_patientworm" then
+    G.GAME.selected_back.effect.center.config.extra.in_game = false
+  end
+'''
+match_indent = true

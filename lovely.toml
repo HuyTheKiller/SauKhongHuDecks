@@ -14,3 +14,18 @@ local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash
 if CardSleeves then splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami" or G.GAME.selected_sleeve == "sleeve_skh_tsaunami" end
 '''
 match_indent = true
+
+# Apply Serpent logic (but 5 cards) to Kind Worm Deck
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''if G.GAME.blind.name == 'The Serpent' and'''
+position = "at"
+payload = '''
+if G.GAME.selected_back.effect.center.key == "b_skh_kindworm" and
+    (G.GAME.current_round.hands_played > 0 or
+    G.GAME.current_round.discards_used > 0) then
+        hand_space = math.min(#G.deck.cards, 5)
+elseif G.GAME.blind.name == 'The Serpent' and
+'''
+match_indent = true

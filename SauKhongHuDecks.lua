@@ -1216,6 +1216,41 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
+	key = "kindworm_deck",
+	path = "VirtueKind.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "kindworm",
+	atlas = "kindworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
+	config = {extra = {deck_mult = 2}},
+	apply = function(self, back)
+		G.E_MANAGER:add_event(Event({
+            func = function()
+				for d = 2, self.config.extra.deck_mult do
+					for i = 1, #G.playing_cards do
+						local card = G.playing_cards[i]
+						local _card = copy_card(card, nil, nil, G.playing_card)
+						_card:add_to_deck()
+						table.insert(G.playing_cards, _card)
+						G.deck:emplace(_card)
+					end
+				end
+				G.GAME.starting_deck_size = #G.playing_cards
+                return true
+            end
+        }))
+	end,
+	loc_vars = function(self)
+		return {vars = {self.config.extra.deck_mult}}
+	end
+})
+
+SMODS.Atlas({
 	key = "generousworm_deck",
 	path = "VirtueGenerous.png",
 	px = 71,
@@ -1281,6 +1316,25 @@ SMODS.Back({
 	end,
 	loc_vars = function(self)
 		return {vars = {self.config.extra.debt_Xmult, self.config.extra.megadebt_Xmult}}
+	end
+})
+
+SMODS.Atlas({
+	key = "patientworm_deck",
+	path = "VirtuePatient.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "patientworm",
+	atlas = "patientworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
+	calculate = function(self, back, context) end,
+	apply = function(self, back) end,
+	loc_vars = function(self)
+		return {vars = {}}
 	end
 })
 

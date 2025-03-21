@@ -201,6 +201,24 @@ return {
                     "{s:0.8,C:inactive}Cho đi là để {s:0.8,C:legendary}nhận lại{s:0.8,C:inactive}...",
                 },
             },
+            b_skh_kindworm = {
+                name = "Bộ Bài Sâu Tốt Bụng",
+                text = {
+                    "{C:attention}X#1#{} kích cỡ bộ bài",
+                    "Sau khi {C:blue}Chơi{} hoặc {C:red}Bỏ bài{},",
+                    "luôn {C:attention}bốc{} 5 lá",
+                    "{s:0.8,C:inactive}Lá lành {s:0.8,C:legendary}đùm{s:0.8,C:inactive} lá rách.",
+                },
+            },
+            b_skh_patientworm = {
+                name = "Bộ Bài Sâu Điềm Tĩnh",
+                text = {
+                    "WIP",
+                    -- "After {C:blue}Play{} or {C:red}Discard{},",
+                    -- "always {C:attention}draw{} 5 cards",
+                    -- "{s:0.8,C:inactive}The leaves {s:0.8,C:legendary}protect{s:0.8,C:inactive} tattered ones.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

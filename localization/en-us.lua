@@ -196,6 +196,24 @@ return {
                     "{s:0.8,C:inactive}To give away means to {s:0.8,C:legendary}receive{s:0.8,C:inactive}...",
                 },
             },
+            b_skh_kindworm = {
+                name = "Kind Worm Deck",
+                text = {
+                    "{C:attention}X#1#{} deck size",
+                    "After {C:blue}Play{} or {C:red}Discard{},",
+                    "always {C:attention}draw{} 5 cards",
+                    "{s:0.8,C:inactive}The leaves {s:0.8,C:legendary}protect{s:0.8,C:inactive} tattered ones.",
+                },
+            },
+            b_skh_patientworm = {
+                name = "Patient Worm Deck",
+                text = {
+                    "WIP",
+                    -- "After {C:blue}Play{} or {C:red}Discard{},",
+                    -- "always {C:attention}draw{} 5 cards",
+                    -- "{s:0.8,C:inactive}The leaves {s:0.8,C:legendary}protect{s:0.8,C:inactive} tattered ones.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

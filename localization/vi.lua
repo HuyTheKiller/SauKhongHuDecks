@@ -239,7 +239,7 @@ return {
         },
         Sleeve = {
             sleeve_skh_tsaunami = {
-                name = "Bọc Bài Sâu Sóng Thần",
+                name = "Bọc Sâu Sóng Thần",
                 text = {
                     "Áp dụng {C:attention,T:j_splash}Bắn Toé{}",
                     "Tái kích mọi lá bài đã chơi một lần",
@@ -249,7 +249,7 @@ return {
                 },
             },
             sleeve_skh_tsaunami_alt = {
-                name = "Bọc Bài Sâu Sóng Thần",
+                name = "Bọc Sâu Sóng Thần",
                 text = {
                     "Bắt đầu với 2 bản sao",
                     "{C:dark_edition}Âm Bản{} của {C:attention,T:j_splash}Bắn Toé{}",
@@ -257,7 +257,7 @@ return {
                 },
             },
             sleeve_skh_weeormhole = {
-                name = "Bọc Bài Lỗ Sâu Wee",
+                name = "Bọc Lỗ Sâu Wee",
                 text = {
                     "Bắt đầu với {C:attention,T:j_wee}Joker Nhỏ{}",
                     "Lá đã chơi {C:attention}giảm đi{} 1 bậc khi ghi điểm",
@@ -266,7 +266,7 @@ return {
                 },
             },
             sleeve_skh_weeormhole_alt = {
-                name = "Bọc Bài Lỗ Sâu Wee",
+                name = "Bọc Lỗ Sâu Wee",
                 text = {
                     "Bắt đầu với",
                     "bộ bài toàn {C:attention}2{}",

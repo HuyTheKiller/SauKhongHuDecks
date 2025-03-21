@@ -1331,10 +1331,62 @@ SMODS.Back({
 	atlas = "patientworm_deck",
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
-	calculate = function(self, back, context) end,
-	apply = function(self, back) end,
+	config = {extra = {xchipmult = 3, odds = 1, calm = false, in_game = false}},
+	calculate = function(self, back, context)
+		if context.before then
+			self.config.extra.in_game = true
+			self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
+			self.config.extra.calm = false
+			if pseudorandom("patient_calm") < G.GAME.probabilities.normal/self.config.extra.odds then
+				self.config.extra.calm = true
+			end
+		end
+		if context.context == "final_scoring_step" and self.config.extra.calm then
+			context.chips = context.chips * self.config.extra.xchipmult
+			context.mult = context.mult * self.config.extra.xchipmult
+			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local text = localize("k_calm_ex")
+					play_sound("multhit2", 1, 1)
+					play_sound("xchips", 1, 1)
+					attention_text({
+						scale = 1.4,
+						text = text,
+						hold = 2,
+						align = "cm",
+						offset = { x = 0, y = -2.7 },
+						major = G.play,
+					})
+					return true
+				end,
+			}))
+			delay(0.6)
+			return context.chips, context.mult
+		end
+		if context.end_of_round then
+			self.config.extra.in_game = false
+		end
+	end,
+	apply = function(self, back)
+		self.config.extra.in_game = true
+	end,
 	loc_vars = function(self)
-		return {vars = {}}
+		if self.config.extra.in_game then
+			return {vars = {G.GAME.probabilities.normal, self.config.extra.odds, self.config.extra.xchipmult}}
+		else
+			return {
+				vars = {G.GAME.probabilities.normal, self.config.extra.xchipmult},
+				key = "b_skh_patientworm_collection"
+			}
+		end
+	end,
+	collection_loc_vars = function(self)
+		return {
+			vars = {G.GAME.probabilities.normal, self.config.extra.xchipmult},
+			key = "b_skh_patientworm_collection"
+		}
 	end
 })
 

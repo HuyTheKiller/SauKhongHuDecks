@@ -213,10 +213,17 @@ return {
             b_skh_patientworm = {
                 name = "Bộ Bài Sâu Điềm Tĩnh",
                 text = {
-                    "WIP",
-                    -- "After {C:blue}Play{} or {C:red}Discard{},",
-                    -- "always {C:attention}draw{} 5 cards",
-                    -- "{s:0.8,C:inactive}The leaves {s:0.8,C:legendary}protect{s:0.8,C:inactive} tattered ones.",
+                    "Xác suất {C:green}#1# trên #2#{} để",
+                    "được {X:dark_edition,C:white}X#3#{} Chip và Nhân",
+                    "{s:0.8,C:legendary}Nhịn{s:0.8,C:inactive} 1 điều, 9 điều lành.",
+                },
+            },
+            b_skh_patientworm_collection = {
+                name = "Bộ Bài Sâu Điềm Tĩnh",
+                text = {
+                    "Xác suất {C:green}#1# trên (3*Số Joker){}",
+                    "để được {X:dark_edition,C:white}X#2#{} Chip và Nhân",
+                    "{s:0.8,C:legendary}Nhịn{s:0.8,C:inactive} 1 điều, 9 điều lành.",
                 },
             },
         },
@@ -282,6 +289,7 @@ return {
             k_complete_ex = "Hoàn Thành!",
             k_generous_ex = "Hào Phóng!",
             k_super_generous_ex = "Siêu Hào Phóng!",
+            k_calm_ex = "Tịnh Tâm!",
         },
     },
 }

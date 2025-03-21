@@ -208,10 +208,17 @@ return {
             b_skh_patientworm = {
                 name = "Patient Worm Deck",
                 text = {
-                    "WIP",
-                    -- "After {C:blue}Play{} or {C:red}Discard{},",
-                    -- "always {C:attention}draw{} 5 cards",
-                    -- "{s:0.8,C:inactive}The leaves {s:0.8,C:legendary}protect{s:0.8,C:inactive} tattered ones.",
+                    "{C:green}#1# in #2#{} chance for",
+                    "{X:dark_edition,C:white}X#3#{} Chips and Mult",
+                    "{s:0.8,C:legendary}Retrain{s:0.8,C:inactive} once for 9 good omens.",
+                },
+            },
+            b_skh_patientworm_collection = {
+                name = "Patient Worm Deck",
+                text = {
+                    "{C:green}#1# in (3*Number of Jokers){}",
+                    "chance for {X:dark_edition,C:white}X#2#{} Chips and Mult",
+                    "{s:0.8,C:legendary}Retrain{s:0.8,C:inactive} once for 9 good omens.",
                 },
             },
         },
@@ -277,6 +284,7 @@ return {
             k_complete_ex = "Complete!",
             k_generous_ex = "Generous!",
             k_super_generous_ex = "Super Generous!",
+            k_calm_ex = "Calm!",
         },
     },
 }

@@ -95,6 +95,41 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
+	key = "tsaunami_deck",
+	path = "Tsaunami.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "tsaunami",
+	atlas = "tsaunami_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
+	calculate = function(self, back, context)
+		if context.repetition and context.cardarea == G.play then
+			local splash_retrig = find_joker('Splash')
+			return {
+				message = localize("k_again_ex"),
+				repetitions = #splash_retrig,
+				card = card,
+			}
+		end
+	end,
+	apply = function(self, back)
+		SMODS.Joker:take_ownership('splash',
+			{
+				discovered = true,
+				in_pool = function(self, args)
+					return true, {allow_duplicates = true}
+				end,
+			},
+			true
+		)
+	end
+})
+
+SMODS.Atlas({
 	key = "absolute_cinema_deck",
 	path = "AbsoluteCinema.png",
 	px = 71,
@@ -249,41 +284,6 @@ SMODS.Back({
 	loc_vars = function(self)
         return {vars = {self.config.hands, self.config.discards, 1 - self.config.extra.ante_loss}}
     end,
-})
-
-SMODS.Atlas({
-	key = "tsaunami_deck",
-	path = "Tsaunami.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Back({
-	key = "tsaunami",
-	atlas = "tsaunami_deck",
-	unlocked = false,
-	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
-	calculate = function(self, back, context)
-		if context.repetition and context.cardarea == G.play then
-			local splash_retrig = find_joker('Splash')
-			return {
-				message = localize("k_again_ex"),
-				repetitions = #splash_retrig,
-				card = card,
-			}
-		end
-	end,
-	apply = function(self, back)
-		SMODS.Joker:take_ownership('splash',
-			{
-				discovered = true,
-				in_pool = function(self, args)
-					return true, {allow_duplicates = true}
-				end,
-			},
-			true
-		)
-	end
 })
 
 SMODS.Atlas({
@@ -798,48 +798,6 @@ SMODS.Back({
 })
 
 SMODS.Atlas({
-	key = "enviousworm_deck",
-	path = "SinEnvious.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Back({
-	key = "enviousworm",
-	atlas = "enviousworm_deck",
-	unlocked = false,
-	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
-	config = {extra = {odds_common = nil,    odds_uncommon = 150,
-					   odds_rare = 100,      odds_cry_epic = 80,
-					   odds_legendary = 60,  odds_cry_exotic = 40,
-					   odds_cry_candy = 100, odds_cry_cursed = nil}},
-	calculate = function(self, back, context)
-		if context.end_of_round then
-			-- local i = 1
-			for i = 1, #G.jokers.cards do
-				local temp = G.jokers.cards[i]
-				if temp.config.center.rarity == 2 then
-					envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
-				elseif temp.config.center.rarity == 3 then
-					envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i)
-				elseif temp.config.center.rarity == 4 then
-					envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i)
-				end
-				if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
-					if temp.config.center.rarity == 'cry_epic' then
-						envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i)
-					elseif temp.config.center.rarity == 'cry_exotic' then
-						envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i)
-					elseif temp.config.center.rarity == 'cry_candy' then
-						envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i)
-					end
-				end
-			end
-		end
-	end,
-})
-
-SMODS.Atlas({
 	key = "slothfulworm_deck",
 	path = "SinSlothful.png",
 	px = 71,
@@ -931,6 +889,49 @@ SMODS.Back({
 	loc_vars = function(self)
 		return {vars = {self.config.extra.hands, self.config.extra.xchipmult}}
 	end
+})
+
+
+SMODS.Atlas({
+	key = "enviousworm_deck",
+	path = "SinEnvious.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "enviousworm",
+	atlas = "enviousworm_deck",
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
+	config = {extra = {odds_common = nil,    odds_uncommon = 150,
+					   odds_rare = 100,      odds_cry_epic = 80,
+					   odds_legendary = 60,  odds_cry_exotic = 40,
+					   odds_cry_candy = 100, odds_cry_cursed = nil}},
+	calculate = function(self, back, context)
+		if context.end_of_round then
+			-- local i = 1
+			for i = 1, #G.jokers.cards do
+				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity == 2 then
+					envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+				elseif temp.config.center.rarity == 3 then
+					envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i)
+				elseif temp.config.center.rarity == 4 then
+					envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i)
+				end
+				if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
+					if temp.config.center.rarity == 'cry_epic' then
+						envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i)
+					elseif temp.config.center.rarity == 'cry_exotic' then
+						envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i)
+					elseif temp.config.center.rarity == 'cry_candy' then
+						envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i)
+					end
+				end
+			end
+		end
+	end,
 })
 
 SMODS.Atlas({

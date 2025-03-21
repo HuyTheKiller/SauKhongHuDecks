@@ -1335,11 +1335,11 @@ SMODS.Back({
 	calculate = function(self, back, context)
 		if G.GAME.facing_blind then
 			self.config.extra.in_game = true
+			self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
 		else
 			self.config.extra.in_game = false
 		end
 		if context.before then
-			self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
 			self.config.extra.calm = false
 			if pseudorandom("patient_calm") < G.GAME.probabilities.normal/self.config.extra.odds then
 				self.config.extra.calm = true

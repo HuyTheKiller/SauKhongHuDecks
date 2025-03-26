@@ -221,6 +221,29 @@ return {
                     "{s:0.8,C:legendary}Retrain{s:0.8,C:inactive} once for 9 good omens.",
                 },
             },
+            b_skh_wormychaos = {
+                name = "Wormy Chaos Deck",
+                text = {
+                    "{C:attention}Apply{} similar effects of",
+                    "a random {C:dark_edition}Deadly Sin{} Deck",
+                    "every round",
+                    "{C:inactive}(Currently",
+                    "{C:dark_edition}#1#{C:inactive})",
+                },
+            },
+            b_skh_wormychaos_collection = {
+                name = "Wormy Chaos Deck",
+                text = {
+                    "{C:attention}Apply{} similar effects of",
+                    "a random {C:dark_edition}Deadly Sin{} Deck",
+                    "every round",
+                },
+                unlock = {
+                    "Win a run with every",
+                    "{C:dark_edition}Deadly Sin{} Deck",
+                    "on any difficulty"
+                },
+            },
         },
         Mod = {
             SKHDecks = {

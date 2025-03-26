@@ -226,6 +226,29 @@ return {
                     "{s:0.8,C:legendary}Nhịn{s:0.8,C:inactive} 1 điều, 9 điều lành.",
                 },
             },
+            b_skh_wormychaos = {
+                name = "Bộ Bài Hỗn Sâu",
+                text = {
+                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "của một Bộ {C:dark_edition}Đại Tội{}",
+                    "ngẫu nhiên mỗi ván",
+                    "{C:inactive}(Hiện tại là",
+                    "{C:dark_edition}#1#{C:inactive})",
+                },
+            },
+            b_skh_wormychaos_collection = {
+                name = "Bộ Bài Hỗn Sâu",
+                text = {
+                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "của một Bộ Bài {C:dark_edition}Đại Tội{}",
+                    "ngẫu nhiên mỗi ván",
+                },
+                unlock = {
+                    "Thắng một trận bằng mọi",
+                    "Bộ Bài {C:dark_edition}Đại Tội{}",
+                    "ở bất kì độ khó nào"
+                },
+            },
         },
         Mod = {
             SKHDecks = {

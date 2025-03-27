@@ -230,7 +230,7 @@ return {
                 name = "Bộ Bài Hỗn Sâu",
                 text = {
                     "{C:attention}Áp dụng{} hiệu ứng tương tự",
-                    "của một Bộ {C:dark_edition}Đại Tội{}",
+                    "của một Bộ Bài {C:dark_edition}Đại Tội{}",
                     "ngẫu nhiên mỗi ván",
                     "{C:inactive}(Hiện tại là",
                     "{C:dark_edition}#1#{C:inactive})",

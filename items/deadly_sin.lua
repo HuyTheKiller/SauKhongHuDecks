@@ -374,6 +374,7 @@ SMODS.Back({
 		if G.GAME.facing_blind then self.config.extra.in_game = true end
 		if context.before then self.config.extra.current_deck_config.triggered = false end
 		if context.ending_shop then
+			self.config.extra.in_game = true
 			local decks = {"b_skh_lustyworm", "b_skh_greedyworm", "b_skh_gluttonyworm",
 			"b_skh_slothfulworm", "b_skh_wrathfulworm", "b_skh_enviousworm", "b_skh_pridefulworm"}
 			local new_decks = {}
@@ -420,8 +421,7 @@ SMODS.Back({
 					}
 				end
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_greedyworm" then
+		elseif self.config.extra.current_deck == "b_skh_greedyworm" then
 			if context.setting_blind then
 				for i = 1, #G.jokers.cards do
 					G.jokers.cards[i]:set_rental(true)
@@ -467,8 +467,7 @@ SMODS.Back({
 					end)
 				}))
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_gluttonyworm" then
+		elseif self.config.extra.current_deck == "b_skh_gluttonyworm" then
 			if context.context == "eval" then
 				G.E_MANAGER:add_event(Event({
 					func = function()
@@ -491,8 +490,7 @@ SMODS.Back({
 					end
 				}))
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_slothfulworm" then
+		elseif self.config.extra.current_deck == "b_skh_slothfulworm" then
 			if context.end_of_round then
 				if pseudorandom("chaos_slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds then
 					ease_ante(-self.config.extra.current_deck_config.slothful_ante_loss)
@@ -500,8 +498,7 @@ SMODS.Back({
 					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.current_deck_config.slothful_ante_loss
 				end
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_wrathfulworm" then
+		elseif self.config.extra.current_deck == "b_skh_wrathfulworm" then
 			if context.setting_blind then
 				G.E_MANAGER:add_event(Event({func = function()
 					ease_discard(-G.GAME.current_round.discards_left, nil, true)
@@ -543,8 +540,7 @@ SMODS.Back({
 				delay(0.6)
 				return context.chips, context.mult
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_enviousworm" then
+		elseif self.config.extra.current_deck == "b_skh_enviousworm" then
 			if context.end_of_round then
 				for i = 1, #G.jokers.cards do
 					local temp = G.jokers.cards[i]
@@ -566,8 +562,7 @@ SMODS.Back({
 					end
 				end
 			end
-		end
-		if self.config.extra.current_deck == "b_skh_pridefulworm" then
+		elseif self.config.extra.current_deck == "b_skh_pridefulworm" then
 			if context.destroy_card and context.cardarea == G.play then
 				if not context.destroying_card.debuff then
 					local temp = context.destroying_card

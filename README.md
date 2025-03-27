@@ -5,7 +5,8 @@ There are 3 different sets of decks. You proceed to unlock following a binary tr
 The rest of the journey is left for you to discover without consequences... or is it?
 <details>
     <summary>Spoiler warning!</summary>
-    Here is the list of decks for those who don't bother to self-spoiler:
+    
+### Here is the list of decks for those who don't bother to self-spoiler:
     
 | Divine Entity Decks  | Effect                                                                                                                                  |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|

@@ -336,6 +336,7 @@ return {
             k_generous_ex = "Hào Phóng!",
             k_super_generous_ex = "Siêu Hào Phóng!",
             k_calm_ex = "Tịnh Tâm!",
+            k_virgin_ex = "Thanh Khiết!",
             k_diet_ex = "Kiêng Tốt!",
         },
     },

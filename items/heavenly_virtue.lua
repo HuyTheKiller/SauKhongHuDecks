@@ -355,6 +355,7 @@ SMODS.Back({
 			triggered = nil,
 			virgin_hand_this_round = localize("k_none"),
 			virgin_hand_lock = false,
+			virgin_Xmult = 2,
 			humble_percent = 0.5,
 			diligent_Xmult = 0.5,
 			diligent_Xmult_final = 3,
@@ -398,8 +399,31 @@ SMODS.Back({
 								v:set_debuff(true)
 							end
 						end
+					else self.config.extra.current_deck_config.triggered = true
 					end
 				end
+			end
+			if context.context == "final_scoring_step" and self.config.extra.current_deck_config.triggered then
+				context.mult = context.mult*self.config.extra.current_deck_config.virgin_Xmult
+				update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local text = localize("k_virgin_ex")
+						play_sound("multhit2", 1, 1)
+						attention_text({
+							scale = 1.4,
+							text = text,
+							hold = 2,
+							align = "cm",
+							offset = { x = 0, y = -2.7 },
+							major = G.play,
+						})
+						return true
+					end,
+				}))
+				delay(0.6)
+				return context.chips, context.mult
 			end
 			if context.end_of_round then
 				for c = #G.playing_cards, 1, -1 do

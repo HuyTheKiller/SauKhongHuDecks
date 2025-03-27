@@ -331,6 +331,7 @@ return {
             k_generous_ex = "Generous!",
             k_super_generous_ex = "Super Generous!",
             k_calm_ex = "Calm!",
+            k_virgin_ex = "Virgin!",
             k_diet_ex = "Good Diet!",
         },
     },

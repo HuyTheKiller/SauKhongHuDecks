@@ -56,7 +56,7 @@ This deck applies the alternative effect of a random Heavenly Virtue Deck every 
 After rerolling the shop, a sound effect will play, indicating the change. Click on your deck to view the current chosen effect.
 | Heavenly Virtue Decks | Alternative Effect                                                                                                                                      |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Virgin Worm Deck      | Debuff all hand types except first hand of round until end of round                                                                                     |
+| Virgin Worm Deck      | Debuff all hand types except first hand of round until end of round; X2 Mult on repeating first hand of round                                           |
 | Humble Worm Deck      | X0.5 Chips and Mult if played hand is a Straight or higher, otherwise X1.5 Chips and Mult                                                               |
 | Diligent Worm Deck    | X3 Mult on final hand of round, otherwise X0.5 Mult                                                                                                     |
 | Abstemious Worm Deck  | If played hand contains more than 3 cards, debuff the 4th card onwards until end of round; gain X0.25 Mult per debuffed card this way in your full deck |

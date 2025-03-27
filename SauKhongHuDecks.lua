@@ -1696,15 +1696,21 @@ SMODS.Back({
 	collection_loc_vars = function(self)
 		return {key = "b_skh_wormychaos_collection"}
 	end,
+	locked_loc_vars = function(self)
+		return {key = "b_skh_wormychaos_collection"}
+	end,
 	check_for_unlock = function(self, args)
 		local decks = {"b_skh_lustyworm", "b_skh_greedyworm", "b_skh_gluttonyworm",
 			"b_skh_slothfulworm", "b_skh_wrathfulworm", "b_skh_enviousworm", "b_skh_pridefulworm"}
+		local temp = true
 		for k, v in ipairs(decks) do
 			local deck_info = G.PROFILES[G.SETTINGS.profile]
 			and G.PROFILES[G.SETTINGS.profile].deck_usage
 			and G.PROFILES[G.SETTINGS.profile].deck_usage[v]
-			self.unlocked = self.unlocked and deck_info.wins > 0
+			if deck_info then temp = temp and deck_info.wins > 0
+			else temp = false end
 		end
+		self.unlocked = temp
 		if self.unlocked then return true end
 	end
 })

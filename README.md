@@ -5,7 +5,7 @@ There are 3 different sets of decks. You proceed to unlock following a binary tr
 The rest of the journey is left for you to discover without consequences... or is it?
 <details>
     <summary>Spoiler warning!</summary>
-    
+
 ### Here is the list of decks for those who don't bother to self-spoiler:
     
 | Divine Entity Decks  | Effect                                                                                                                                  |
@@ -40,6 +40,7 @@ The rest of the journey is left for you to discover without consequences... or i
 
 v1.5.0 introduces the final boss of Deadly Sin Decks: Wormy Chaos.
 This deck applies an alternative effect of a random Deadly Sin Deck every round.
+After leaving the shop, a sound effect will play, indicating the change. Click on your deck to view the current chosen effect.
 | Deadly Sin Decks   | Alternative effect                                                                                                                                                    |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Lusty Worm Deck    | If played hand contains a King and a Queen, create a Jack of the same parent suit and put it to hand [one hidden mechanic - find it out yourself]                     |

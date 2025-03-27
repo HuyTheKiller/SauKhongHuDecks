@@ -17,15 +17,15 @@ The rest of the journey is left for you to discover without consequences... or i
 | Sauphanim Deck       | Perishable Marble Joker; Tarot Merchant; empty deck; $1 per Enhanced card scored before removing enhancement; apply Plasma; no interest |
 | Weeormhole Deck      | Wee Joker; played cards lose a rank when scored, destroy played 2s after scoring                                                        |
 
-| Deadly Sin Decks   | Effect                                                                                                                                                             |
-|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Lusty Worm Deck    | If played hand contains a King and a Queen, create a Jack of the same parent suit and put it to hand [one hidden mechanic - find it out yourself]                  |
-| Greedy Worm Deck   | When Blind is selected, all seals/enhancements become Gold Seal/Card, all Jokers become Rental, strip all Editions for $$8 each; gain 2 Investment Tags every Ante |
-| Gluttony Worm Deck | Magic Trick; when Boss Blind is defeated, each playing card has 1 in 6 chance to be eaten                                                                          |
-| Slothful Worm Deck | -3 Joker slots, -1 consumable slot, -1 hand, -2 discards; unknown chance to drop Ante; beat Ante 7 to win                                                          |
-| Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                     |
-| Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                        |
-| Prideful Worm Deck | Aces and Kings in starting deck; destroy all other scoring ranks; when Blind is selected, destroy all Common and Uncommon Jokers                                   |
+| Deadly Sin Decks   | Effect                                                                                                                                                            |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Lusty Worm Deck    | If played hand contains a King and a Queen, create a Jack of the same parent suit and put it to hand [one hidden mechanic - find it out yourself]                 |
+| Greedy Worm Deck   | When Blind is selected, all seals/enhancements become Gold Seal/Card, all Jokers become Rental, strip all Editions for $8 each; gain 2 Investment Tags every Ante |
+| Gluttony Worm Deck | Magic Trick; when Boss Blind is defeated, each playing card has 1 in 6 chance to be eaten                                                                         |
+| Slothful Worm Deck | -3 Joker slots, -1 consumable slot, -1 hand, -2 discards; unknown chance to drop Ante; beat Ante 7 to win                                                         |
+| Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                    |
+| Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                       |
+| Prideful Worm Deck | Aces and Kings in starting deck; destroy all other scoring ranks; when Blind is selected, destroy all Common and Uncommon Jokers                                  |
 
 | Heavenly Virtue Decks | Effect                                                                                    |
 |-----------------------|-------------------------------------------------------------------------------------------|
@@ -39,14 +39,14 @@ The rest of the journey is left for you to discover without consequences... or i
 
 v1.5.0 introduces the final boss of Deadly Sin Decks: Wormy Chaos.
 This deck applies an alternative effect of a random Deadly Sin Deck every round.
-| Deadly Sin Decks   | Alternative effect                                                                                                                                                     |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Lusty Worm Deck    | If played hand contains a King and a Queen, create a Jack of the same parent suit and put it to hand [one hidden mechanic - find it out yourself]                      |
-| Greedy Worm Deck   | When Blind is selected, all seals/enhancements become Gold Seal/Card, all Jokers become Rental, strip all Editions for $$8 each; gain 1 Investment Tag at end of round |
-| Gluttony Worm Deck | When Blind is defeated, each playing card has 1 in 6 chance to be eaten                                                                                                |
-| Slothful Worm Deck | Unknown chance to drop Ante                                                                                                                                            |
-| Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                         |
-| Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                            |
-| Prideful Worm Deck | Destroy scoring non-Aces-or-Kings; apply debuff to a random non-debuffed Common or Uncommon Joker after every hand played                                              |
+| Deadly Sin Decks   | Alternative effect                                                                                                                                                    |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Lusty Worm Deck    | If played hand contains a King and a Queen, create a Jack of the same parent suit and put it to hand [one hidden mechanic - find it out yourself]                     |
+| Greedy Worm Deck   | When Blind is selected, all seals/enhancements become Gold Seal/Card, all Jokers become Rental, strip all Editions for $8 each; gain 1 Investment Tag at end of round |
+| Gluttony Worm Deck | When Blind is defeated, each playing card has 1 in 6 chance to be eaten                                                                                               |
+| Slothful Worm Deck | Unknown chance to drop Ante                                                                                                                                           |
+| Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                        |
+| Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                           |
+| Prideful Worm Deck | Destroy scoring non-Aces-or-Kings; apply debuff to a random non-debuffed Common or Uncommon Joker after every hand played                                             |
   
 </details>

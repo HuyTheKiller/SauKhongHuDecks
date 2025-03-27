@@ -46,7 +46,7 @@ The rest of the journey is left for you to discover without consequences... or i
     | Gluttony Worm Deck | When Blind is defeated, each playing card has 1 in 6 chance to be eaten                                                                                                |
     | Slothful Worm Deck | Unknown chance to drop Ante                                                                                                                                            |
     | Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                         |
-    | Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible]                                               |
+    | Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                            |
     | Prideful Worm Deck | Destroy scoring non-Aces-or-Kings; apply debuff to a random non-debuffed Common or Uncommon Joker after every hand played                                              |
   
 </details>

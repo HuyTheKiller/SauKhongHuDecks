@@ -89,7 +89,7 @@ return {
                     "all {C:attention}enhancements{} become {C:attention,T:m_gold}Gold{}, strip",
                     "all {C:dark_edition}editions{} for {C:money}$#1#{} each",
                     "Gain 2 {C:attention,T:tag_investment}Investment Tags{}",
-                    "when {C:attention}Boss Blind{} is defeated",
+                    "every {C:attention}Ante{}",
                     "{s:0.8,C:inactive}Money... MONEY!!! THEY'RE ALL {s:0.8,C:legendary}MINE{s:0.8,C:inactive}!!!!!!",
                 },
             },

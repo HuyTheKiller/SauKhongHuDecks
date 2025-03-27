@@ -15,14 +15,16 @@ if CardSleeves then splashed = SMODS.always_scores(G.play.cards[i]) or next(find
 '''
 match_indent = true
 
-# Apply Serpent logic (but 5 cards) to Kind Worm Deck
+# Apply Serpent logic (but 5 cards) to Kind Worm and Omnipotent Worm (rolling on Kind Worm) Deck
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 pattern = '''if G.GAME.blind.name == 'The Serpent' and'''
 position = "before"
 payload = '''
-if G.GAME.selected_back.effect.center.key == "b_skh_kindworm" and
+if (G.GAME.selected_back.effect.center.key == "b_skh_kindworm" or
+    (G.GAME.selected_back.effect.center.key == "b_skh_omnipotentworm" and
+    G.GAME.selected_back.effect.center.config.extra.current_deck == "b_skh_kindworm")) and
     G.GAME.facing_blind and
     (G.GAME.current_round.hands_played > 0 or
     G.GAME.current_round.discards_used > 0) then
@@ -31,7 +33,7 @@ end
 '''
 match_indent = true
 
-# Apply Patient Worm and Chaos loc handling when exiting to Menu
+# Apply Patient Worm, Chaos and Omnipotent loc handling when exiting to Menu
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -39,7 +41,8 @@ pattern = '''G.FUNCS.go_to_menu = function(e)'''
 position = "after"
 payload = '''
   if G.GAME.selected_back.effect.center.key == "b_skh_patientworm" or
-    G.GAME.selected_back.effect.center.key == "b_skh_wormychaos" then
+    G.GAME.selected_back.effect.center.key == "b_skh_wormychaos" or
+    G.GAME.selected_back.effect.center.key == "b_skh_omnipotentworm" then
       G.GAME.selected_back.effect.center.config.extra.in_game = false
   end
 '''

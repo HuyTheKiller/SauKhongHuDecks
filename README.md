@@ -39,7 +39,7 @@ The rest of the journey is left for you to discover without consequences... or i
 | Patient Worm Deck     | 1 in (3*Number of Jokers) chance for X3 Chips and Mult                                    |
 
 v1.5.0 introduces the final boss of Deadly Sin Decks: Wormy Chaos.
-This deck applies an alternative effect of a random Deadly Sin Deck every round.
+This deck applies the alternative effect of a random Deadly Sin Deck every round.
 After leaving the shop, a sound effect will play, indicating the change. Click on your deck to view the current chosen effect.
 | Deadly Sin Decks   | Alternative effect                                                                                                                                                    |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -50,5 +50,18 @@ After leaving the shop, a sound effect will play, indicating the change. Click o
 | Wrathful Worm Deck | When Blind is selected, gain +3 hands and lose all discards; unknown chance to destroy all scoring cards for X2 Chips and Mult                                        |
 | Envious Worm Deck  | Joker rarity is proportional to chance of being destroyed at end of round (excluding Common) [Cryptid rarity compatible - excluding Cursed]                           |
 | Prideful Worm Deck | Destroy scoring non-Aces-or-Kings; apply debuff to a random non-debuffed Common or Uncommon Joker after every hand played                                             |
+
+v1.5.1 introduces the final reward of Heavenly Virtue Decks: Omnipotent Worm.
+This deck applies the alternative effect of a random Heavenly Virtue Deck every shop reroll.
+After rerolling the shop, a sound effect will play, indicating the change. Click on your deck to view the current chosen effect.
+| Heavenly Virtue Decks | Alternative Effect                                                                                                                                      |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Virgin Worm Deck      | Debuff all hand types except first hand of round until end of round                                                                                     |
+| Humble Worm Deck      | X0.5 Chips and Mult if played hand is a Straight or higher, otherwise X1.5 Chips and Mult                                                               |
+| Diligent Worm Deck    | X3 Mult on final hand of round, otherwise X0.5 Mult                                                                                                     |
+| Abstemious Worm Deck  | If played hand contains more than 3 cards, debuff the 4th card onwards until end of round; gain X0.25 Mult per debuffed card this way in your full deck |
+| Kind Worm Deck        | After Play or Discard, always draw 5 cards                                                                                                              |
+| Generous Worm Deck    | X3/X5 Mult when having $5/$0 or less                                                                                                                    |
+| Patient Worm Deck     | 1 in (3*Number of Jokers) chance for X3 Chips and Mult                                                                                                  |
   
 </details>

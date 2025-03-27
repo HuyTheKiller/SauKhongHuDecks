@@ -244,6 +244,29 @@ return {
                     "on any difficulty"
                 },
             },
+            b_skh_omnipotentworm = {
+                name = "Omnipotent Worm Deck",
+                text = {
+                    "{C:attention}Apply{} similar effects of a",
+                    "random {C:legendary}Heavenly Virtue{} Deck",
+                    "per shop reroll",
+                    "{C:inactive}(Currently",
+                    "{C:legendary}#1#{C:inactive})",
+                },
+            },
+            b_skh_omnipotentworm_collection = {
+                name = "Omnipotent Worm Deck",
+                text = {
+                    "{C:attention}Apply{} similar effects of a",
+                    "random {C:legendary}Heavenly Virtue{} Deck",
+                    "per shop reroll",
+                },
+                unlock = {
+                    "Win a run with every",
+                    "{C:legendary}Heavenly Virtue{} Deck",
+                    "on any difficulty"
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -308,6 +331,7 @@ return {
             k_generous_ex = "Generous!",
             k_super_generous_ex = "Super Generous!",
             k_calm_ex = "Calm!",
+            k_diet_ex = "Good Diet!",
         },
     },
 }

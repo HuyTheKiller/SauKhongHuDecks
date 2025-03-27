@@ -38,7 +38,9 @@ SMODS.Back({
 		end
 	end,
 	apply = function(self, back)
-        delay(0.4)
+        self.config.extra.hand_this_round = localize("k_none")
+		self.config.extra.hand_lock = false
+		delay(0.4)
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				local card_sharp = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_card_sharp", "deck")
@@ -338,5 +340,287 @@ SMODS.Back({
 			vars = {G.GAME.probabilities.normal, self.config.extra.xchipmult},
 			key = "b_skh_patientworm_collection"
 		}
+	end
+})
+
+SMODS.Back({
+	key = "omnipotentworm",
+	atlas = "heavenly_virtue",
+	pos = { x = 3, y = 1 },
+	unlocked = false,
+	config = {extra = {
+		current_deck = "b_skh_patientworm",
+		in_game = false,
+		current_deck_config = {
+			triggered = nil,
+			virgin_hand_this_round = localize("k_none"),
+			virgin_hand_lock = false,
+			humble_percent = 0.5,
+			diligent_Xmult = 0.5,
+			diligent_Xmult_final = 3,
+			abstemious_Xmult = 1,
+			abstemious_bonus = 0.25,
+			generous_debt_Xmult = 3,
+			generous_megadebt_Xmult = 5,
+			generous_current_dollars = 0,
+			generous_super_generous = nil,
+			patient_xchipmult = 3,
+			patient_odds = 1,
+		}
+	}},
+	calculate = function(self, back, context)
+		if G.GAME.facing_blind then self.config.extra.in_game = true end
+		if context.before then self.config.extra.current_deck_config.triggered = false end
+		if context.end_of_round then
+			self.config.extra.current_deck_config.virgin_hand_this_round = localize("k_none")
+			self.config.extra.current_deck_config.virgin_hand_lock = false
+		end
+		if context.reroll_shop then
+			self.config.extra.in_game = true
+			local decks = {"b_skh_virginworm", "b_skh_humbleworm", "b_skh_diligentworm",
+			"b_skh_abstemiousworm", "b_skh_kindworm", "b_skh_generousworm", "b_skh_patientworm"}
+			local new_decks = {}
+			for k, v in ipairs(decks) do
+				if v ~= self.config.extra.current_deck then new_decks[#new_decks+1] = v end
+			end
+			self.config.extra.current_deck = pseudorandom_element(new_decks, pseudoseed('omnipotent_roll'))
+			play_sound("skh_new_omnipotent_roll", 1, 1)
+		end
+		if self.config.extra.current_deck == "b_skh_virginworm" then
+			if context.before then
+				if not self.config.extra.current_deck_config.virgin_hand_lock then
+					self.config.extra.current_deck_config.virgin_hand_this_round = localize(context.scoring_name, "poker_hands")
+					self.config.extra.current_deck_config.virgin_hand_lock = true
+				else
+					if self.config.extra.current_deck_config.virgin_hand_this_round ~= localize(context.scoring_name, "poker_hands") then
+						for k, v in ipairs(context.scoring_hand) do
+							if not v.debuff then
+								v:set_debuff(true)
+							end
+						end
+					end
+				end
+			end
+			if context.end_of_round then
+				for c = #G.playing_cards, 1, -1 do
+					if G.playing_cards[c].debuff then
+						G.playing_cards[c]:set_debuff(false)
+					end
+				end
+			end
+		elseif self.config.extra.current_deck == "b_skh_humbleworm" then
+			if context.before then
+				self.config.extra.current_deck_config.triggered = next(context.poker_hands['Straight'])
+																or next(context.poker_hands['Flush'])
+																or next(context.poker_hands['Full House'])
+																or next(context.poker_hands['Four of a Kind'])
+			end
+			if context.context == "final_scoring_step" then
+				if self.config.extra.current_deck_config.triggered then
+					context.chips = math.max(math.floor(context.chips*self.config.extra.current_deck_config.humble_percent + 0.5), 0)
+					context.mult = math.max(math.floor(context.mult*self.config.extra.current_deck_config.humble_percent + 0.5), 1)
+				else
+					context.chips = context.chips*(1+self.config.extra.current_deck_config.humble_percent)
+					context.mult = context.mult*(1+self.config.extra.current_deck_config.humble_percent)
+				end
+				update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local text = self.config.extra.current_deck_config.triggered and localize("k_not_humbled_ex") or localize("k_humbled_ex")
+						play_sound("multhit2", 1, 1)
+						play_sound("xchips", 1, 1)
+						attention_text({
+							scale = 1.4,
+							text = text,
+							hold = 2,
+							align = "cm",
+							offset = { x = 0, y = -2.7 },
+							major = G.play,
+						})
+						return true
+					end,
+				}))
+				delay(0.6)
+				return context.chips, context.mult
+			end
+		elseif self.config.extra.current_deck == "b_skh_diligentworm" then
+			if context.context == "final_scoring_step" then
+				if G.GAME.current_round.hands_left == 0 then
+					context.mult = context.mult*self.config.extra.current_deck_config.diligent_Xmult_final
+				else
+					context.mult = math.max(math.floor(context.mult*self.config.extra.current_deck_config.diligent_Xmult + 0.5), 1)
+				end
+				update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local text = G.GAME.current_round.hands_left == 0 and localize("k_complete_ex") or localize("k_not_enough_ex")
+						play_sound("multhit2", 1, 1)
+						attention_text({
+							scale = 1.4,
+							text = text,
+							hold = 2,
+							align = "cm",
+							offset = { x = 0, y = -2.7 },
+							major = G.play,
+						})
+						return true
+					end,
+				}))
+				delay(0.6)
+				return context.chips, context.mult
+			end
+		elseif self.config.extra.current_deck == "b_skh_abstemiousworm" then
+			if context.before then
+				for i = 1, #context.full_hand do
+					if i > 3 then
+						local temp = context.full_hand[i]
+						temp:set_debuff(true)
+						self.config.extra.current_deck_config.abstemious_Xmult =
+						  self.config.extra.current_deck_config.abstemious_Xmult
+						+ self.config.extra.current_deck_config.abstemious_bonus
+					end
+				end
+			end
+			if context.context == "final_scoring_step" and self.config.extra.current_deck_config.abstemious_Xmult > 1 then
+				context.mult = context.mult*self.config.extra.current_deck_config.abstemious_Xmult
+				update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local text = localize("k_diet_ex")
+						play_sound("multhit2", 1, 1)
+						attention_text({
+							scale = 1.4,
+							text = text,
+							hold = 2,
+							align = "cm",
+							offset = { x = 0, y = -2.7 },
+							major = G.play,
+						})
+						return true
+					end,
+				}))
+				delay(0.6)
+				return context.chips, context.mult
+			end
+			if context.end_of_round then
+				self.config.extra.current_deck_config.abstemious_Xmult = 1
+				for c = #G.playing_cards, 1, -1 do
+					if G.playing_cards[c].debuff then
+						G.playing_cards[c]:set_debuff(false)
+					end
+				end
+			end
+		elseif self.config.extra.current_deck == "b_skh_kindworm" then
+		elseif self.config.extra.current_deck == "b_skh_generousworm" then
+			if context.before then
+				self.config.extra.current_deck_config.generous_super_generous = false
+				self.config.extra.current_deck_config.generous_current_dollars = G.GAME.dollars
+				if self.config.extra.current_deck_config.generous_current_dollars <= 0 then
+					self.config.extra.super_generous = true
+				end
+			end
+			if context.context == "final_scoring_step" then
+				if self.config.extra.current_deck_config.generous_current_dollars <= 5 then
+					if self.config.extra.current_deck_config.generous_super_generous then
+						context.mult = context.mult*self.config.extra.current_deck_config.generous_megadebt_Xmult
+					else
+						context.mult = context.mult*self.config.extra.current_deck_config.generous_debt_Xmult
+					end
+
+					update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							local text = self.config.extra.current_deck_config.generous_super_generous
+								and localize("k_super_generous_ex") or localize("k_generous_ex")
+							play_sound("multhit2", 1, 1)
+							attention_text({
+								scale = 1.4,
+								text = text,
+								hold = 2,
+								align = "cm",
+								offset = { x = 0, y = -2.7 },
+								major = G.play,
+							})
+							return true
+						end,
+					}))
+				end
+				delay(0.6)
+				return context.chips, context.mult
+			end
+		elseif self.config.extra.current_deck == "b_skh_patientworm" then
+			if G.GAME.facing_blind then
+				self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
+			end
+			if context.before then
+				if pseudorandom("omnipotent_patient_calm") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.patient_odds then
+					self.config.extra.current_deck_config.triggered = true
+				end
+			end
+			if context.context == "final_scoring_step" and self.config.extra.current_deck_config.triggered then
+				context.chips = context.chips * self.config.extra.current_deck_config.patient_xchipmult
+				context.mult = context.mult * self.config.extra.current_deck_config.patient_xchipmult
+				update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local text = localize("k_calm_ex")
+						play_sound("multhit2", 1, 1)
+						play_sound("xchips", 1, 1)
+						attention_text({
+							scale = 1.4,
+							text = text,
+							hold = 2,
+							align = "cm",
+							offset = { x = 0, y = -2.7 },
+							major = G.play,
+						})
+						return true
+					end,
+				}))
+				delay(0.6)
+				return context.chips, context.mult
+			end
+		end
+	end,
+	apply = function(self, back)
+		self.config.extra.in_game = true
+		self.config.extra.current_deck = "b_skh_patientworm"
+		self.config.extra.current_deck_config.virgin_hand_this_round = localize("k_none")
+		self.config.extra.current_deck_config.virgin_hand_lock = false
+	end,
+	loc_vars = function(self)
+		if self.config.extra.in_game then
+			return {
+				vars = {G.localization.descriptions.Back[self.config.extra.current_deck].name},
+				key = "b_skh_omnipotentworm"
+			}
+		else
+			return {key = "b_skh_omnipotentworm_collection"}
+		end
+	end,
+	collection_loc_vars = function(self)
+		return {key = "b_skh_omnipotentworm_collection"}
+	end,
+	locked_loc_vars = function(self)
+		return {key = "b_skh_omnipotentworm_collection"}
+	end,
+	check_for_unlock = function(self, args)
+		local decks = {"b_skh_virginworm", "b_skh_humbleworm", "b_skh_diligentworm",
+			"b_skh_abstemiousworm", "b_skh_kindworm", "b_skh_generousworm", "b_skh_patientworm"}
+		local temp = true
+		for k, v in ipairs(decks) do
+			local deck_info = G.PROFILES[G.SETTINGS.profile]
+			and G.PROFILES[G.SETTINGS.profile].deck_usage
+			and G.PROFILES[G.SETTINGS.profile].deck_usage[v]
+			if deck_info then temp = temp and deck_info.wins > 0
+			else temp = false end
+		end
+		self.unlocked = temp
+		if self.unlocked then return true end
 	end
 })

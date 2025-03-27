@@ -25,3 +25,10 @@ SMODS.Sound({
 	pitch = 0.7,
 	volume = 0.5
 })
+
+SMODS.Sound({
+	key = "new_omnipotent_roll",
+	path = "new_omnipotent_roll.ogg",
+	pitch = 0.7,
+	volume = 0.5
+})

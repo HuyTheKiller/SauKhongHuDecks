@@ -249,6 +249,29 @@ return {
                     "ở bất kì độ khó nào"
                 },
             },
+            b_skh_omnipotentworm = {
+                name = "Bộ Bài Sâu Toàn Năng",
+                text = {
+                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "của một Bộ Bài {C:legendary}Mỹ Đức{}",
+                    "ngẫu nhiên mỗi lần gieo lại shop",
+                    "{C:inactive}(Hiện tại là",
+                    "{C:legendary}#1#{C:inactive})",
+                },
+            },
+            b_skh_omnipotentworm_collection = {
+                name = "Bộ Bài Sâu Toàn Năng",
+                text = {
+                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "của một Bộ Bài {C:legendary}Mỹ Đức{}",
+                    "ngẫu nhiên mỗi lần gieo lại shop",
+                },
+                unlock = {
+                    "Thắng một trận bằng mọi",
+                    "Bộ Bài {C:legendary}Mỹ Đức{}",
+                    "ở bất kì độ khó nào"
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -313,6 +336,7 @@ return {
             k_generous_ex = "Hào Phóng!",
             k_super_generous_ex = "Siêu Hào Phóng!",
             k_calm_ex = "Tịnh Tâm!",
+            k_diet_ex = "Kiêng Tốt!",
         },
     },
 }

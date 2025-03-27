@@ -4,7 +4,7 @@
 	"author": ["HuyTheKiller"],
 	"description": "Adds a set of themed decks for SauKhongHu. Load this mod for more information.",
 	"prefix": "skh",
-	"main_file": "SauKhongHuDecks.lua",
+	"main_file": "main.lua",
 	"priority": 0,
 	"conflicts": ["CardSleeves (<=1.6.9)"],
 	"version": "1.5.0"

@@ -6,6 +6,7 @@ The rest of the journey is left for you to discover without consequences... or i
 <details>
     <summary>Spoiler warning!</summary>
     Here is the list of decks for those who don't bother to self-spoiler:
+    
     | Divine Entity Decks  | Effect                                                                                                                                  |
     |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
     | SauKhongHu Deck      | +1 hand size; Mime, Baron; beat Ante 16 to win                                                                                          |

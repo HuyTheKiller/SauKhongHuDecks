@@ -7,5 +7,5 @@
 	"main_file": "main.lua",
 	"priority": 0,
 	"conflicts": ["CardSleeves (<=1.6.9)"],
-	"version": "1.5.2"
+	"version": "1.5.3"
 }

@@ -224,7 +224,7 @@ return {
             b_skh_wormychaos = {
                 name = "Wormy Chaos Deck",
                 text = {
-                    "{C:attention}Apply{} similar effects of",
+                    "{C:attention}Apply{} alternative effects of",
                     "a random {C:dark_edition}Deadly Sin{} Deck",
                     "every round",
                     "{C:inactive}(Currently",
@@ -234,7 +234,7 @@ return {
             b_skh_wormychaos_collection = {
                 name = "Wormy Chaos Deck",
                 text = {
-                    "{C:attention}Apply{} similar effects of",
+                    "{C:attention}Apply{} alternative effects of",
                     "a random {C:dark_edition}Deadly Sin{} Deck",
                     "every round",
                 },
@@ -247,7 +247,7 @@ return {
             b_skh_omnipotentworm = {
                 name = "Omnipotent Worm Deck",
                 text = {
-                    "{C:attention}Apply{} similar effects of a",
+                    "{C:attention}Apply{} alternative effects of a",
                     "random {C:legendary}Heavenly Virtue{} Deck",
                     "per shop reroll",
                     "{C:inactive}(Currently",
@@ -257,7 +257,7 @@ return {
             b_skh_omnipotentworm_collection = {
                 name = "Omnipotent Worm Deck",
                 text = {
-                    "{C:attention}Apply{} similar effects of a",
+                    "{C:attention}Apply{} alternative effects of a",
                     "random {C:legendary}Heavenly Virtue{} Deck",
                     "per shop reroll",
                 },

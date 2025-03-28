@@ -229,7 +229,7 @@ return {
             b_skh_wormychaos = {
                 name = "Bộ Bài Hỗn Sâu",
                 text = {
-                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "{C:attention}Áp dụng{} hiệu ứng thay thế",
                     "của một Bộ Bài {C:dark_edition}Đại Tội{}",
                     "ngẫu nhiên mỗi ván",
                     "{C:inactive}(Hiện tại là",
@@ -239,7 +239,7 @@ return {
             b_skh_wormychaos_collection = {
                 name = "Bộ Bài Hỗn Sâu",
                 text = {
-                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
+                    "{C:attention}Áp dụng{} hiệu ứng thay thế",
                     "của một Bộ Bài {C:dark_edition}Đại Tội{}",
                     "ngẫu nhiên mỗi ván",
                 },
@@ -252,9 +252,9 @@ return {
             b_skh_omnipotentworm = {
                 name = "Bộ Bài Sâu Toàn Năng",
                 text = {
-                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
-                    "của một Bộ Bài {C:legendary}Mỹ Đức{}",
-                    "ngẫu nhiên mỗi lần gieo lại shop",
+                    "{C:attention}Áp dụng{} hiệu ứng thay thế của",
+                    "một Bộ Bài {C:legendary}Mỹ Đức{} ngẫu nhiên",
+                    "mỗi lần gieo lại shop",
                     "{C:inactive}(Hiện tại là",
                     "{C:legendary}#1#{C:inactive})",
                 },
@@ -262,9 +262,9 @@ return {
             b_skh_omnipotentworm_collection = {
                 name = "Bộ Bài Sâu Toàn Năng",
                 text = {
-                    "{C:attention}Áp dụng{} hiệu ứng tương tự",
-                    "của một Bộ Bài {C:legendary}Mỹ Đức{}",
-                    "ngẫu nhiên mỗi lần gieo lại shop",
+                    "{C:attention}Áp dụng{} hiệu ứng thay thế của",
+                    "một Bộ Bài {C:legendary}Mỹ Đức{} ngẫu nhiên",
+                    "mỗi lần gieo lại shop",
                 },
                 unlock = {
                     "Thắng một trận bằng mọi",

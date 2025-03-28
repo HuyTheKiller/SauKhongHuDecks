@@ -6,6 +6,10 @@ function Game:init_game_object()
 	return ret
 end
 
+to_big = to_big or function(x)
+	return x
+end
+
 function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
     local rank_suffix = (card.base.id - 2) % 13 + 2
     if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)

@@ -225,12 +225,12 @@ SMODS.Back({
 		if context.before then
 			self.config.extra.super_generous = false
 			self.config.extra.current_dollars = G.GAME.dollars
-			if self.config.extra.current_dollars <= -20 then
+			if self.config.extra.current_dollars <= to_big(-20) then
 				self.config.extra.super_generous = true
 			end
 		end
 		if context.context == "final_scoring_step" then
-			if self.config.extra.current_dollars <= -15 then
+			if self.config.extra.current_dollars <= to_big(-15) then
 				if self.config.extra.super_generous then
 					context.mult = context.mult*self.config.extra.megadebt_Xmult
 				else
@@ -537,12 +537,12 @@ SMODS.Back({
 			if context.before then
 				self.config.extra.current_deck_config.generous_super_generous = false
 				self.config.extra.current_deck_config.generous_current_dollars = G.GAME.dollars
-				if self.config.extra.current_deck_config.generous_current_dollars <= 0 then
+				if self.config.extra.current_deck_config.generous_current_dollars <= to_big(0) then
 					self.config.extra.current_deck_config.generous_super_generous = true
 				end
 			end
 			if context.context == "final_scoring_step" then
-				if self.config.extra.current_deck_config.generous_current_dollars <= 5 then
+				if self.config.extra.current_deck_config.generous_current_dollars <= to_big(5) then
 					if self.config.extra.current_deck_config.generous_super_generous then
 						context.mult = context.mult*self.config.extra.current_deck_config.generous_megadebt_Xmult
 					else

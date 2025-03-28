@@ -62,6 +62,6 @@ After rerolling the shop, a sound effect will play, indicating the change. Click
 | Abstemious Worm Deck  | If played hand contains more than 3 cards, debuff the 4th card onwards until end of round; gain X0.25 Mult per debuffed card this way in your full deck |
 | Kind Worm Deck        | After Play or Discard, always draw 5 cards                                                                                                              |
 | Generous Worm Deck    | X3/X5 Mult when having $5/$0 or less                                                                                                                    |
-| Patient Worm Deck     | 1 in (3*Number of Jokers) chance for X3 Chips and Mult                                                                                                  |
+| Patient Worm Deck     | 1 in (2*Number of Jokers) chance for X3 Chips and Mult                                                                                                  |
   
 </details>

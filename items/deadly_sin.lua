@@ -627,14 +627,8 @@ SMODS.Back({
 			local deck_info = G.PROFILES[G.SETTINGS.profile]
 			and G.PROFILES[G.SETTINGS.profile].deck_usage
 			and G.PROFILES[G.SETTINGS.profile].deck_usage[v]
-			if deck_info then
-				local deck_info_has_won = false
-				for _, count in pairs(deck_info.wins) do
-					if count then deck_info_has_won = true
-					end
-				end
-				temp = temp and deck_info_has_won
-			else temp = false end
+			if not deck_info then temp = false
+			elseif next(deck_info.wins) == nil then temp = false end
 		end
 		self.unlocked = temp
 		if self.unlocked then return true end

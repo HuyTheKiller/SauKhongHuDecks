@@ -371,7 +371,7 @@ SMODS.Back({
 		}
 	}},
 	calculate = function(self, back, context)
-		if G.GAME.facing_blind then self.config.extra.in_game = true end
+		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
 		if context.before then self.config.extra.current_deck_config.triggered = false end
 		if context.ending_shop then
 			self.config.extra.in_game = true

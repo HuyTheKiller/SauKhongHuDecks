@@ -285,12 +285,8 @@ SMODS.Back({
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
 	config = {extra = {xchipmult = 3, odds = 1, calm = false, in_game = false}},
 	calculate = function(self, back, context)
-		if G.GAME.facing_blind then
-			self.config.extra.in_game = true
-			self.config.extra.odds = math.max(1, 3*#G.jokers.cards)
-		else
-			self.config.extra.in_game = false
-		end
+		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true
+		else self.config.extra.odds = math.max(1, 3*#G.jokers.cards) end
 		if context.before then
 			self.config.extra.calm = false
 			if pseudorandom("patient_calm") < G.GAME.probabilities.normal/self.config.extra.odds then
@@ -370,7 +366,7 @@ SMODS.Back({
 		}
 	}},
 	calculate = function(self, back, context)
-		if G.GAME.facing_blind then self.config.extra.in_game = true end
+		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
 		if context.before then self.config.extra.current_deck_config.triggered = false end
 		if context.end_of_round then
 			self.config.extra.current_deck_config.virgin_hand_this_round = localize("k_none")

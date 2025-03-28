@@ -1,3 +1,11 @@
+local igo = Game.init_game_object
+function Game:init_game_object()
+	local ret = igo(self)
+	ret.chaos_roll = "b_skh_lustyworm"
+	ret.omnipotent_roll = "b_skh_patientworm"
+	return ret
+end
+
 function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
     local rank_suffix = (card.base.id - 2) % 13 + 2
     if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)

@@ -345,7 +345,6 @@ SMODS.Back({
 	pos = { x = 3, y = 1 },
 	unlocked = false,
 	config = {extra = {
-		current_deck = "b_skh_patientworm",
 		in_game = false,
 		current_deck_config = {
 			triggered = nil,
@@ -378,12 +377,12 @@ SMODS.Back({
 			"b_skh_abstemiousworm", "b_skh_kindworm", "b_skh_generousworm", "b_skh_patientworm"}
 			local new_decks = {}
 			for k, v in ipairs(decks) do
-				if v ~= self.config.extra.current_deck then new_decks[#new_decks+1] = v end
+				if v ~= G.GAME.omnipotent_roll then new_decks[#new_decks+1] = v end
 			end
-			self.config.extra.current_deck = pseudorandom_element(new_decks, pseudoseed('omnipotent_roll'))
+			G.GAME.omnipotent_roll = pseudorandom_element(new_decks, pseudoseed('omnipotent_roll'))
 			play_sound("skh_new_omnipotent_roll", 1, 1)
 		end
-		if self.config.extra.current_deck == "b_skh_virginworm" then
+		if G.GAME.omnipotent_roll == "b_skh_virginworm" then
 			if context.before then
 				if not self.config.extra.current_deck_config.virgin_hand_lock then
 					self.config.extra.current_deck_config.virgin_hand_this_round = localize(context.scoring_name, "poker_hands")
@@ -428,7 +427,7 @@ SMODS.Back({
 					end
 				end
 			end
-		elseif self.config.extra.current_deck == "b_skh_humbleworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_humbleworm" then
 			if context.before then
 				self.config.extra.current_deck_config.triggered = next(context.poker_hands['Straight'])
 																or next(context.poker_hands['Flush'])
@@ -464,7 +463,7 @@ SMODS.Back({
 				delay(0.6)
 				return context.chips, context.mult
 			end
-		elseif self.config.extra.current_deck == "b_skh_diligentworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_diligentworm" then
 			if context.context == "final_scoring_step" then
 				if G.GAME.current_round.hands_left == 0 then
 					context.mult = context.mult*self.config.extra.current_deck_config.diligent_Xmult_final
@@ -491,7 +490,7 @@ SMODS.Back({
 				delay(0.6)
 				return context.chips, context.mult
 			end
-		elseif self.config.extra.current_deck == "b_skh_abstemiousworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_abstemiousworm" then
 			if context.before then
 				for i = 1, #context.full_hand do
 					if i > 3 then
@@ -533,13 +532,13 @@ SMODS.Back({
 					end
 				end
 			end
-		elseif self.config.extra.current_deck == "b_skh_kindworm" then
-		elseif self.config.extra.current_deck == "b_skh_generousworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_kindworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_generousworm" then
 			if context.before then
 				self.config.extra.current_deck_config.generous_super_generous = false
 				self.config.extra.current_deck_config.generous_current_dollars = G.GAME.dollars
 				if self.config.extra.current_deck_config.generous_current_dollars <= 0 then
-					self.config.extra.super_generous = true
+					self.config.extra.current_deck_config.generous_super_generous = true
 				end
 			end
 			if context.context == "final_scoring_step" then
@@ -572,7 +571,7 @@ SMODS.Back({
 				delay(0.6)
 				return context.chips, context.mult
 			end
-		elseif self.config.extra.current_deck == "b_skh_patientworm" then
+		elseif G.GAME.omnipotent_roll == "b_skh_patientworm" then
 			if self.config.extra.in_game then
 				self.config.extra.current_deck_config.patient_odds = math.max(1, 2*#G.jokers.cards)
 			end
@@ -609,14 +608,13 @@ SMODS.Back({
 	end,
 	apply = function(self, back)
 		self.config.extra.in_game = true
-		self.config.extra.current_deck = "b_skh_patientworm"
 		self.config.extra.current_deck_config.virgin_hand_this_round = localize("k_none")
 		self.config.extra.current_deck_config.virgin_hand_lock = false
 	end,
 	loc_vars = function(self)
 		if self.config.extra.in_game then
 			return {
-				vars = {G.localization.descriptions.Back[self.config.extra.current_deck].name},
+				vars = {G.localization.descriptions.Back[G.GAME.omnipotent_roll].name},
 				key = "b_skh_omnipotentworm"
 			}
 		else

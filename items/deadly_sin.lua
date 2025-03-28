@@ -355,7 +355,6 @@ SMODS.Back({
     pos = { x = 3, y = 1 },
 	unlocked = false,
 	config = {extra = {
-		current_deck = "b_skh_lustyworm",
 		in_game = false,
 		current_deck_config = {
 			triggered = nil,
@@ -379,12 +378,12 @@ SMODS.Back({
 			"b_skh_slothfulworm", "b_skh_wrathfulworm", "b_skh_enviousworm", "b_skh_pridefulworm"}
 			local new_decks = {}
 			for k, v in ipairs(decks) do
-				if v ~= self.config.extra.current_deck then new_decks[#new_decks+1] = v end
+				if v ~= G.GAME.chaos_roll then new_decks[#new_decks+1] = v end
 			end
-			self.config.extra.current_deck = pseudorandom_element(new_decks, pseudoseed('chaos_roll'))
+			G.GAME.chaos_roll = pseudorandom_element(new_decks, pseudoseed('chaos_roll'))
 			play_sound("skh_new_chaos_roll", 1, 1)
 		end
-		if self.config.extra.current_deck == "b_skh_lustyworm" then
+		if G.GAME.chaos_roll == "b_skh_lustyworm" then
 			if context.before then
 				local suits = {}
 				for i = 1, #context.full_hand do
@@ -421,7 +420,7 @@ SMODS.Back({
 					}
 				end
 			end
-		elseif self.config.extra.current_deck == "b_skh_greedyworm" then
+		elseif G.GAME.chaos_roll == "b_skh_greedyworm" then
 			if context.setting_blind then
 				for i = 1, #G.jokers.cards do
 					G.jokers.cards[i]:set_rental(true)
@@ -467,7 +466,7 @@ SMODS.Back({
 					end)
 				}))
 			end
-		elseif self.config.extra.current_deck == "b_skh_gluttonyworm" then
+		elseif G.GAME.chaos_roll == "b_skh_gluttonyworm" then
 			if context.context == "eval" then
 				G.E_MANAGER:add_event(Event({
 					func = function()
@@ -490,7 +489,7 @@ SMODS.Back({
 					end
 				}))
 			end
-		elseif self.config.extra.current_deck == "b_skh_slothfulworm" then
+		elseif G.GAME.chaos_roll == "b_skh_slothfulworm" then
 			if context.end_of_round then
 				if pseudorandom("chaos_slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds then
 					ease_ante(-self.config.extra.current_deck_config.slothful_ante_loss)
@@ -498,7 +497,7 @@ SMODS.Back({
 					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.current_deck_config.slothful_ante_loss
 				end
 			end
-		elseif self.config.extra.current_deck == "b_skh_wrathfulworm" then
+		elseif G.GAME.chaos_roll == "b_skh_wrathfulworm" then
 			if context.setting_blind then
 				G.E_MANAGER:add_event(Event({func = function()
 					ease_discard(-G.GAME.current_round.discards_left, nil, true)
@@ -540,7 +539,7 @@ SMODS.Back({
 				delay(0.6)
 				return context.chips, context.mult
 			end
-		elseif self.config.extra.current_deck == "b_skh_enviousworm" then
+		elseif G.GAME.chaos_roll == "b_skh_enviousworm" then
 			if context.end_of_round then
 				for i = 1, #G.jokers.cards do
 					local temp = G.jokers.cards[i]
@@ -562,7 +561,7 @@ SMODS.Back({
 					end
 				end
 			end
-		elseif self.config.extra.current_deck == "b_skh_pridefulworm" then
+		elseif G.GAME.chaos_roll == "b_skh_pridefulworm" then
 			if context.destroy_card and context.cardarea == G.play then
 				if not context.destroying_card.debuff then
 					local temp = context.destroying_card
@@ -603,12 +602,11 @@ SMODS.Back({
 	end,
 	apply = function(self, back)
 		self.config.extra.in_game = true
-		self.config.extra.current_deck = "b_skh_lustyworm"
 	end,
 	loc_vars = function(self)
 		if self.config.extra.in_game then
 			return {
-				vars = {G.localization.descriptions.Back[self.config.extra.current_deck].name},
+				vars = {G.localization.descriptions.Back[G.GAME.chaos_roll].name},
 				key = "b_skh_wormychaos"
 			}
 		else

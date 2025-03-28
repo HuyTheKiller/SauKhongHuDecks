@@ -574,7 +574,7 @@ SMODS.Back({
 			end
 		elseif self.config.extra.current_deck == "b_skh_patientworm" then
 			if self.config.extra.in_game then
-				self.config.extra.current_deck_config.patient_odds = math.max(1, 3*#G.jokers.cards)
+				self.config.extra.current_deck_config.patient_odds = math.max(1, 2*#G.jokers.cards)
 			end
 			if context.before then
 				if pseudorandom("omnipotent_patient_calm") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.patient_odds then

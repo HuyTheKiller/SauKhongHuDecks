@@ -577,7 +577,7 @@ SMODS.Back({
 				local prideful_debuff_targets = {}
 				for i = 1, #G.jokers.cards do
 					local temp = G.jokers.cards[i]
-					if temp.config.center.rarity == 1 or temp.config.center.rarity == 2 and not temp.debuff then
+					if (temp.config.center.rarity == 1 or temp.config.center.rarity == 2) and not temp.debuff then
 						prideful_debuff_targets[#prideful_debuff_targets+1] = temp
 					end
 				end

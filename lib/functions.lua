@@ -1,3 +1,4 @@
+-- Inject global variable for Wormy Chaos and Omnipotent Worm
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
@@ -6,11 +7,13 @@ function Game:init_game_object()
 	return ret
 end
 
+-- Talisman compat
 to_big = to_big or function(x)
 	return x
 end
 
-function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
+-- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
+function skh_get_rank_suffix(card)
     local rank_suffix = (card.base.id - 2) % 13 + 2
     if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)
     elseif rank_suffix == 11 then rank_suffix = 'Jack'
@@ -21,7 +24,8 @@ function skh_get_rank_suffix(card) -- copy-pasted from Ortalab, renamed with mod
     return rank_suffix
 end
 
-function envious_roulette(card, odd_seed, odd_type, iteration) -- Gros Michel logic - copy-pasted and modified
+-- Gros Michel logic - copy-pasted and modified
+function envious_roulette(card, odd_seed, odd_type, iteration)
 	if pseudorandom(odd_seed) < G.GAME.probabilities.normal/odd_type then
 		G.E_MANAGER:add_event(Event({
 			func = function()

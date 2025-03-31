@@ -49,6 +49,16 @@ function envious_roulette(card, odd_seed, odd_type, iteration)
 	end
 end
 
+-- A separate game_over() function to use instead of calling end_round() to trigger game over
+function game_over()
+	G.STATE = G.STATES.GAME_OVER
+	if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then 
+		G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+	end
+	G:save_settings()
+	G.FILE_HANDLER.force = true
+	G.STATE_COMPLETE = false
+end
 -- Tattered Decks style for SKH Forgotten Decks
 SKHDecks.add_skh_b_side = function(deck_id, b_side_id)
 	SKHDecks.b_side_table[deck_id] = b_side_id

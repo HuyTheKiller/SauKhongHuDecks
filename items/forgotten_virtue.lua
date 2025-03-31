@@ -27,8 +27,7 @@ SMODS.Back({
                 end
             end
             if rule_is_broken then
-                G.STATE = G.STATES.GAME_OVER
-                G.STATE_COMPLETE = false
+                game_over()
             end
         end
     end
@@ -45,28 +44,27 @@ SMODS.Back({
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_abstemiousworm'},
     calculate = function(self, back, context)
-        if context.pre_discard and context.cardarea == G.play then
-            G.GAME.hand_discard_used = G.GAME.hand_discard_used + 1
-            print(G.GAME.hand_discard_used)
+        if context.pre_discard then
             if G.GAME.hand_discard_used >= self.config.extra.hand_discard_limit then
-                ease_hands_played(-G.GAME.current_round.hands_left, true)
+                game_over()
             end
+            G.GAME.hand_discard_used = G.GAME.hand_discard_used + 1
         end
         if context.before then
-            G.GAME.hand_discard_used = G.GAME.hand_discard_used + 1
-            print(G.GAME.hand_discard_used)
-        end
-        if context.after then
             if G.GAME.hand_discard_used >= self.config.extra.hand_discard_limit then
-                ease_hands_played(-G.GAME.current_round.hands_left, true)
+                game_over()
             end
+            G.GAME.hand_discard_used = G.GAME.hand_discard_used + 1
         end
         if context.end_of_round and not context.repetition then
             G.GAME.hand_discard_used = 0
         end
     end,
+    apply = function(self, back)
+        if G.GAME.stake >= 5 then G.GAME.starting_params.discards = G.GAME.starting_params.discards + 1 end
+    end,
     loc_vars = function(self)
-        return {vars = {self.config.hands, self.config.discards}}
+        return {vars = {self.config.extra.hand_discard_limit}}
     end
 })
 

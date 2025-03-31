@@ -292,11 +292,11 @@ return {
             b_skh_forgotten_abstemious = {
                 name = "Abstemious Worm Deck?",
                 text = {
-                    "{C:blue}+#1#{} hands, {C:red}+#2#{} discards every round",
-                    "Total {C:attention}hands/discards{} used",
-                    "every round is capped at 7",
-                    "{s:0.8,C:inactive}Experience {s:0.8,C:red}famine{s:0.8,C:inactive} while full",
-                    "{s:0.8,C:inactive}of food to understand the poor.",
+                    "Combine {C:attention}Hands{} and {C:attention}discards{}",
+                    "Total {C:attention}hands{} used",
+                    "every round is capped at #1#",
+                    "{s:0.8,C:inactive}Must {s:0.8,C:red}control{s:0.8,C:inactive} yourself",
+                    "{s:0.8,C:inactive}effectively for the better good.",
                 },
             },
         },
@@ -366,6 +366,8 @@ return {
             k_calm_ex = "Calm!",
             k_virgin_ex = "Virgin!",
             k_diet_ex = "Good Diet!",
+            SKH_disable_override = "Disable Deck Override",
+            SKH_disable_override_desc = {"Load Forgotten Decks as standalone (requires game restart)"},
         },
     },
 }

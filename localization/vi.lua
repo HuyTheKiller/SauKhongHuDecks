@@ -297,11 +297,11 @@ return {
             b_skh_forgotten_abstemious = {
                 name = "Bộ Bài Sâu Tiết Chế?",
                 text = {
-                    "{C:blue}+#1#{} tay bài, {C:red}+#2#{} lượt bỏ bài mỗi ván",
-                    "Tổng số {C:attention}tay bài/lượt bỏ{} mỗi ván",
-                    "không thể vượt quá 7",
-                    "{s:0.8,C:inactive}Trải nghiệm {s:0.8,C:red}nạn đói{s:0.8,C:inactive} khi đầy ắp",
-                    "{s:0.8,C:inactive}thức ăn để hiểu rõ người nghèo hơn.",
+                    "{C:attention}Tay bài{} cũng là {C:attention}lượt bỏ bài{}",
+                    "Tổng số {C:attention}tay bài{} có thể dùng",
+                    "mỗi ván không thể vượt quá #1#",
+                    "{s:0.8,C:inactive}Phải {s:0.8,C:red}kiểm soát{s:0.8,C:inactive} bản thận",
+                    "{s:0.8,C:inactive}hiệu quả để đem lại điều tốt.",
                 },
             },
         },
@@ -371,6 +371,8 @@ return {
             k_calm_ex = "Tịnh Tâm!",
             k_virgin_ex = "Thanh Khiết!",
             k_diet_ex = "Kiêng Tốt!",
+            SKH_disable_override = "Tắt Nạp Chồng Bài",
+            SKH_disable_override_desc = {"Tải Bộ Bài Lãng Quên riêng biệt (yêu cầu khởi động lại)"},
         },
     },
 }

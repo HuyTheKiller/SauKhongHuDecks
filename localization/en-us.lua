@@ -289,6 +289,16 @@ return {
                     "{s:0.8,C:inactive}Why am I {s:0.8,C:red}bleeding{s:0.8,C:inactive} down there?",
                 },
             },
+            b_skh_forgotten_abstemious = {
+                name = "Abstemious Worm Deck?",
+                text = {
+                    "{C:blue}+#1#{} hands, {C:red}+#2#{} discards every round",
+                    "Total {C:attention}hands/discards{} used",
+                    "every round is capped at 7",
+                    "{s:0.8,C:inactive}Experience {s:0.8,C:red}famine{s:0.8,C:inactive} while full",
+                    "{s:0.8,C:inactive}of food to understand the poor.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

@@ -294,6 +294,16 @@ return {
                     "{s:0.8,C:inactive}Sao tôi lại đang {s:0.8,C:red}chảy máu{s:0.8,C:inactive} ở dưới đó?",
                 },
             },
+            b_skh_forgotten_abstemious = {
+                name = "Bộ Bài Sâu Tiết Chế?",
+                text = {
+                    "{C:blue}+#1#{} tay bài, {C:red}+#2#{} lượt bỏ bài mỗi ván",
+                    "Tổng số {C:attention}tay bài/lượt bỏ{} mỗi ván",
+                    "không thể vượt quá 7",
+                    "{s:0.8,C:inactive}Trải nghiệm {s:0.8,C:red}nạn đói{s:0.8,C:inactive} khi đầy ắp",
+                    "{s:0.8,C:inactive}thức ăn để hiểu rõ người nghèo hơn.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

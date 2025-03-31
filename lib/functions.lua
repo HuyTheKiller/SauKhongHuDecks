@@ -4,6 +4,7 @@ function Game:init_game_object()
 	local ret = igo(self)
 	ret.chaos_roll = "b_skh_lustyworm"
 	ret.omnipotent_roll = "b_skh_patientworm"
+	ret.hand_discard_used = 0
 	return ret
 end
 

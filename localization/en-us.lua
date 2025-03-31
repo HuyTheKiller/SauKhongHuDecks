@@ -280,6 +280,15 @@ return {
                     "on any difficulty"
                 },
             },
+            b_skh_forgotten_virgin = {
+                name = "Virgin Worm Deck?",
+                text = {
+                    "If scoring hand contains",
+                    "a {C:attention}King{} and a {C:attention}Jack{},",
+                    "instantly {C:red}lose{} the run",
+                    "{s:0.8,C:inactive}Why am I {s:0.8,C:red}bleeding{s:0.8,C:inactive} down there?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -331,6 +340,7 @@ return {
     },
     misc = {
         dictionary = {
+            b_forgotten = "Forgotten",
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Reproduced!",
             k_chomp_ex = "Chomp!",

@@ -3,7 +3,10 @@ SKHDecks.load_table = {
 	divine_entity = true,
 	deadly_sin = true,
 	heavenly_virtue = true,
+	forgotten_virtue = true,
 }
+SKHDecks.b_side_table = {}
+SKHDecks.b_side_current = false
 
 -- Load library files
 local mod_path = "" .. SKHDecks.path

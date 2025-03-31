@@ -48,3 +48,177 @@ payload = '''
   end
 '''
 match_indent = true
+
+# Tattered Decks patch style for SKH Forgotten Decks (with Galdur dependency)
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''G.FUNCS.start_run = function(e, args) '''
+position = "after"
+payload = '''
+SKHDecks.b_side_current = false
+'''
+match_indent = true
+
+# Patches to remove said Galdur dependency (abandoning this attempt for now)
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/button_callbacks.lua"
+# pattern = '''local deck_pool = SMODS.collection_pool(G.P_CENTER_POOLS.Back)'''
+# position = "after"
+# payload = '''
+# if SKHDecks.b_side_current then
+#   for _, v in ipairs(deck_pool) do
+#     for k2, v2 in pairs(SKHDecks.b_side_table) do
+#     if v.name == G.P_CENTERS[k2].name then
+#         print('working?')
+#         v = G.P_CENTERS[v2]
+#       end
+#     end
+#   end
+# end
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = '''local ordered_names, viewed_deck = {}, 1'''
+# position = "before"
+# payload = '''
+# if SKHDecks.b_side_current then
+#   local card = area.cards[10]
+#   if SKHDecks.b_side_table[card.config.center.key] ~= nil then
+#     local center = G.P_CENTERS[SKHDecks.b_side_table[card.config.center.key]]
+#     local cards_to_remove = {}
+#     for _, card in ipairs(area.cards) do
+#       table.insert(cards_to_remove, card)
+#     end
+#     G.E_MANAGER:add_event(Event({trigger = "immediate", blockable = false, func = function() 
+#       for _, cards in ipairs(cards_to_remove) do
+#         cards:remove()
+#       end
+#       return true
+#     end }))
+#     for i = 1, 10 do
+#       G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, func = function()
+#         local new_card = Card(G.ROOM.T.x + 0.2*G.ROOM.T.w/2,G.ROOM.T.h, G.CARD_W, G.CARD_H, pseudorandom_element(G.P_CARDS), center, {playing_card = i, viewed_back = true})
+#         new_card.deck_select_position = true
+#         new_card.sprite_facing = "back"
+#         new_card.facing = "back"
+#         new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.atlas or "centers"], center.pos)
+#         new_card.children.back.states.hover = card.states.hover
+#         new_card.children.back.states.click = card.states.click
+#         new_card.children.back.states.drag = card.states.drag
+#         new_card.children.back.states.collide.can = false
+#         new_card.children.back:set_role({major = new_card, role_type = "Glued", draw_major = new_card})
+#         area:emplace(new_card)
+#         if i == 10 then
+#           new_card.sticker = get_deck_win_sticker(center)
+#         end
+#         return true
+#       end}))
+#     end
+#   end
+# end
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = '''if v.name == G.GAME.viewed_back.name then viewed_deck = k end'''
+# position = "at"
+# payload = '''
+# if SKHDecks.b_side_current then
+#   for k2, v2 in pairs(SKHDecks.b_side_table) do
+#     if v.name == G.P_CENTERS[k2].name then
+#       print('working1')
+#       ordered_names[#ordered_names] = G.P_CENTERS[v2].name
+#     end
+#   end
+# end
+# if v.name == G.GAME.viewed_back.name then
+#   print('working2')
+#   viewed_deck = k
+# end
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = '''{n=G.UIT.C, config={align = "cm", minw = 2.5}, nodes={}}'''
+# position = "at"
+# payload = '''
+# type == 'New Run' and {n = G.UIT.C, config={align = "cm", padding = 0.05}, nodes = {
+#   {n=G.UIT.C, config = {maxw = 2.5, minw = 2.5, minh = 0.2, r = 0.1, hover = true, ref_value = 1, button = "flip_skh_b_sides", colour = SKHDecks.badge_colour, align = "cm", emboss = 0.1}, nodes = {
+# 		{n=G.UIT.T, config={text = localize("b_forgotten"), scale = 0.4, colour = G.C.GREY}}
+# 	}}
+# }} or {n=G.UIT.C, config={align = "cm", minw = 2.5}, nodes={}}
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = "local _challenge_chosen = from_game_over == 'challenge_list'"
+# position = "after"
+# payload = '''
+# local _flip_skh_b_sides = from_game_over == 'flip_skh_b_sides'
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = "local t =   create_UIBox_generic_options({no_back = from_game_over, no_esc = from_game_over, contents ={"
+# position = "at"
+# payload = '''
+# local t =   create_UIBox_generic_options({no_back = from_game_over, no_esc = from_game_over and (not _flip_skh_b_sides), contents ={
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = '''chosen = (not _challenge_chosen) and (not _can_continue),'''
+# position = "at"
+# payload = '''
+# chosen = (not _challenge_chosen) and (not _can_continue) or (_flip_skh_b_sides),
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/UI_definitions.lua"
+# pattern = '''chosen = (not _challenge_chosen) and _can_continue,'''
+# position = "at"
+# payload = '''
+# chosen = (not _challenge_chosen) and _can_continue and (not _flip_skh_b_sides),
+# '''
+# match_indent = true
+
+# [[patches]]
+# [patches.pattern]
+# target = "functions/button_callbacks.lua"
+# pattern = '''definition = G.UIDEF.run_setup((e.config.id == 'from_game_over' or e.config.id == 'from_game_won' or e.config.id == 'challenge_list') and e.config.id),'''
+# position = "at"
+# payload = '''
+# definition = G.UIDEF.run_setup((e.config.id == 'from_game_over' or e.config.id == 'from_game_won' or e.config.id == 'challenge_list' or e.config.id == 'flip_skh_b_sides') and e.config.id),
+# '''
+# match_indent = true
+
+# # The time has finally come for me to actually use regex
+# [[patches]]
+# [patches.regex]
+# target = "functions/button_callbacks.lua"
+# pattern = '''(?<indent>[\t ]*)if \(e\.config\.id == 'from_game_over' or e\.config\.id == 'from_game_won'\) then G\.OVERLAY_MENU\.config\.no_esc =true end'''
+# position = "at"
+# line_prepend = '$indent'
+# payload = '''
+# if (e.config.id == 'from_game_over' or e.config.id == 'from_game_won') then G.OVERLAY_MENU.config.no_esc =true
+# elseif e.config.id == 'flip_skh_b_sides' then G.OVERLAY_MENU.config.no_esc =false end
+# '''
+# times = 2

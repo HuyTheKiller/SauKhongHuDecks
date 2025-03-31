@@ -285,6 +285,15 @@ return {
                     "ở bất kì độ khó nào"
                 },
             },
+            b_skh_forgotten_virgin = {
+                name = "Bộ Bài Sâu Thanh Khiết?",
+                text = {
+                    "Nếu tay bài ghi điểm",
+                    "chứa {C:attention}Già{} và {C:attention}Bồi{},",
+                    "{C:red}thua{} trận tức thì",
+                    "{s:0.8,C:inactive}Sao tôi lại đang {s:0.8,C:red}chảy máu{s:0.8,C:inactive} ở dưới đó?",
+                },
+            },
         },
         Mod = {
             SKHDecks = {
@@ -336,6 +345,7 @@ return {
     },
     misc = {
         dictionary = {
+            b_forgotten = "Lãng Quên",
             k_wee_ex = "WEE!",
             k_reproduced_ex = "Sinh Sản!",
             k_chomp_ex = "Măm!",

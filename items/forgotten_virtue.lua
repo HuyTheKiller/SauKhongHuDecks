@@ -5,13 +5,21 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "forgotten_locked",
+    path = "ForgottenLocked.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Back({
     key = "forgotten_virgin",
     atlas = "forgotten_virtue",
     pos = { x = 0, y = 0 },
-    omit = true,
+    omit = not config.DisableOverride,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
+    config = {b_side_lock = true},
     calculate = function(self, back, context)
         if context.before then
             local rule_is_broken = false
@@ -39,8 +47,8 @@ SMODS.Back({
     key = "forgotten_abstemious",
     atlas = "forgotten_virtue",
     pos = { x = 3, y = 0 },
-    config = {hands = 3, discards = 4, extra = {hand_discard_limit = 7}},
-    omit = true,
+    config = {hands = 3, discards = 4, b_side_lock = true, extra = {hand_discard_limit = 7}},
+    omit = not config.DisableOverride,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_abstemiousworm'},
     calculate = function(self, back, context)

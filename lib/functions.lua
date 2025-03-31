@@ -59,6 +59,18 @@ function game_over()
 	G.FILE_HANDLER.force = true
 	G.STATE_COMPLETE = false
 end
+
+-- Cool, config tab
+config = SKHDecks.config
+
+SKHDecks.config_tab = function()
+    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
+        {n=G.UIT.R, config = {align = 'cm'}, nodes={
+			create_toggle({label = localize('SKH_disable_override'), ref_table = config, ref_value = 'DisableOverride', info = localize('SKH_disable_override_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
+		}},
+    }}
+end
+
 -- Tattered Decks style for SKH Forgotten Decks
 SKHDecks.add_skh_b_side = function(deck_id, b_side_id)
 	SKHDecks.b_side_table[deck_id] = b_side_id
@@ -90,7 +102,7 @@ if Galdur then
 	end
 
 	for _, args in ipairs(Galdur.pages_to_add) do
-		if args.name == "gald_select_deck" then
+		if args.name == "gald_select_deck" and not config.DisableOverride then
 			args.definition = skh_custom_deck_select_page_deck
 		end
 	end
@@ -113,9 +125,9 @@ if Galdur then
 		end
 	end
 else
-	G.FUNCS.apply_skh_b_sides = function()
-		G.UIDEF.run_setup_option('New Run')
-	end
+	-- G.FUNCS.apply_skh_b_sides = function()
+	-- 	G.UIDEF.run_setup_option('New Run')
+	-- end
 end
 
 G.FUNCS.apply_skh_b_sides = function()
@@ -180,17 +192,6 @@ G.FUNCS.flip_skh_b_sides = function(e)
 		end
 	}))
 
-	if Galdur and Galdur.config.use then
-		G.E_MANAGER:add_event(Event({
-			trigger = 'ease',
-			delay = 0.15,
-			ease = 'quad', 
-			ref_table = G.OVERLAY_MENU.alignment.offset,
-			ref_value = 'y',
-			ease_to = 20
-		}))
-	end
-
 	G.E_MANAGER:add_event(Event({
 		trigger = "immediate",
 		func = function()
@@ -198,15 +199,4 @@ G.FUNCS.flip_skh_b_sides = function(e)
 			return true
 		end
 	}))
-
-	if Galdur and Galdur.config.use then
-		G.E_MANAGER:add_event(Event({
-			trigger = 'ease',
-			delay = 0.15, 
-			ease = 'quad',
-			ref_table = G.OVERLAY_MENU.alignment.offset,
-			ref_value = 'y',
-			ease_to = 0,
-		}))
-	end
 end

@@ -157,6 +157,17 @@ return {
                     "{s:0.8,C:inactive}as {s:0.8,C:legendary}soft {s:0.8,C:inactive}as cotton candy?",
                 },
             },
+            b_skh_virginworm_collection = {
+                name = "Virgin Worm Deck",
+                text = {
+                    "Start with {C:attention,T:j_card_sharp}Card Sharp{}",
+                    "{C:attention}Debuff{} all hand types except",
+                    "{C:attention}first hand{} of round",
+                    "until end of Ante",
+                    "{s:0.8,C:inactive}Do you think the cloud is",
+                    "{s:0.8,C:inactive}as {s:0.8,C:legendary}soft {s:0.8,C:inactive}as cotton candy?",
+                },
+            },
             b_skh_humbleworm = {
                 name = "Humble Worm Deck",
                 text = {

@@ -9,8 +9,9 @@ SMODS.Back({
 	key = "virginworm",
 	atlas = "heavenly_virtue",
     pos = { x = 0, y = 0 },
-	config = {extra = {hand_this_round = localize("k_none"), hand_lock = false}},
+	config = {extra = {hand_this_round = localize("k_none"), hand_lock = false, in_game = false}},
 	calculate = function(self, back, context)
+		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
 		if context.before then
 			if not self.config.extra.hand_lock then
 				self.config.extra.hand_this_round = localize(context.scoring_name, "poker_hands")
@@ -38,7 +39,8 @@ SMODS.Back({
 		end
 	end,
 	apply = function(self, back)
-        self.config.extra.hand_this_round = localize("k_none")
+        self.config.extra.in_game = true
+		self.config.extra.hand_this_round = localize("k_none")
 		self.config.extra.hand_lock = false
 		delay(0.4)
 		G.E_MANAGER:add_event(Event({
@@ -53,7 +55,14 @@ SMODS.Back({
 		}))
 	end,
 	loc_vars = function(self)
-		return {vars = {self.config.extra.hand_this_round}}
+		if self.config.extra.in_game then
+			return {vars = {self.config.extra.hand_this_round}}
+		else
+			return {key = "b_skh_virginworm_collection"}
+		end
+	end,
+	collection_loc_vars = function(self)
+		return {key = "b_skh_virginworm_collection"}
 	end
 })
 

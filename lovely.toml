@@ -33,7 +33,7 @@ end
 '''
 match_indent = true
 
-# Apply Patient Worm, Chaos and Omnipotent loc handling when exiting to Menu
+# Apply Patient, Virgin, Chaos and Omnipotent loc handling when exiting to Menu
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -41,6 +41,7 @@ pattern = '''G.FUNCS.go_to_menu = function(e)'''
 position = "after"
 payload = '''
   if G.GAME.selected_back.effect.center.key == "b_skh_patientworm" or
+    G.GAME.selected_back.effect.center.key == "b_skh_virginworm" or
     G.GAME.selected_back.effect.center.key == "b_skh_wormychaos" or
     G.GAME.selected_back.effect.center.key == "b_skh_omnipotentworm" then
       G.GAME.selected_back.effect.center.config.extra.in_game = false

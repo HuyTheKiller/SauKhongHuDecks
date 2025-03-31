@@ -162,6 +162,17 @@ return {
                     "{s:0.8,C:legendary}mềm {s:0.8,C:inactive}như kẹo bông không?",
                 },
             },
+            b_skh_virginworm_collection = {
+                name = "Bộ Bài Sâu Thanh Khiết",
+                text = {
+                    "Bắt đầu với {C:attention,T:j_card_sharp}Bài Thủ Gian{}",
+                    "{C:attention}Vô hiệu{} mọi loại tay bài trừ",
+                    "{C:attention}tay đầu tiên{} của ván",
+                    "cho đến hết Ante",
+                    "{s:0.8,C:inactive}Cậu nghĩ trên mây có",
+                    "{s:0.8,C:legendary}mềm {s:0.8,C:inactive}như kẹo bông không?",
+                },
+            },
             b_skh_humbleworm = {
                 name = "Bộ Bài Sâu Nhún Nhường",
                 text = {

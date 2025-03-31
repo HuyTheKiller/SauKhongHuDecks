@@ -253,6 +253,7 @@ return {
                     "{C:attention}Áp dụng{} hiệu ứng thay thế",
                     "của một Bộ Bài {C:dark_edition}Đại Tội{}",
                     "ngẫu nhiên mỗi ván",
+                    "{C:inactive}(Thông tin ở README.md)",
                 },
                 unlock = {
                     "Thắng một trận bằng mọi",
@@ -276,6 +277,7 @@ return {
                     "{C:attention}Áp dụng{} hiệu ứng thay thế của",
                     "một Bộ Bài {C:legendary}Mỹ Đức{} ngẫu nhiên",
                     "mỗi lần gieo lại shop",
+                    "{C:inactive}(Thông tin ở README.md)",
                 },
                 unlock = {
                     "Thắng một trận bằng mọi",

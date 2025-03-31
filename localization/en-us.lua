@@ -248,6 +248,7 @@ return {
                     "{C:attention}Apply{} alternative effects of",
                     "a random {C:dark_edition}Deadly Sin{} Deck",
                     "every round",
+                    "{C:inactive}(More info in README.md)",
                 },
                 unlock = {
                     "Win a run with every",
@@ -271,6 +272,7 @@ return {
                     "{C:attention}Apply{} alternative effects of a",
                     "random {C:legendary}Heavenly Virtue{} Deck",
                     "per shop reroll",
+                    "{C:inactive}(More info in README.md)",
                 },
                 unlock = {
                     "Win a run with every",

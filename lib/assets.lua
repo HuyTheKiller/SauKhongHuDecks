@@ -32,3 +32,10 @@ SMODS.Sound({
 	pitch = 0.7,
 	volume = 0.5
 })
+
+SMODS.Atlas({
+    key = "forgotten_locked",
+    path = "ForgottenLocked.png",
+    px = 71,
+    py = 95,
+})

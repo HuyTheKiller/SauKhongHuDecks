@@ -59,53 +59,53 @@ end
 match_indent = true
 
 # Custom locked sprite for Forgotten Decks (not working)
-[[patches]]
-[patches.pattern]
-target = "back.lua"
-pattern = '''self.atlas = selected_back.unlocked and selected_back.atlas or nil'''
-position = "after"
-payload = '''
-if selected_back.config.b_side_lock and not selected_back.unlocked then
-    self.atlas = 'forgotten_locked'
-end
-'''
-match_indent = true
+# [[patches]]
+# [patches.pattern]
+# target = "back.lua"
+# pattern = '''self.atlas = selected_back.unlocked and selected_back.atlas or nil'''
+# position = "after"
+# payload = '''
+# if selected_back.config.b_side_lock and not selected_back.unlocked then
+#     self.atlas = G.ASSET_ATLAS['forgotten_locked']
+# end
+# '''
+# match_indent = true
 
-[[patches]]
-[patches.pattern]
-target = "back.lua"
-pattern = '''local pos = (self.effect.center.unlocked and self.effect.center.pos) or {x = 4, y = 0}'''
-position = "after"
-payload = '''
-if selected_back.config.b_side_lock and not selected_back.unlocked then
-    pos = {x = 0, y = 0}
-end
-'''
-match_indent = true
+# [[patches]]
+# [patches.pattern]
+# target = "back.lua"
+# pattern = '''local pos = (self.effect.center.unlocked and self.effect.center.pos) or {x = 4, y = 0}'''
+# position = "after"
+# payload = '''
+# if selected_back.config.b_side_lock and not selected_back.unlocked then
+#     pos = {x = 0, y = 0}
+# end
+# '''
+# match_indent = true
 
-[[patches]]
-[patches.pattern]
-target = "back.lua"
-pattern = '''self.atlas = new_back.unlocked and new_back.atlas or nil'''
-position = "after"
-payload = '''
-if new_back.config.b_side_lock and not new_back.unlocked then
-    self.atlas = 'forgotten_locked'
-end
-'''
-match_indent = true
+# [[patches]]
+# [patches.pattern]
+# target = "back.lua"
+# pattern = '''self.atlas = new_back.unlocked and new_back.atlas or nil'''
+# position = "after"
+# payload = '''
+# if new_back.config.b_side_lock and not new_back.unlocked then
+#     self.atlas = G.ASSET_ATLAS['forgotten_locked']
+# end
+# '''
+# match_indent = true
 
-[[patches]]
-[patches.pattern]
-target = "back.lua"
-pattern = '''local pos = self.effect.center.unlocked and copy_table(new_back.pos) or {x = 4, y = 0}'''
-position = "after"
-payload = '''
-if new_back.config.b_side_lock and not new_back.unlocked then
-    pos = {x = 0, y = 0}
-end
-'''
-match_indent = true
+# [[patches]]
+# [patches.pattern]
+# target = "back.lua"
+# pattern = '''local pos = self.effect.center.unlocked and copy_table(new_back.pos) or {x = 4, y = 0}'''
+# position = "after"
+# payload = '''
+# if new_back.config.b_side_lock and not new_back.unlocked then
+#     pos = {x = 0, y = 0}
+# end
+# '''
+# match_indent = true
 
 # Apply Patient, Virgin, Chaos and Omnipotent loc handling when exiting to Menu
 [[patches]]

@@ -5,13 +5,6 @@ SMODS.Atlas({
     py = 95,
 })
 
-SMODS.Atlas({
-    key = "forgotten_locked",
-    path = "ForgottenLocked.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Back({
     key = "forgotten_virgin",
     atlas = "forgotten_virtue",

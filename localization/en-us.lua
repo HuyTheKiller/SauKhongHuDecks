@@ -367,7 +367,7 @@ return {
             k_virgin_ex = "Virgin!",
             k_diet_ex = "Good Diet!",
             SKH_disable_override = "Disable Deck Override",
-            SKH_disable_override_desc = {"Load Forgotten Decks as standalone (requires game restart)"},
+            SKH_disable_override_desc = {"Load Forgotten Decks as standalone", "(requires game restart)"},
         },
     },
 }

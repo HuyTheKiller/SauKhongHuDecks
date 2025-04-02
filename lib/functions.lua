@@ -25,6 +25,17 @@ function skh_get_rank_suffix(card)
     return rank_suffix
 end
 
+-- also copy-pasted from Ortalab, with some tweaks to not guarantee enhancement
+function playing_card_randomise(card)
+    local modifier = 8
+    local edition = poll_edition('random_edition', modifier, true, false)
+    local enhance = SMODS.poll_enhancement({key = 'random_enhance'})
+    local seal = SMODS.poll_seal({key = 'random_seal'})
+    card:set_edition(edition, true, true)
+    card:set_ability(G.P_CENTERS[enhance or "c_base"])
+    card:set_seal(seal, true, true)
+end
+
 -- Gros Michel logic - copy-pasted and modified
 function envious_roulette(card, odd_seed, odd_type, iteration)
 	if pseudorandom(odd_seed) < G.GAME.probabilities.normal/odd_type then
@@ -46,7 +57,8 @@ function envious_roulette(card, odd_seed, odd_type, iteration)
 			end
 		}))
 		iteration = iteration - 1
-	end
+		return true
+	else return false end
 end
 
 -- A separate game_over() function to use instead of calling end_round() to trigger game over

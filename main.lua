@@ -3,6 +3,7 @@ SKHDecks.load_table = {
 	divine_entity = true,
 	deadly_sin = true,
 	heavenly_virtue = true,
+	forgotten_sin = true,
 	forgotten_virtue = true,
 }
 SKHDecks.b_side_table = {}

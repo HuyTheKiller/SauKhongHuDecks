@@ -299,6 +299,15 @@ return {
                     "{s:0.8,C:inactive}effectively for the better good.",
                 },
             },
+            b_skh_forgotten_lusty = {
+                name = "Lusty Worm Deck?",
+                text = {
+                    "If played hand contains",
+                    "{C:blue}n {C:attention}face{} cards, create",
+                    "{C:blue}n-1{} random {C:attention}numbered{} cards",
+                    "{s:0.8,C:inactive}Peak {s:0.8,C:red}debauchery{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

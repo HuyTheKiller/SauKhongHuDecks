@@ -304,6 +304,15 @@ return {
                     "{s:0.8,C:inactive}hiệu quả để đem lại điều tốt.",
                 },
             },
+            b_skh_forgotten_lusty = {
+                name = "Bộ Bài Sâu Dục Vọng?",
+                text = {
+                    "Nếu tay bài đã chơi",
+                    "chứa {C:blue}n{} lá {C:attention}mặt{}, tạo ra",
+                    "{C:blue}n-1{} lá {C:attention}số{} ngẫu nhiên",
+                    "{s:0.8,C:inactive}Đỉnh cao {s:0.8,C:red}thác loạn{s:0.8,C:inactive}.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

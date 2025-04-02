@@ -556,19 +556,19 @@ SMODS.Back({
 						has_common = true
 					end
 					if temp.config.center.rarity == 2 then
-						killed = envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+						killed = envious_roulette(temp, "chaos_envious_uncommon", self.config.extra.current_deck_config.odds_uncommon, i)
 					elseif temp.config.center.rarity == 3 then
-						killed = envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i) or killed
+						killed = envious_roulette(temp, "chaos_envious_rare", self.config.extra.current_deck_config.odds_rare, i) or killed
 					elseif temp.config.center.rarity == 4 then
-						killed = envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i) or killed
+						killed = envious_roulette(temp, "chaos_envious_legendary", self.config.extra.current_deck_config.odds_legendary, i) or killed
 					end
 					if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
 						if temp.config.center.rarity == 'cry_epic' then
-							killed = envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i) or killed
+							killed = envious_roulette(temp, "chaos_envious_cry_epic", self.config.extra.current_deck_config.odds_cry_epic, i) or killed
 						elseif temp.config.center.rarity == 'cry_exotic' then
-							killed = envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i) or killed
+							killed = envious_roulette(temp, "chaos_envious_cry_exotic", self.config.extra.current_deck_config.odds_cry_exotic, i) or killed
 						elseif temp.config.center.rarity == 'cry_candy' then
-							killed = envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i) or killed
+							killed = envious_roulette(temp, "chaos_envious_cry_candy", self.config.extra.current_deck_config.odds_cry_candy, i) or killed
 						end
 					end
 				end

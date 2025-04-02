@@ -313,6 +313,14 @@ return {
                     "{s:0.8,C:inactive}Đỉnh cao {s:0.8,C:red}thác loạn{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_forgotten_slothful = {
+                name = "Bộ Bài Sâu Lười Biếng?",
+                text = {
+                    "Áp dụng Bộ Bài {C:dark_edition}Sâu Lười Biếng{}",
+                    "{C:attention}Ante{} thắng {C:red}vô định{}",
+                    "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

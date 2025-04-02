@@ -134,6 +134,32 @@ SKHDecks.b_side_current = false
 '''
 match_indent = true
 
+# Forgotten Slothful shenanigan
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.round_resets, ref_value = 'ante'}}, colours = {G.C.IMPORTANT},shadow = true, font = G.LANGUAGES['en-us'].font, scale = 2*scale}),id = 'ante_UI_count'}},'''
+position = "at"
+payload = '''
+{n=G.UIT.O, config={object = DynaText({string = G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_slothful" and {{ref_table = G.GAME.round_resets, ref_value = 'ante'}} or "?",
+  colours = {G.C.IMPORTANT},shadow = true, font = G.LANGUAGES['en-us'].font, scale = 2*scale}),id = 'ante_UI_count'}},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.T, config={ref_table = G.GAME, ref_value='win_ante', scale = scale, colour = G.C.WHITE, shadow = true}}'''
+position = "at"
+payload = '''
+{n=G.UIT.T, config={
+  text = G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_slothful" and nil or "??",
+  ref_table = G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_slothful" and G.GAME or nil,
+  ref_value=G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_slothful" and 'win_ante' or nil,
+  scale = scale, colour = G.C.WHITE, shadow = true}}
+'''
+match_indent = true
+
 # Patches to remove said Galdur dependency (abandoning this attempt for now)
 
 # [[patches]]

@@ -56,3 +56,28 @@ SMODS.Back({
 })
 
 SKHDecks.add_skh_b_side("b_skh_lustyworm", "b_skh_forgotten_lusty")
+
+SMODS.Back({
+	key = "forgotten_slothful",
+	atlas = "forgotten_sin",
+    pos = { x = 0, y = 1 },
+	-- unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
+				extra = {odds = 30, ante_loss = 1}},
+	calculate = function(self, back, context)
+		if context.end_of_round then
+			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds then
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+		end
+	end,
+	apply = function(self, back)
+		local random_ante = pseudorandom('forgotten_slothful_random_ante', -3, 2)
+        G.GAME.win_ante = G.GAME.win_ante + random_ante
+	end
+})
+
+SKHDecks.add_skh_b_side("b_skh_slothfulworm", "b_skh_forgotten_slothful")

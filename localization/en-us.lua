@@ -308,6 +308,14 @@ return {
                     "{s:0.8,C:inactive}Peak {s:0.8,C:red}debauchery{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_forgotten_slothful = {
+                name = "Slothful Worm Deck?",
+                text = {
+                    "Apply {C:dark_edition}Slothful Worm{} Deck",
+                    "{C:red}Unknown{} win {C:attention}Ante{}",
+                    "{s:0.8,C:inactive}Tired, {s:0.8,C:red}starving{s:0.8,C:inactive}, thirsty.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

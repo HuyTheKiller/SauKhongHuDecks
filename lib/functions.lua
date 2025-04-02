@@ -72,6 +72,20 @@ function game_over()
 	G.STATE_COMPLETE = false
 end
 
+-- Forgotten Slothful shenanigan
+local rb = reset_blinds
+function reset_blinds()
+    rb()
+    if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_slothful" then
+        G.GAME.round_resets.blind_states.Small = 'Hide'
+        G.GAME.round_resets.blind_states.Big = 'Hide'
+        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+        G.GAME.blind_on_deck = 'Boss'
+        G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+        G.GAME.round_resets.boss_rerolled = false
+    end
+end
+
 -- Cool, config tab
 config = SKHDecks.config
 

@@ -61,6 +61,7 @@ SMODS.Back({
 	key = "forgotten_slothful",
 	atlas = "forgotten_sin",
     pos = { x = 0, y = 1 },
+    omit = not config.DisableOverride,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,

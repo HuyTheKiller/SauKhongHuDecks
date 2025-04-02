@@ -33,6 +33,13 @@ SMODS.Sound({
 	volume = 0.5
 })
 
+SMODS.Sound({
+	key = "envious_laugh",
+	path = "envious_laugh.ogg",
+	pitch = 0.7,
+	volume = 0.5
+})
+
 SMODS.Atlas({
     key = "forgotten_locked",
     path = "ForgottenLocked.png",

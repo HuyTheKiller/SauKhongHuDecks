@@ -258,25 +258,32 @@ SMODS.Back({
 					   odds_cry_candy = 100, odds_cry_cursed = nil}},
 	calculate = function(self, back, context)
 		if context.end_of_round then
-			-- local i = 1
+			local killed = false
+			local has_common = false
 			for i = 1, #G.jokers.cards do
 				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity == 1 then
+					has_common = true
+				end
 				if temp.config.center.rarity == 2 then
-					envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+					killed = envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
 				elseif temp.config.center.rarity == 3 then
-					envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i)
+					killed = envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i) or killed
 				elseif temp.config.center.rarity == 4 then
-					envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i)
+					killed = envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i) or killed
 				end
 				if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
 					if temp.config.center.rarity == 'cry_epic' then
-						envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i)
+						killed = envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i) or killed
 					elseif temp.config.center.rarity == 'cry_exotic' then
-						envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i)
+						killed = envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i) or killed
 					elseif temp.config.center.rarity == 'cry_candy' then
-						envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i)
+						killed = envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i) or killed
 					end
 				end
+			end
+			if killed and has_common then
+				play_sound("skh_envious_laugh", 1, 1)
 			end
 		end
 	end,
@@ -541,24 +548,32 @@ SMODS.Back({
 			end
 		elseif G.GAME.chaos_roll == "b_skh_enviousworm" then
 			if context.end_of_round then
+				local killed = false
+				local has_common = false
 				for i = 1, #G.jokers.cards do
 					local temp = G.jokers.cards[i]
-					if temp.config.center.rarity == 2 then
-						envious_roulette(temp, "chaos_envious_uncommon", self.config.extra.current_deck_config.odds_uncommon, i)
-					elseif temp.config.center.rarity == 3 then
-						envious_roulette(temp, "chaos_envious_rare", self.config.extra.current_deck_config.odds_rare, i)
-					elseif temp.config.center.rarity == 4 then
-						envious_roulette(temp, "chaos_envious_legendary", self.config.extra.current_deck_config.odds_legendary, i)
+					if temp.config.center.rarity == 1 then
+						has_common = true
 					end
-					if Cryptid then
+					if temp.config.center.rarity == 2 then
+						killed = envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+					elseif temp.config.center.rarity == 3 then
+						killed = envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i) or killed
+					elseif temp.config.center.rarity == 4 then
+						killed = envious_roulette(temp, "envious_legendary", self.config.extra.odds_legendary, i) or killed
+					end
+					if Cryptid then -- I'm just unreasonably adding Cryptid compat, bruh
 						if temp.config.center.rarity == 'cry_epic' then
-							envious_roulette(temp, "chaos_envious_cry_epic", self.config.extra.current_deck_config.odds_cry_epic, i)
+							killed = envious_roulette(temp, "envious_cry_epic", self.config.extra.odds_cry_epic, i) or killed
 						elseif temp.config.center.rarity == 'cry_exotic' then
-							envious_roulette(temp, "chaos_envious_cry_exotic", self.config.extra.current_deck_config.odds_cry_exotic, i)
+							killed = envious_roulette(temp, "envious_cry_exotic", self.config.extra.odds_cry_exotic, i) or killed
 						elseif temp.config.center.rarity == 'cry_candy' then
-							envious_roulette(temp, "chaos_envious_cry_candy", self.config.extra.current_deck_config.odds_cry_candy, i)
+							killed = envious_roulette(temp, "envious_cry_candy", self.config.extra.odds_cry_candy, i) or killed
 						end
 					end
+				end
+				if killed and has_common then
+					play_sound("skh_envious_laugh", 1, 1)
 				end
 			end
 		elseif G.GAME.chaos_roll == "b_skh_pridefulworm" then

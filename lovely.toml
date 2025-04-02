@@ -58,6 +58,19 @@ end
 '''
 match_indent = true
 
+# Forgotten Diligent's do-not-overscore mechanic
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''if game_over then'''
+position = "before"
+payload = '''
+if G.GAME.chips - G.GAME.blind.chips >= G.GAME.blind.chips and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_diligent" then
+    game_over = true
+end
+'''
+match_indent = true
+
 # Custom locked sprite for Forgotten Decks (not working)
 # [[patches]]
 # [patches.pattern]

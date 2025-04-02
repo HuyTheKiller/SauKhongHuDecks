@@ -289,6 +289,16 @@ return {
                     "{s:0.8,C:inactive}Why am I {s:0.8,C:red}bleeding{s:0.8,C:inactive} down there?",
                 },
             },
+            b_skh_forgotten_diligent = {
+                name = "Diligent Worm Deck?",
+                text = {
+                    "{C:attention}+#1#{} Joker slot",
+                    "{C:attention}Debuff{} first joker",
+                    "If score is over {C:attention}200%{} requirement,",
+                    "instantly {C:red}lose{} the run",
+                    "{s:0.8,C:inactive}Number accuracy {s:0.8,C:red}must{s:0.8,C:inactive} be considered.",
+                },
+            },
             b_skh_forgotten_abstemious = {
                 name = "Abstemious Worm Deck?",
                 text = {

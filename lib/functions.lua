@@ -86,6 +86,26 @@ function reset_blinds()
     end
 end
 
+-- Forgotten Diligent's debuff-first-joker mechanic
+local cardarea_update_ref = CardArea.update
+function CardArea:update(dt)
+	cardarea_update_ref(self, dt)
+	if G.GAME.selected_back then
+		if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_diligent" then
+			if self == G.jokers and G.jokers.cards[1] then
+				for i = 1, #G.jokers.cards do
+					if i == 1 and not G.jokers.cards[i].debuff then
+						G.jokers.cards[i]:set_debuff(true)
+					end
+					if i > 1 and G.jokers.cards[i].debuff then
+						G.jokers.cards[i]:set_debuff(false)
+					end
+				end
+			end
+		end
+	end
+end
+
 -- Cool, config tab
 config = SKHDecks.config
 

@@ -294,6 +294,16 @@ return {
                     "{s:0.8,C:inactive}Sao tôi lại đang {s:0.8,C:red}chảy máu{s:0.8,C:inactive} ở dưới đó?",
                 },
             },
+            b_skh_forgotten_diligent = {
+                name = "Bộ Bài Sâu Siêng Năng?",
+                text = {
+                    "{C:attention}+#1#{} ô Joker",
+                    "{C:attention}Vô hiệu{} joker đầu tiên",
+                    "Nếu điểm vượt quá {C:attention}200%{} yêu cầu,",
+                    "{C:red}thua{} trận tức thì",
+                    "{s:0.8,C:red}Cần{s:0.8,C:inactive} đề cao độ chính xác của con số.",
+                },
+            },
             b_skh_forgotten_abstemious = {
                 name = "Bộ Bài Sâu Tiết Chế?",
                 text = {

@@ -37,6 +37,32 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_virginworm", "b_skh_forgotten_virgin")
 
 SMODS.Back({
+    key = "forgotten_diligent",
+    atlas = "forgotten_virtue",
+    pos = { x = 2, y = 0 },
+    config = {joker_slot = 1},
+    omit = not config.DisableOverride,
+    unlocked = false,
+    unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
+    apply = function(self, back)
+        delay(0.4)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local joker = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_joker", "deck")
+				joker:add_to_deck()
+				G.jokers:emplace(joker)
+				joker:start_materialize()
+
+				return true
+			end,
+		}))
+    end,
+    loc_vars = function(self)
+        return {vars = {self.config.joker_slot}}
+    end
+})
+
+SMODS.Back({
     key = "forgotten_abstemious",
     atlas = "forgotten_virtue",
     pos = { x = 3, y = 0 },

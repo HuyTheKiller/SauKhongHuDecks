@@ -68,7 +68,7 @@ SMODS.Back({
     omit = not config.DisableOverride,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
-    config = {dollars = 96, b_side_lock = true, extra = {money_common = 3, money_uncommon = 2, money_rare = 1, money_loss = 3, money_loss_per_ante = 20}},
+    config = {dollars = 96, b_side_lock = true, extra = {money_common = 6, money_uncommon = 4, money_rare = 2, money_loss = 1, money_loss_per_ante = 0}},
     calculate = function(self, back, context)
         if context.before then
             for i = 1, #G.play.cards do
@@ -76,6 +76,9 @@ SMODS.Back({
                 ease_dollars(-self.config.extra.money_loss)
                 delay(0.15)
             end
+        end
+        if context.skh_press then
+            ease_dollars(-self.config.extra.money_loss)
         end
         if context.post_trigger then
             local temp = context.other_card
@@ -97,6 +100,7 @@ SMODS.Back({
             end
 		end
         if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+            self.config.extra.money_loss_per_ante = math.floor(to_number(G.GAME.dollars)/4)
             ease_dollars(-self.config.extra.money_loss_per_ante)
         end
     end,
@@ -104,7 +108,7 @@ SMODS.Back({
         G.GAME.modifiers.discard_cost = self.config.extra.money_loss
     end,
     loc_vars = function(self)
-        return {vars = {4+self.config.dollars, self.config.extra.money_loss, self.config.extra.money_loss_per_ante}}
+        return {vars = {4+self.config.dollars, self.config.extra.money_loss}}
     end
 })
 

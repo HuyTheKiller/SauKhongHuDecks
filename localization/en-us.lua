@@ -293,10 +293,10 @@ return {
                 name = "Greedy Worm Deck?",
                 text = {
                     "Start with {C:money}$#1#{}",
-                    "Each discard/played card costs {C:red}$#2#{}",
+                    "Certain actions cost {C:red}$#2#{}",
                     "Jokers give {C:}money{} when triggered",
                     "depending on {C:attention}rarity{}",
-                    "Lose {C:red}$#3#{} at end of Ante",
+                    "Lose {C:attention}25%{} of money at end of Ante",
                     "{s:0.8,C:red}Capitalism{s:0.8,C:inactive} at its finest.",
                 },
             },

@@ -12,6 +12,9 @@ end
 to_big = to_big or function(x)
 	return x
 end
+to_number = to_number or function(x)
+	return x
+end
 
 -- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
 function skh_get_rank_suffix(card)
@@ -105,6 +108,15 @@ function CardArea:update(dt)
 		end
 	end
 end
+
+-- Add on-click context (copy-pasted from Cryptid)
+local lcpref = Controller.L_cursor_press
+		function Controller:L_cursor_press(x, y)
+			lcpref(self, x, y)
+			if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
+				SMODS.calculate_context({ skh_press = true })
+			end
+		end
 
 -- Cool, config tab
 config = SKHDecks.config

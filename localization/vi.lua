@@ -298,10 +298,10 @@ return {
                 name = "Bộ Bài Sâu Tham Lam?",
                 text = {
                     "Bắt đầu với {C:money}$#1#{}",
-                    "Mỗi lượt bỏ/lá đã chơi tốn {C:red}$#2#{}",
+                    "Một số hành động tốn {C:red}$#2#{}",
                     "Joker cho {C:}tiền{} khi kích hoạt",
                     "dựa trên {C:attention}độ hiếm{}",
-                    "Mất {C:red}$#3#{} ở cuối Ante",
+                    "Mất {C:attention}25%{} số tiền ở cuối Ante",
                     "{s:0.8,C:red}Tư bản{s:0.8,C:inactive} thời hoàng kim.",
                 },
             },

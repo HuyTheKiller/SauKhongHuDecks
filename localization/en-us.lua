@@ -355,7 +355,7 @@ return {
                     "Apply {C:attention,T:j_splash}Splash{}",
                     "Retrigger all played cards once for",
                     "each additional {C:attention}Splash{} owned",
-                    "Allow {C:attention}Splash{} clones to appear",
+                    "Allow {C:attention}Splash{} duplicates to appear",
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}Excited{s:0.8,C:inactive}!!!",
                 },
             },

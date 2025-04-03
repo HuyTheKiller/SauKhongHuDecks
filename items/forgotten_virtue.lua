@@ -40,7 +40,7 @@ SMODS.Back({
     key = "forgotten_diligent",
     atlas = "forgotten_virtue",
     pos = { x = 2, y = 0 },
-    config = {joker_slot = 1},
+    config = {joker_slot = 1, b_side_lock = true},
     omit = not config.DisableOverride,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},

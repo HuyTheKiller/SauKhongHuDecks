@@ -300,6 +300,16 @@ return {
                     "{s:0.8,C:red}Capitalism{s:0.8,C:inactive} at its finest.",
                 },
             },
+            b_skh_forgotten_gluttony = {
+                name = "Gluttony Worm Deck?",
+                text = {
+                    "{C:attention}Destroy{} all scoring cards",
+                    "Add a number of random cards equal",
+                    "to {C:attention}25%{} of destroyed cards",
+                    "this round to deck at end of round",
+                    "{s:0.8,C:inactive}To suffer from {s:0.8,C:red}indigestion{s:0.8,C:inactive} is real...",
+                },
+            },
             b_skh_forgotten_slothful = {
                 name = "Slothful Worm Deck?",
                 text = {

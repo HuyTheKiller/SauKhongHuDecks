@@ -1,10 +1,11 @@
--- Inject global variable for Wormy Chaos and Omnipotent Worm
+-- Inject global variable for various decks
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
-	ret.chaos_roll = "b_skh_lustyworm"
-	ret.omnipotent_roll = "b_skh_patientworm"
-	ret.hand_discard_used = 0
+	ret.chaos_roll = "b_skh_lustyworm" -- Womry Chaos
+	ret.omnipotent_roll = "b_skh_patientworm" -- Omnipotent Worm
+	ret.hand_discard_used = 0 -- Forgotten Abstemious
+	ret.cards_destroyed = 0 -- Forgotten Gluttony
 	return ret
 end
 

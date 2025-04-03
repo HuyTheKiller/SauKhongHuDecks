@@ -305,6 +305,16 @@ return {
                     "{s:0.8,C:red}Tư bản{s:0.8,C:inactive} thời hoàng kim.",
                 },
             },
+            b_skh_forgotten_gluttony = {
+                name = "Bộ Bài Sâu Phàm Ăn?",
+                text = {
+                    "{C:attention}Phá huỷ{} mọi lá bài ghi điểm",
+                    "Thêm số lượng lá ngẫu nhiên",
+                    "bằng {C:attention}25%{} số lá bị phá huỷ",
+                    "ván này vào bộ bài ở cuối ván",
+                    "{s:0.8,C:inactive}Ăn đến {s:0.8,C:red}bội thực{s:0.8,C:inactive} là có thật...",
+                },
+            },
             b_skh_forgotten_slothful = {
                 name = "Bộ Bài Sâu Lười Biếng?",
                 text = {

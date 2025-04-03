@@ -115,6 +115,37 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_greedyworm", "b_skh_forgotten_greedy")
 
 SMODS.Back({
+    key = "forgotten_gluttony",
+    atlas = "forgotten_sin",
+    pos = { x = 2, y = 0 },
+    omit = not config.DisableOverride,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
+    config = {b_side_lock = true},
+    calculate = function(self, back, context)
+        if context.destroy_card and context.cardarea == G.play then
+            G.GAME.cards_destroyed = G.GAME.cards_destroyed + 1
+            return {
+                message = localize('k_chomp_ex'),
+                sound = "skh_chomp",
+                colour = G.C.YELLOW,
+                remove = true
+            }
+        end
+        if context.context == "eval" and G.GAME.cards_destroyed > 0 then
+            play_sound("skh_vomit", 1, 1)
+            for _ = 1, math.max(1, math.floor(G.GAME.cards_destroyed/4)) do
+                local new_card = create_playing_card(nil, G.deck)
+                new_card:add_to_deck()
+                playing_card_randomise(new_card)
+                playing_card_joker_effects({new_card})
+            end
+            G.GAME.cards_destroyed = 0
+        end
+    end
+})
+
+SMODS.Back({
 	key = "forgotten_slothful",
 	atlas = "forgotten_sin",
     pos = { x = 0, y = 1 },

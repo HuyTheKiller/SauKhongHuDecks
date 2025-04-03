@@ -50,6 +50,10 @@ SMODS.Back({
                         return true
                     end
                 }))
+                return {
+					message = localize('k_debaunched_ex'),
+					colour = G.C.RED,
+				}
             end
         end
     end

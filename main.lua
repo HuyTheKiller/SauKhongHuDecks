@@ -6,6 +6,9 @@ SKHDecks.load_table = {
 	forgotten_sin = true,
 	forgotten_virtue = true,
 }
+SKHDecks.optional_features = {
+	post_trigger = true
+}
 SKHDecks.b_side_table = {}
 SKHDecks.b_side_current = false
 

@@ -285,6 +285,34 @@ return {
                     "ở bất kì độ khó nào"
                 },
             },
+            b_skh_forgotten_lusty = {
+                name = "Bộ Bài Sâu Dục Vọng?",
+                text = {
+                    "Nếu tay bài đã chơi",
+                    "chứa {C:blue}n{} lá {C:attention}mặt{}, tạo ra",
+                    "{C:blue}n-1{} lá {C:attention}số{} ngẫu nhiên",
+                    "{s:0.8,C:inactive}Đỉnh cao {s:0.8,C:red}thác loạn{s:0.8,C:inactive}.",
+                },
+            },
+            b_skh_forgotten_greedy = {
+                name = "Bộ Bài Sâu Tham Lam?",
+                text = {
+                    "Bắt đầu với {C:money}$#1#{} và {C:attention,T:v_seed_money}Tiền Hạt Giống{}",
+                    "Mỗi tay bài đã chơi tốn {C:red}$#2#{}",
+                    "Joker cho {C:}tiền{} khi kích hoạt",
+                    "dựa trên {C:attention}độ hiếm{}",
+                    "Mất {C:red}$#3#{} ở cuối Ante",
+                    "{s:0.8,C:red}Tư bản{s:0.8,C:inactive} thời hoàng kim.",
+                },
+            },
+            b_skh_forgotten_slothful = {
+                name = "Bộ Bài Sâu Lười Biếng?",
+                text = {
+                    "Áp dụng Bộ Bài {C:dark_edition}Sâu Lười Biếng{}",
+                    "{C:attention}Ante{} thắng {C:red}vô định{}",
+                    "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
+                },
+            },
             b_skh_forgotten_virgin = {
                 name = "Bộ Bài Sâu Thanh Khiết?",
                 text = {
@@ -312,23 +340,6 @@ return {
                     "mỗi ván không thể vượt quá #1#",
                     "{s:0.8,C:inactive}Phải {s:0.8,C:red}kiểm soát{s:0.8,C:inactive} bản thận",
                     "{s:0.8,C:inactive}hiệu quả để đem lại điều tốt.",
-                },
-            },
-            b_skh_forgotten_lusty = {
-                name = "Bộ Bài Sâu Dục Vọng?",
-                text = {
-                    "Nếu tay bài đã chơi",
-                    "chứa {C:blue}n{} lá {C:attention}mặt{}, tạo ra",
-                    "{C:blue}n-1{} lá {C:attention}số{} ngẫu nhiên",
-                    "{s:0.8,C:inactive}Đỉnh cao {s:0.8,C:red}thác loạn{s:0.8,C:inactive}.",
-                },
-            },
-            b_skh_forgotten_slothful = {
-                name = "Bộ Bài Sâu Lười Biếng?",
-                text = {
-                    "Áp dụng Bộ Bài {C:dark_edition}Sâu Lười Biếng{}",
-                    "{C:attention}Ante{} thắng {C:red}vô định{}",
-                    "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
                 },
             },
         },

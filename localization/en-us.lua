@@ -280,6 +280,34 @@ return {
                     "on any difficulty"
                 },
             },
+            b_skh_forgotten_lusty = {
+                name = "Lusty Worm Deck?",
+                text = {
+                    "If played hand contains",
+                    "{C:blue}n {C:attention}face{} cards, create",
+                    "{C:blue}n-1{} random {C:attention}numbered{} cards",
+                    "{s:0.8,C:inactive}Peak {s:0.8,C:red}debauchery{s:0.8,C:inactive}.",
+                },
+            },
+            b_skh_forgotten_greedy = {
+                name = "Greedy Worm Deck?",
+                text = {
+                    "Start with {C:money}$#1#{} and {C:attention,T:v_seed_money}Seed Money{}",
+                    "Each hand played costs {C:red}$#2#{}",
+                    "Jokers give {C:}money{} when triggered",
+                    "depending on {C:attention}rarity{}",
+                    "Lose {C:red}$#3#{} at end of Ante",
+                    "{s:0.8,C:red}Capitalism{s:0.8,C:inactive} at its finest.",
+                },
+            },
+            b_skh_forgotten_slothful = {
+                name = "Slothful Worm Deck?",
+                text = {
+                    "Apply {C:dark_edition}Slothful Worm{} Deck",
+                    "{C:red}Unknown{} win {C:attention}Ante{}",
+                    "{s:0.8,C:inactive}Tired, {s:0.8,C:red}starving{s:0.8,C:inactive}, thirsty.",
+                },
+            },
             b_skh_forgotten_virgin = {
                 name = "Virgin Worm Deck?",
                 text = {
@@ -307,23 +335,6 @@ return {
                     "every round is capped at #1#",
                     "{s:0.8,C:inactive}Must {s:0.8,C:red}control{s:0.8,C:inactive} yourself",
                     "{s:0.8,C:inactive}effectively for the better good.",
-                },
-            },
-            b_skh_forgotten_lusty = {
-                name = "Lusty Worm Deck?",
-                text = {
-                    "If played hand contains",
-                    "{C:blue}n {C:attention}face{} cards, create",
-                    "{C:blue}n-1{} random {C:attention}numbered{} cards",
-                    "{s:0.8,C:inactive}Peak {s:0.8,C:red}debauchery{s:0.8,C:inactive}.",
-                },
-            },
-            b_skh_forgotten_slothful = {
-                name = "Slothful Worm Deck?",
-                text = {
-                    "Apply {C:dark_edition}Slothful Worm{} Deck",
-                    "{C:red}Unknown{} win {C:attention}Ante{}",
-                    "{s:0.8,C:inactive}Tired, {s:0.8,C:red}starving{s:0.8,C:inactive}, thirsty.",
                 },
             },
         },

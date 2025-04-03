@@ -58,6 +58,48 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_lustyworm", "b_skh_forgotten_lusty")
 
 SMODS.Back({
+    key = "forgotten_greedy",
+    atlas = "forgotten_sin",
+    pos = { x = 1, y = 0 },
+    omit = not config.DisableOverride,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+    config = {dollars = 96, vouchers = {"v_seed_money"}, b_side_lock = true, extra = {money_common = 3, money_uncommon = 2, money_rare = 1, money_loss_per_hand = 1, money_loss_per_ante = 20}},
+    calculate = function(self, back, context)
+        if context.before then
+            ease_dollars(-self.config.extra.money_loss_per_hand)
+        end
+        if context.post_trigger then
+            local temp = context.other_card
+            if temp.config.center.rarity == 1 then
+                return {
+                    dollars = self.config.extra.money_common,
+                    card = context.other_context.blueprint_card or context.other_card,
+                }
+            elseif temp.config.center.rarity == 2 then
+                return {
+                    dollars = self.config.extra.money_uncommon,
+                    card = context.other_context.blueprint_card or context.other_card,
+                }
+            elseif temp.config.center.rarity == 3 then
+                return {
+                    dollars = self.config.extra.money_rare,
+                    card = context.other_context.blueprint_card or context.other_card,
+                }
+            end
+		end
+        if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+            ease_dollars(-self.config.extra.money_loss_per_ante)
+        end
+    end,
+    loc_vars = function(self)
+        return {vars = {4+self.config.dollars, self.config.extra.money_loss_per_hand, self.config.extra.money_loss_per_ante}}
+    end
+})
+
+SKHDecks.add_skh_b_side("b_skh_greedyworm", "b_skh_forgotten_greedy")
+
+SMODS.Back({
 	key = "forgotten_slothful",
 	atlas = "forgotten_sin",
     pos = { x = 0, y = 1 },

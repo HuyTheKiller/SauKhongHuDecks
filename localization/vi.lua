@@ -297,8 +297,8 @@ return {
             b_skh_forgotten_greedy = {
                 name = "Bộ Bài Sâu Tham Lam?",
                 text = {
-                    "Bắt đầu với {C:money}$#1#{} và {C:attention,T:v_seed_money}Tiền Hạt Giống{}",
-                    "Mỗi tay bài đã chơi tốn {C:red}$#2#{}",
+                    "Bắt đầu với {C:money}$#1#{}",
+                    "Mỗi lượt bỏ/lá đã chơi tốn {C:red}$#2#{}",
                     "Joker cho {C:}tiền{} khi kích hoạt",
                     "dựa trên {C:attention}độ hiếm{}",
                     "Mất {C:red}$#3#{} ở cuối Ante",

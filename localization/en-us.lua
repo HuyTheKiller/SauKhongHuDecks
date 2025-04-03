@@ -292,8 +292,8 @@ return {
             b_skh_forgotten_greedy = {
                 name = "Greedy Worm Deck?",
                 text = {
-                    "Start with {C:money}$#1#{} and {C:attention,T:v_seed_money}Seed Money{}",
-                    "Each hand played costs {C:red}$#2#{}",
+                    "Start with {C:money}$#1#{}",
+                    "Each discard/played card costs {C:red}$#2#{}",
                     "Jokers give {C:}money{} when triggered",
                     "depending on {C:attention}rarity{}",
                     "Lose {C:red}$#3#{} at end of Ante",

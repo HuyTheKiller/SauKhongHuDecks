@@ -64,10 +64,14 @@ SMODS.Back({
     omit = not config.DisableOverride,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
-    config = {dollars = 96, vouchers = {"v_seed_money"}, b_side_lock = true, extra = {money_common = 3, money_uncommon = 2, money_rare = 1, money_loss_per_hand = 1, money_loss_per_ante = 20}},
+    config = {dollars = 96, b_side_lock = true, extra = {money_common = 3, money_uncommon = 2, money_rare = 1, money_loss = 3, money_loss_per_ante = 20}},
     calculate = function(self, back, context)
         if context.before then
-            ease_dollars(-self.config.extra.money_loss_per_hand)
+            for i = 1, #G.play.cards do
+                G.E_MANAGER:add_event(Event({func = function() G.play.cards[i]:juice_up(); return true end }))
+                ease_dollars(-self.config.extra.money_loss)
+                delay(0.15)
+            end
         end
         if context.post_trigger then
             local temp = context.other_card
@@ -92,8 +96,11 @@ SMODS.Back({
             ease_dollars(-self.config.extra.money_loss_per_ante)
         end
     end,
+    apply = function(self, back)
+        G.GAME.modifiers.discard_cost = self.config.extra.money_loss
+    end,
     loc_vars = function(self)
-        return {vars = {4+self.config.dollars, self.config.extra.money_loss_per_hand, self.config.extra.money_loss_per_ante}}
+        return {vars = {4+self.config.dollars, self.config.extra.money_loss, self.config.extra.money_loss_per_ante}}
     end
 })
 

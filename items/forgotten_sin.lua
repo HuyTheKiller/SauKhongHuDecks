@@ -63,7 +63,7 @@ SMODS.Back({
     pos = { x = 0, y = 1 },
     omit = not config.DisableOverride,
 	unlocked = false,
-	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_slothfulworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
 				extra = {odds = 30, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)

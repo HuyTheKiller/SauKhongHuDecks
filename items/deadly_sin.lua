@@ -55,7 +55,7 @@ SMODS.Back({
     pos = { x = 1, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_lustyworm'},
-	config = {extra = {dollars = 8}},
+	config = {extra = {money = 8}},
 	calculate = function(self, back, context)
 		if context.setting_blind then
 			for i = 1, #G.jokers.cards do
@@ -63,7 +63,7 @@ SMODS.Back({
 				if G.jokers.cards[i].edition then
 					G.jokers.cards[i]:set_edition(nil)
 					delay(0.1)
-					ease_dollars(self.config.extra.dollars)
+					ease_dollars(self.config.extra.money)
 				end
 			end
 			for c = #G.playing_cards, 1, -1 do
@@ -75,7 +75,7 @@ SMODS.Back({
 							return true
 						end}))
 						delay(0.1)
-						ease_dollars(self.config.extra.dollars)
+						ease_dollars(self.config.extra.money)
 					end
 					if temp.seal then
 						G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
@@ -120,7 +120,7 @@ SMODS.Back({
 		}))
 	end,
 	loc_vars = function(self)
-        return {vars = {self.config.extra.dollars}}
+        return {vars = {self.config.extra.money}}
     end,
 })
 
@@ -365,7 +365,7 @@ SMODS.Back({
 		in_game = false,
 		current_deck_config = {
 			triggered = nil,
-			greedy_dollars = 8,
+			greedy_money = 8,
 			gluttony_odds = 6,
 			slothful_odds = 30,
 			slothful_ante_loss = 1,
@@ -434,7 +434,7 @@ SMODS.Back({
 					if G.jokers.cards[i].edition then
 						G.jokers.cards[i]:set_edition(nil)
 						delay(0.1)
-						ease_dollars(self.config.extra.current_deck_config.greedy_dollars)
+						ease_dollars(self.config.extra.current_deck_config.greedy_money)
 					end
 				end
 				for c = #G.playing_cards, 1, -1 do
@@ -446,7 +446,7 @@ SMODS.Back({
 								return true
 							end}))
 							delay(0.1)
-							ease_dollars(self.config.extra.current_deck_config.greedy_dollars)
+							ease_dollars(self.config.extra.current_deck_config.greedy_money)
 						end
 						if temp.seal then
 							G.E_MANAGER:add_event(Event({trigger = 'after', func = function()

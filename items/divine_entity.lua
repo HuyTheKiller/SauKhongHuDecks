@@ -247,7 +247,7 @@ SMODS.Back({
     pos = { x = 1, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
-	config = {extra = {dollars = 1}, vouchers = {"v_tarot_merchant"}, ante_scaling = 2, no_interest = true},
+	config = {extra = {money = 1}, vouchers = {"v_tarot_merchant"}, ante_scaling = 2, no_interest = true},
 	calculate = function(self, back, context)
 		if context.individual and context.cardarea == G.play then
 			if context.other_card.ability.set == 'Enhanced' and not context.other_card.debuff then
@@ -256,7 +256,7 @@ SMODS.Back({
 					temp:set_ability(G.P_CENTERS.c_base)
 					return true
 				end}))
-				return { dollars = self.config.extra.dollars }
+				return { dollars = self.config.extra.money }
 			end
 		end
 		if context.context == "final_scoring_step" then
@@ -346,7 +346,7 @@ SMODS.Back({
 		}))
 	end,
 	loc_vars = function(self)
-        return {vars = {self.config.extra.dollars}}
+        return {vars = {self.config.extra.money}}
     end,
 })
 

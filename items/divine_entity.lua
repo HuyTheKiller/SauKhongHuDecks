@@ -380,6 +380,7 @@ SMODS.Back({
 					return {
 						message = localize("k_wee_ex"),
 						sound = "skh_wee",
+						colour = G.C.BLACK,
 						remove = true
 					}
 				end
@@ -505,6 +506,7 @@ if CardSleeves then
 							return {
 								message = localize("k_wee_ex"),
 								sound = "skh_wee",
+								colour = G.C.BLACK,
 								remove = true
 							}
 						end

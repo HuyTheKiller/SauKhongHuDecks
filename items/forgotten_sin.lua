@@ -145,6 +145,8 @@ SMODS.Back({
     end
 })
 
+SKHDecks.add_skh_b_side("b_skh_gluttonyworm", "b_skh_forgotten_gluttony")
+
 SMODS.Back({
 	key = "forgotten_slothful",
 	atlas = "forgotten_sin",

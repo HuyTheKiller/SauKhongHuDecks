@@ -302,7 +302,7 @@ return {
                     "Joker cho {C:money}tiền{} khi kích hoạt",
                     "dựa trên {C:attention}độ hiếm{}",
                     "Mất {C:attention}25%{} số tiền ở cuối Ante",
-                    "{s:0.8,C:red}Tư bản{s:0.8,C:inactive} thời hoàng kim.",
+                    "{s:0.8,C:red}Tư bản{s:0.8,C:inactive} tuyệt đối.",
                 },
             },
             b_skh_forgotten_gluttony = {
@@ -312,7 +312,7 @@ return {
                     "Thêm số lượng lá ngẫu nhiên",
                     "bằng {C:attention}25%{} số lá bị phá huỷ",
                     "ván này vào bộ bài ở cuối ván",
-                    "{s:0.8,C:inactive}Ăn đến {s:0.8,C:red}bội thực{s:0.8,C:inactive} là có thật...",
+                    "{s:0.8,C:inactive}Nhòm {s:0.8,C:red}NHOÀM{s:0.8,C:inactive}, măm măm...",
                 },
             },
             b_skh_forgotten_slothful = {

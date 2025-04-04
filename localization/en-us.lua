@@ -297,7 +297,7 @@ return {
                     "Jokers give {C:money}money{} when triggered",
                     "depending on {C:attention}rarity{}",
                     "Lose {C:attention}25%{} of money at end of Ante",
-                    "{s:0.8,C:red}Capitalism{s:0.8,C:inactive} at its finest.",
+                    "{s:0.8,C:red}Absolute {s:0.8,C:red}capitalism{s:0.8,C:inactive}.",
                 },
             },
             b_skh_forgotten_gluttony = {
@@ -307,7 +307,7 @@ return {
                     "Add a number of random cards equal",
                     "to {C:attention}25%{} of destroyed cards",
                     "this round to deck at end of round",
-                    "{s:0.8,C:inactive}To suffer from {s:0.8,C:red}indigestion{s:0.8,C:inactive} is real...",
+                    "{s:0.8,C:inactive}Munch, {s:0.8,C:red}MUNCH{s:0.8,C:inactive}, chomp, chomp...",
                 },
             },
             b_skh_forgotten_slothful = {

@@ -212,7 +212,7 @@ G.FUNCS.apply_skh_b_sides = function()
 							new_card.deck_select_position = true
 							new_card.sprite_facing = "back"
 							new_card.facing = "back"
-							new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.atlas or "centers"], center.pos)
+							new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.unlocked and center.atlas or center.config.b_side_lock and "skh_forgotten_locked" or "centers"], center.unlocked and center.pos or center.config.b_side_lock and {x = 0, y = 0} or {x = 4, y = 0})
 							new_card.children.back.states.hover = card.states.hover
 							new_card.children.back.states.click = card.states.click
 							new_card.children.back.states.drag = card.states.drag

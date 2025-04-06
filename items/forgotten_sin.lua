@@ -172,3 +172,80 @@ SMODS.Back({
 })
 
 SKHDecks.add_skh_b_side("b_skh_slothfulworm", "b_skh_forgotten_slothful")
+
+SMODS.Back({
+	key = "forgotten_prideful",
+	atlas = "forgotten_sin",
+    pos = { x = 1, y = 1 },
+    omit = not config.DisableOverride,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_pridefulworm'},
+    config = {joker_slot = -4, b_side_lock = true},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+			local has_rare_or_above = false
+            for i = 1, #G.jokers.cards do
+				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity ~= 1 and temp.config.center.rarity ~= 2 then
+                    has_rare_or_above = true
+                else
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							temp:set_edition({ negative = true }, true)
+                            temp:set_rental(true)
+							return true
+						end
+					}))
+				end
+			end
+            if has_rare_or_above then
+                for i = 1, #G.jokers.cards do
+                    local temp = G.jokers.cards[i]
+                    if temp.config.center.rarity == 1 or temp.config.center.rarity == 2 then
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                temp:set_rental(false)
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
+		end
+		if context.destroy_card and context.cardarea == G.play then
+			if not context.destroying_card.debuff then
+				local temp = context.destroying_card
+				if not SMODS.has_no_rank(temp) and temp:get_id() < 13 then
+					return {
+						message = localize("k_weak_ex"),
+						remove = true
+					}
+				end
+			end
+		end
+	end,
+	apply = function(self, back)
+		G.GAME.banned_keys[#G.GAME.banned_keys+1] = {v_antimatter = true}
+        G.E_MANAGER:add_event(Event({
+			func = function()
+				for k, v in pairs(G.playing_cards) do
+                    if v:get_id() < 13 then
+						v.to_remove = true
+					end
+                end
+                local i = 1
+                while i <= #G.playing_cards do
+                    if G.playing_cards[i].to_remove then
+                        G.playing_cards[i]:remove()
+                    else
+                        i = i + 1
+                    end
+                end
+				G.GAME.starting_deck_size = #G.playing_cards
+                return true
+			end
+		}))
+	end
+})
+
+SKHDecks.add_skh_b_side("b_skh_pridefulworm", "b_skh_forgotten_prideful")

@@ -323,6 +323,17 @@ return {
                     "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
                 },
             },
+            b_skh_forgotten_prideful = {
+                name = "Bộ Bài Sâu Kiêu Ngạo?",
+                text = {
+                    "Khi Blind được chọn, Joker {C:blue}Thường{} và {C:green}Ít Phổ Biến{}",
+                    "trở thành {C:dark_edition}Âm Bản {C:attention}Cho Thuê{}",
+                    "Phá huỷ mọi lá ngoài Át-Già ghi điểm",
+                    "{C:attention}Loại bỏ{} Cho Thuê nếu sở hữu Joker",
+                    "{C:red}Hiếm{} trở lên",
+                    "{s:0.8,C:inactive}Ta là {s:0.8,C:red}Số Một{s:0.8,C:inactive}.",
+                },
+            },
             b_skh_forgotten_virgin = {
                 name = "Bộ Bài Sâu Thanh Khiết?",
                 text = {

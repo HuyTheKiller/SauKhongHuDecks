@@ -321,9 +321,9 @@ return {
             b_skh_forgotten_prideful = {
                 name = "Prideful Worm Deck?",
                 text = {
-                    "When Blind is selected, {C:blue}Common{} and {C:green}Uncommon{}",
+                    "When {C:attention}Blind{} is selected, {C:blue}Common{} and {C:green}Uncommon{}",
                     "Jokers become {C:dark_edition}Negative {C:attention}Rental{}",
-                    "Destroy all scoring non-Aces-or-Kings",
+                    "{C:attention}Destroy{} all scoring non-Aces-or-Kings",
                     "{C:attention}Remove{} Rental if a {C:red}Rare{} Joker",
                     "or above is owned",
                     "{s:0.8,C:inactive}I am {s:0.8,C:red}The One{s:0.8,C:inactive}.",

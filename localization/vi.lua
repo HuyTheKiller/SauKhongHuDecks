@@ -323,6 +323,18 @@ return {
                     "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
                 },
             },
+            b_skh_forgotten_envious = {
+                name = "Bộ Bài Sâu Đố Kị?",
+                text = {
+                    "Áp dụng Bộ Bài {C:dark_edition}Sâu Đố Kị{}",
+                    "Lá bài thường với {C:attention}cường hoá{},",
+                    "{C:dark_edition}ấn bản{}, và/hoặc {C:attention}con dấu{}",
+                    "cũng có {C:green}xác suất{} bị phá huỷ",
+                    "ở cuối ván",
+                    "{s:0.8,C:inactive}Có {s:0.8,C:red}trả thù thành công{s:0.8,C:inactive} đi nữa cũng",
+                    "{s:0.8,C:inactive}chưa chắc khiến người ta thoả mãn.",
+                },
+            },
             b_skh_forgotten_prideful = {
                 name = "Bộ Bài Sâu Kiêu Ngạo?",
                 text = {

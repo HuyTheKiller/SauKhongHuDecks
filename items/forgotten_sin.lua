@@ -174,6 +174,70 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_slothfulworm", "b_skh_forgotten_slothful")
 
 SMODS.Back({
+	key = "forgotten_envious",
+	atlas = "forgotten_sin",
+    pos = { x = 3, y = 0 },
+    omit = not config.DisableOverride,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_enviousworm'},
+	config = {b_side_lock = true, extra = {
+        odds_common = nil,       odds_uncommon = 150,
+        odds_rare = 100,         odds_cry_epic = 80,
+        odds_legendary = 60,     odds_cry_exotic = 40,
+        odds_cry_candy = 100,    odds_cry_cursed = nil,
+        odds_playing_card = 8}},
+	calculate = function(self, back, context)
+		if context.end_of_round then
+			local killed = false
+			local has_common = false
+			for i = 1, #G.jokers.cards do
+				local temp = G.jokers.cards[i]
+				if temp.config.center.rarity == 1 then
+					has_common = true
+				end
+				if temp.config.center.rarity == 2 then
+					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i)
+				elseif temp.config.center.rarity == 3 then
+					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i) or killed
+				elseif temp.config.center.rarity == 4 then
+					killed = envious_roulette(temp, "b_envious_legendary", self.config.extra.odds_legendary, i) or killed
+				end
+				if Cryptid then
+					if temp.config.center.rarity == 'cry_epic' then
+						killed = envious_roulette(temp, "b_envious_cry_epic", self.config.extra.odds_cry_epic, i) or killed
+					elseif temp.config.center.rarity == 'cry_exotic' then
+						killed = envious_roulette(temp, "b_envious_cry_exotic", self.config.extra.odds_cry_exotic, i) or killed
+					elseif temp.config.center.rarity == 'cry_candy' then
+						killed = envious_roulette(temp, "b_envious_cry_candy", self.config.extra.odds_cry_candy, i) or killed
+					end
+				end
+			end
+			if killed and has_common then
+				play_sound("skh_envious_laugh", 1, 1)
+			end
+		end
+        if context.context == "eval" then
+            for c = 1, #G.playing_cards do
+				local temp = G.playing_cards[c]
+				if not temp.debuff then
+					if temp.edition then
+						envious_roulette(temp, "b_envious_edition", self.config.extra.odds_playing_card, c)
+					end
+					if temp.seal then
+						envious_roulette(temp, "b_envious_seal", self.config.extra.odds_playing_card, c)
+					end
+					if temp.ability.set == "Enhanced" then
+						envious_roulette(temp, "b_envious_enhancement", self.config.extra.odds_playing_card, c)
+					end
+				end
+			end
+        end
+	end,
+})
+
+SKHDecks.add_skh_b_side("b_skh_enviousworm", "b_skh_forgotten_envious")
+
+SMODS.Back({
 	key = "forgotten_prideful",
 	atlas = "forgotten_sin",
     pos = { x = 1, y = 1 },

@@ -318,6 +318,18 @@ return {
                     "{s:0.8,C:inactive}Tired, {s:0.8,C:red}starving{s:0.8,C:inactive}, thirsty.",
                 },
             },
+            b_skh_forgotten_envious = {
+                name = "Envious Worm Deck?",
+                text = {
+                    "Apply {C:dark_edition}Envious Worm{} Deck",
+                    "Playing cards with {C:attention}enhancement{},",
+                    "{C:attention}edition{}, and/or {C:attention}seal{} also have",
+                    "{C:green}chance{} of being destroyed",
+                    "at end of round",
+                    "{s:0.8,C:inactive}Not even a {s:0.8,C:red}successful revenge",
+                    "{s:0.8,C:inactive}could fully satisfy one.",
+                },
+            },
             b_skh_forgotten_prideful = {
                 name = "Prideful Worm Deck?",
                 text = {

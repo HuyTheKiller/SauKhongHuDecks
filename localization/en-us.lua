@@ -318,6 +318,15 @@ return {
                     "{s:0.8,C:inactive}Tired, {s:0.8,C:red}starving{s:0.8,C:inactive}, thirsty.",
                 },
             },
+            b_skh_forgotten_wrathful = {
+                name = "Wrathful Worm Deck?",
+                text = {
+                    "Apply {C:dark_edition}Wrathful Worm{} Deck",
+                    "When {C:attention}Blind{} is selected, {C:green}#1# in #2#{}",
+                    "chance to flip and shuffle all Jokers",
+                    "{s:0.8,C:red}GRRRRAAHHHHHH{s:0.8,C:inactive}!!!",
+                },
+            },
             b_skh_forgotten_envious = {
                 name = "Envious Worm Deck?",
                 text = {

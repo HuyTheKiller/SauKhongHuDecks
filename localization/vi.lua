@@ -323,6 +323,15 @@ return {
                     "{s:0.8,C:inactive}Mệt, {s:0.8,C:red}đói{s:0.8,C:inactive}, khát.",
                 },
             },
+            b_skh_forgotten_wrathful = {
+                name = "Bộ Bài Sâu Phẫn Nộ?",
+                text = {
+                    "Áp dụng Bộ Bài {C:dark_edition}Sâu Phẫn Nộ{}",
+                    "Khi {C:attention}Blind{} được chọn, xác suất",
+                    "{C:green}#1# trên #2#{} để lật và trộn các Joker",
+                    "{s:0.8,C:red}GRRRRÀÀOOOOOO{s:0.8,C:inactive}!!!",
+                },
+            },
             b_skh_forgotten_envious = {
                 name = "Bộ Bài Sâu Đố Kị?",
                 text = {

@@ -174,6 +174,86 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_slothfulworm", "b_skh_forgotten_slothful")
 
 SMODS.Back({
+	key = "forgotten_wrathful",
+	atlas = "forgotten_sin",
+    pos = { x = 2, y = 1 },
+    omit = not config.DisableOverride,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_wrathfulworm'},
+	config = {b_side_lock = true, extra = {hands = 3, xchipmult = 2, odds = 6, odds_flip = 2, smash = false}},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+			G.E_MANAGER:add_event(Event({func = function()
+				ease_discard(-G.GAME.current_round.discards_left, nil, true)
+				ease_hands_played(self.config.extra.hands)
+				return true end }))
+            if pseudorandom("b_wrathful_flip") < G.GAME.probabilities.normal/self.config.extra.odds_flip and #G.jokers.cards > 0 then
+                G.jokers:unhighlight_all()
+                for k, v in ipairs(G.jokers.cards) do
+                    v:flip()
+                end
+                if #G.jokers.cards > 1 then
+                    G.E_MANAGER:add_event(Event({ trigger = 'after', delay = 0.2, func = function() 
+                        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('b_wrathful_shuffle'); play_sound('cardSlide1', 0.85);return true end })) 
+                        delay(0.15)
+                        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('b_wrathful_shuffle'); play_sound('cardSlide1', 1.15);return true end })) 
+                        delay(0.15)
+                        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('b_wrathful_shuffle'); play_sound('cardSlide1', 1);return true end })) 
+                        delay(0.5)
+                    return true end }))
+                end
+            end
+		end
+		if context.before then
+			self.config.extra.smash = false
+			if pseudorandom("wrathful_smash") < G.GAME.probabilities.normal/self.config.extra.odds then
+				self.config.extra.smash = true
+			end
+		end
+		if context.destroy_card and context.cardarea == G.play then
+			return {
+				remove = self.config.extra.smash and true or false
+			}
+		end
+		if context.context == "final_scoring_step" and self.config.extra.smash then
+			context.chips = context.chips * self.config.extra.xchipmult
+			context.mult = context.mult * self.config.extra.xchipmult
+			update_hand_text({ delay = 0 }, { mult = context.mult, chips = context.chips })
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local text = localize("k_smash_ex")
+					play_sound("multhit2", 1, 1)
+					play_sound("xchips", 1, 1)
+					play_sound("skh_smash", 0.7, 0.5)
+					attention_text({
+						scale = 1.4,
+						text = text,
+						hold = 2,
+						align = "cm",
+						offset = { x = 0, y = -2.7 },
+						major = G.play,
+					})
+					return true
+				end,
+			}))
+			delay(0.6)
+			return context.chips, context.mult
+		end
+        if context.context == "eval" then
+            for k, v in ipairs(G.jokers.cards) do
+                if v.facing == 'back' then v:flip() end
+            end
+        end
+	end,
+	loc_vars = function(self)
+		return {vars = {G.GAME.probabilities.normal, self.config.extra.odds_flip}}
+	end
+})
+
+SKHDecks.add_skh_b_side("b_skh_wrathfulworm", "b_skh_forgotten_wrathful")
+
+SMODS.Back({
 	key = "forgotten_envious",
 	atlas = "forgotten_sin",
     pos = { x = 3, y = 0 },

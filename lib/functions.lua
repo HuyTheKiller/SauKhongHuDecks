@@ -134,6 +134,7 @@ function Game:update(dt)
 			and G.GAME.round_resets.blind_choices[c]
 			and G.GAME.selected_back
 			and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_patient"
+			and G.STATE ~= G.STATES.GAME_OVER
 		then
 			if
 				G.GAME.round_resets.blind_states[c] ~= "Current"
@@ -168,7 +169,6 @@ function Game:update(dt)
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
 					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/2
-					and G.STATE ~= G.STATES.GAME_OVER
 				then
 					game_over()
 				end

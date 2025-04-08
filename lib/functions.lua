@@ -164,11 +164,15 @@ function Game:update(dt)
 				G.GAME.round_resets.blind_states[c] ~= "Defeated"
 				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
 			then
+				local chicot_count = find_joker("Chicot")
+				local coeffi = G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "Violet Vessel" and 3
+								or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "The Wall" and 2
+								or 1
 				G.GAME.blind.chips = G.GAME.blind.chips
 					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
-					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/2
+					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*coeffi^#chicot_count)
 				then
 					game_over()
 				end

@@ -116,6 +116,13 @@ local lcpref = Controller.L_cursor_press
 			lcpref(self, x, y)
 			if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
 				SMODS.calculate_context({ skh_press = true })
+function Controller:L_cursor_press(x, y)
+	lcpref(self, x, y)
+	if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
+		SMODS.calculate_context({ skh_press = true })
+	end
+end
+
 			end
 		end
 

@@ -98,3 +98,30 @@ SMODS.Back({
 })
 
 SKHDecks.add_skh_b_side("b_skh_abstemiousworm", "b_skh_forgotten_abstemious")
+
+SMODS.Back({
+    key = "forgotten_patient",
+    atlas = "forgotten_virtue",
+    pos = { x = 2, y = 1 },
+    config = {b_side_lock = true, ante_scaling = 4},
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    unlocked = false,
+    unlock_condition = {type = 'win_deck', deck = 'b_skh_patientworm'},
+    calculate = function(self, back, context)
+        if context.setting_blind then
+            local choices = { "Small", "Big", "Boss" }
+            for _, c in pairs(choices) do
+                if G.GAME.round_resets.blind_states[c] == "Current" then
+                    G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.blind_ante)
+                                            * G.GAME.starting_params.ante_scaling
+                                            * G.GAME.patient_scaling_table[c]
+                end
+            end
+        end
+    end,
+    loc_vars = function(self)
+        return {vars = {self.config.ante_scaling}}
+    end
+})
+
+SKHDecks.add_skh_b_side("b_skh_patientworm", "b_skh_forgotten_patient")

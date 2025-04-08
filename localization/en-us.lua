@@ -379,6 +379,17 @@ return {
                     "{s:0.8,C:inactive}effectively for the better good.",
                 },
             },
+            b_skh_forgotten_patient = {
+                name = "Patient Worm Deck?",
+                text = {
+                    "{C:red}X#1#{} base Blind size, {C:attention}reduce{}",
+                    "over time, reset at end of Ante",
+                    "If base Blind size reaches {C:attention}X0.5{},",
+                    "instantly {C:red}lose{} the run",
+                    "{s:0.8,C:inactive}Being calm and {s:0.8,C:red}accurate{}",
+                    "{s:0.8,C:inactive}is the key to success.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

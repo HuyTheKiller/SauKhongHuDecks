@@ -112,10 +112,6 @@ end
 
 -- Add on-click context (copy-pasted from Cryptid)
 local lcpref = Controller.L_cursor_press
-		function Controller:L_cursor_press(x, y)
-			lcpref(self, x, y)
-			if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
-				SMODS.calculate_context({ skh_press = true })
 function Controller:L_cursor_press(x, y)
 	lcpref(self, x, y)
 	if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
@@ -123,8 +119,64 @@ function Controller:L_cursor_press(x, y)
 	end
 end
 
+upd = Game.update
+function Game:update(dt)
+	upd(self, dt)
+	-- Many stuff here are copy-pasted from Cryptid ;P
+	-- Decrease blind size for Forgotten Patient
+	local choices = { "Small", "Big", "Boss" }
+	G.GAME.patient_scaling_table = G.GAME.patient_scaling_table or {}
+	for _, c in pairs(choices) do
+		if
+			G.GAME
+			and G.GAME.round_resets
+			and G.GAME.round_resets.blind_choices
+			and G.GAME.round_resets.blind_choices[c]
+			and G.GAME.selected_back
+			and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_patient"
+		then
+			if
+				G.GAME.round_resets.blind_states[c] ~= "Current"
+				and G.GAME.round_resets.blind_states[c] ~= "Defeated"
+			then
+				G.GAME.patient_scaling_table[c] = (G.GAME.patient_scaling_table[c] or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult)
+					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+				if G.blind_select_opts then
+					local blind_UI = G.blind_select_opts[string.lower(c)].definition.nodes[1].nodes[1].nodes[1].nodes[1]
+					local chip_text_node = blind_UI.nodes[1].nodes[3].nodes[1].nodes[2].nodes[2].nodes[3]
+					if chip_text_node then
+						chip_text_node.config.text = number_format(
+							get_blind_amount(G.GAME.round_resets.blind_ante)
+								* G.GAME.starting_params.ante_scaling
+								* G.GAME.patient_scaling_table[c]
+						)
+						chip_text_node.config.scale = score_number_scale(
+							0.9,
+							get_blind_amount(G.GAME.round_resets.blind_ante)
+								* G.GAME.starting_params.ante_scaling
+								* G.GAME.patient_scaling_table[c]
+						)
+					end
+					G.blind_select_opts[string.lower(c)]:recalculate()
+				end
+			elseif
+				G.GAME.round_resets.blind_states[c] ~= "Defeated"
+				and not G.GAME.blind.disabled
+				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
+			then
+				G.GAME.blind.chips = G.GAME.blind.chips
+					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+				if
+					G.GAME.patient_scaling_table[c] < G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*G.GAME.starting_params.ante_scaling)
+					and G.STATE ~= G.STATES.GAME_OVER
+				then
+					game_over()
+				end
 			end
 		end
+	end
+end
 
 -- Cool, config tab
 config = SKHDecks.config

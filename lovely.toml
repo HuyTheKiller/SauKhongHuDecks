@@ -147,6 +147,17 @@ SKHDecks.b_side_current = false
 '''
 match_indent = true
 
+# Forgotten Patient shenanigan
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''G.GAME.round_resets.blind_tags.Big = get_next_tag_key()'''
+position = "after"
+payload = '''
+G.GAME.patient_scaling_table = {}
+'''
+match_indent = true
+
 # Forgotten Slothful shenanigan
 [[patches]]
 [patches.pattern]

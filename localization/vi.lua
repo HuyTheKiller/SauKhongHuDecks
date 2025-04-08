@@ -384,6 +384,17 @@ return {
                     "{s:0.8,C:inactive}hiệu quả để đem lại điều tốt.",
                 },
             },
+            b_skh_forgotten_patient = {
+                name = "Bộ Bài Sâu Điềm Tĩnh?",
+                text = {
+                    "{C:red}X#1#{} điểm Blind sàn, {C:attention}giảm{} theo",
+                    "thời gian, đặt lại ở cuối Ante",
+                    "Nếu điểm Blind sàn đạt {C:attention}X0.5{},",
+                    "{C:red}thua{} trận tức thì",
+                    "{s:0.8,C:inactive}Bình tĩnh và {s:0.8,C:red}chuẩn xác{}",
+                    "{s:0.8,C:inactive}là thước đo của thành công.",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

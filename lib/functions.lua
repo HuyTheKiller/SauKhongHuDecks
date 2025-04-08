@@ -6,6 +6,8 @@ function Game:init_game_object()
 	ret.omnipotent_roll = "b_skh_patientworm" -- Omnipotent Worm
 	ret.hand_discard_used = 0 -- Forgotten Abstemious
 	ret.cards_destroyed = 0 -- Forgotten Gluttony
+	ret.chicot_count = {}
+	ret.chicot_coeffi = 1
 	return ret
 end
 
@@ -148,14 +150,14 @@ function Game:update(dt)
 					if chip_text_node then
 						chip_text_node.config.text = number_format(
 							get_blind_amount(G.GAME.round_resets.blind_ante)
-								* G.GAME.starting_params.ante_scaling
-								* G.GAME.patient_scaling_table[c]
+							* G.GAME.starting_params.ante_scaling
+							* G.GAME.patient_scaling_table[c]
 						)
 						chip_text_node.config.scale = score_number_scale(
 							0.9,
 							get_blind_amount(G.GAME.round_resets.blind_ante)
-								* G.GAME.starting_params.ante_scaling
-								* G.GAME.patient_scaling_table[c]
+							* G.GAME.starting_params.ante_scaling
+							* G.GAME.patient_scaling_table[c]
 						)
 					end
 					G.blind_select_opts[string.lower(c)]:recalculate()
@@ -164,15 +166,11 @@ function Game:update(dt)
 				G.GAME.round_resets.blind_states[c] ~= "Defeated"
 				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
 			then
-				local chicot_count = find_joker("Chicot")
-				local coeffi = G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "Violet Vessel" and 3
-								or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "The Wall" and 2
-								or 1
 				G.GAME.blind.chips = G.GAME.blind.chips
 					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
-					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*coeffi^#chicot_count)
+					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*G.GAME.chicot_coeffi^#G.GAME.chicot_count)
 				then
 					game_over()
 				end

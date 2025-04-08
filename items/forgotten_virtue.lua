@@ -112,11 +112,19 @@ SMODS.Back({
             local choices = { "Small", "Big", "Boss" }
             for _, c in pairs(choices) do
                 if G.GAME.round_resets.blind_states[c] == "Current" then
+                    G.GAME.chicot_count = find_joker("Chicot")
+                    G.GAME.chicot_coeffi = G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "Violet Vessel" and 3
+                                        or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].name == "The Wall" and 2
+                                        or 1
                     G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.blind_ante)
-                                            * G.GAME.starting_params.ante_scaling
-                                            * G.GAME.patient_scaling_table[c]
+                                        * G.GAME.starting_params.ante_scaling
+                                        * G.GAME.patient_scaling_table[c]
                 end
             end
+        end
+        if context.context == "eval" then
+            G.GAME.chicot_count = {}
+            G.GAME.chicot_coeffi = 1
         end
     end,
     loc_vars = function(self)

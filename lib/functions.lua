@@ -167,7 +167,7 @@ function Game:update(dt)
 					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
-					G.GAME.patient_scaling_table[c] < G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*G.GAME.starting_params.ante_scaling)
+					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/2
 					and G.STATE ~= G.STATES.GAME_OVER
 				then
 					game_over()

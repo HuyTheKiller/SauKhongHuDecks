@@ -173,6 +173,16 @@ function Game:update(dt)
 					game_over()
 				end
 			end
+			if
+				G.GAME.round_resets.blind_states[c] == "Current"
+				and to_big(G.GAME.chips) >= to_big(G.GAME.blind.chips)
+				and G.STATE == G.STATES.SELECTING_HAND
+			then
+				G.GAME.chips = G.GAME.blind.chips
+				G.STATE = G.STATES.HAND_PLAYED
+				G.STATE_COMPLETE = true
+				end_round()
+			end
 		end
 	end
 end

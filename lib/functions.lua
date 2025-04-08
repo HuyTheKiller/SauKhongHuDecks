@@ -161,7 +161,6 @@ function Game:update(dt)
 				end
 			elseif
 				G.GAME.round_resets.blind_states[c] ~= "Defeated"
-				and not G.GAME.blind.disabled
 				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
 			then
 				G.GAME.blind.chips = G.GAME.blind.chips

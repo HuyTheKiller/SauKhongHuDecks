@@ -12,6 +12,11 @@ SKHDecks.optional_features = {
 SKHDecks.b_side_table = {}
 SKHDecks.b_side_current = false
 
+SKHDecks.multiplayer_loaded = false
+if SMODS.Mods["Multiplayer"] and SMODS.Mods["Multiplayer"].can_load then
+	SKHDecks.multiplayer_loaded = true
+end
+
 -- Load library files
 local mod_path = "" .. SKHDecks.path
 local files = NFS.getDirectoryItems(mod_path .. "lib")

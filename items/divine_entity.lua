@@ -9,6 +9,7 @@ SMODS.Back({
     key = "saukhonghu",
     atlas = "divine_entity",
     pos = { x = 0, y = 0 },
+	omit = SKHDecks.multiplayer_loaded,
     config = {hand_size = 1, extra = {win_ante_gain = 8}},
     apply = function(self, back)
 		G.GAME.win_ante = G.GAME.win_ante + self.config.extra.win_ante_gain
@@ -38,6 +39,7 @@ SMODS.Back({
     key = "sauhu",
     atlas = "divine_entity",
     pos = { x = 1, y = 0 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
     config = {discards = -1, hands = 1},
@@ -71,6 +73,7 @@ SMODS.Back({
 	key = "tsaunami",
 	atlas = "divine_entity",
     pos = { x = 0, y = 1 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
 	calculate = function(self, back, context)
@@ -100,6 +103,7 @@ SMODS.Back({
     key = "absolute_cinema",
     atlas = "divine_entity",
     pos = { x = 2, y = 0 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
     config = {joker_slot = 2, hand_size = 8, extra = {win_ante_gain = 24}, vouchers = {"v_overstock_norm", "v_overstock_plus"}, ante_scaling = 2, remove_faces = true},
@@ -193,6 +197,7 @@ SMODS.Back({
 	key = "plot_hole",
 	atlas = "divine_entity",
     pos = { x = 3, y = 0 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_sauhu'},
 	config = {hands = -3, discards = 1, extra = {ante_loss = 12}, vouchers = {"v_magic_trick"}, randomize_rank_suit = true},
@@ -245,6 +250,7 @@ SMODS.Back({
 	key = "sauphanim",
 	atlas = "divine_entity",
     pos = { x = 1, y = 1 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
 	config = {extra = {money = 1}, vouchers = {"v_tarot_merchant"}, ante_scaling = 2, no_interest = true},
@@ -354,6 +360,7 @@ SMODS.Back({
 	key = "weeormhole",
 	atlas = "divine_entity",
     pos = { x = 2, y = 1 },
+	omit = SKHDecks.multiplayer_loaded,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_tsaunami'},
 	calculate = function(self, back, context)

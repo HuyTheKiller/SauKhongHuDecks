@@ -9,7 +9,7 @@ SMODS.Back({
     key = "forgotten_virgin",
     atlas = "forgotten_virtue",
     pos = { x = 0, y = 0 },
-    omit = not config.DisableOverride,
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
     config = {b_side_lock = true},
@@ -41,7 +41,7 @@ SMODS.Back({
     atlas = "forgotten_virtue",
     pos = { x = 2, y = 0 },
     config = {joker_slot = 1, b_side_lock = true},
-    omit = not config.DisableOverride,
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
     apply = function(self, back)
@@ -69,7 +69,7 @@ SMODS.Back({
     atlas = "forgotten_virtue",
     pos = { x = 3, y = 0 },
     config = {hands = 3, discards = 4, b_side_lock = true, extra = {hand_discard_limit = 7}},
-    omit = not config.DisableOverride,
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_abstemiousworm'},
     calculate = function(self, back, context)

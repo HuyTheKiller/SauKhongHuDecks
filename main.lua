@@ -7,6 +7,7 @@ SKHDecks.load_table = {
 	forgotten_virtue = true,
 }
 SKHDecks.optional_features = {
+	retrigger_joker = true,
 	post_trigger = true
 }
 SKHDecks.b_side_table = {}

@@ -379,6 +379,17 @@ return {
                     "{s:0.8,C:inactive}effectively for the better good.",
                 },
             },
+            b_skh_forgotten_kind = {
+                name = "Kind Worm Deck?",
+                text = {
+                    "{C:attention}Retrigger{} a random joker",
+                    "{C:attention}#1#{} times before {C:attention}debuffing{} it",
+                    "If all {C:attention}Jokers{} are debuffed,",
+                    "instantly {C:red}lose{} the run",
+                    "{s:0.8,C:inactive}The human mind is pretty",
+                    "{s:0.8,C:inactive}much {s:0.8,C:red}unpredictable{s:0.8,C:inactive}.",
+                },
+            },
             b_skh_forgotten_patient = {
                 name = "Patient Worm Deck?",
                 text = {

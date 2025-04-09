@@ -6,8 +6,11 @@ function Game:init_game_object()
 	ret.omnipotent_roll = "b_skh_patientworm" -- Omnipotent Worm
 	ret.hand_discard_used = 0 -- Forgotten Abstemious
 	ret.cards_destroyed = 0 -- Forgotten Gluttony
-	ret.chicot_count = {}
-	ret.chicot_coeffi = 1
+	ret.selected_debuff_target = nil -- Forgotten Kind
+	ret.debuff_roll = false -- Forgotten Kind
+	ret.number_of_jokers = 0 -- Forgotten Kind
+	ret.chicot_count = {} -- Forgotten Patient
+	ret.chicot_coeffi = 1 -- Forgotten Patient
 	return ret
 end
 
@@ -107,6 +110,23 @@ function CardArea:update(dt)
 						G.jokers.cards[i]:set_debuff(false)
 					end
 				end
+			end
+		elseif G.GAME.selected_back.effect.center.key == "b_skh_forgotten_kind" then
+			if G.GAME.number_of_jokers ~= #G.jokers.cards and G.GAME.facing_blind then
+				G.GAME.debuff_roll = true
+				G.GAME.number_of_jokers = #G.jokers.cards
+			end
+			if self == G.jokers and G.jokers.cards[1] and G.GAME.debuff_roll then
+				G.GAME.number_of_jokers = #G.jokers.cards
+				local debuff_targets = {}
+				for i = 1, #G.jokers.cards do
+					local temp = G.jokers.cards[i]
+					if not temp.debuff then
+						debuff_targets[#debuff_targets+1] = temp
+					end
+				end
+				G.GAME.selected_debuff_target = #debuff_targets > 0 and pseudorandom_element(debuff_targets, pseudoseed("b_kind_debuff")) or nil
+				G.GAME.debuff_roll = false
 			end
 		end
 	end

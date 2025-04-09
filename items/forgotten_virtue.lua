@@ -100,6 +100,65 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_abstemiousworm", "b_skh_forgotten_abstemious")
 
 SMODS.Back({
+	key = "forgotten_kind",
+	atlas = "forgotten_virtue",
+    pos = { x = 1, y = 1 },
+	config = {b_side_lock = true, extra = {retriggers = 2}},
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_kindworm'},
+	calculate = function(self, back, context)
+		if context.setting_blind then
+            if G.GAME.number_of_jokers == #G.jokers.cards then
+                G.GAME.debuff_roll = true
+            end
+        end
+        if context.before then
+            G.GAME.number_of_jokers = #G.jokers.cards
+            if G.jokers.cards[1] and not G.GAME.selected_debuff_target then game_over() end
+        end
+        if context.retrigger_joker_check and not context.retrigger_joker and G.GAME.selected_debuff_target then
+			if context.other_card == G.GAME.selected_debuff_target then
+				return {
+					message = localize("k_again_ex"),
+					repetitions = self.config.extra.retriggers,
+					card = G.GAME.selected_debuff_target,
+				}
+			else
+				return nil, true
+			end
+		end
+        if context.context == "final_scoring_step" and G.GAME.selected_debuff_target then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.GAME.selected_debuff_target:set_debuff(true)
+                    G.GAME.selected_debuff_target:juice_up()
+                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
+                        play_sound('tarot2', 0.76, 0.4);return true end}))
+                    play_sound('tarot2', 1, 0.4)
+                    G.GAME.debuff_roll = true
+                    return true
+                end
+            }))
+        end
+        if context.context == "eval" then
+            for i = 1, #G.jokers.cards do
+                local temp = G.jokers.cards[i]
+                if temp.debuff then
+                    temp:set_debuff(false)
+                end
+            end
+            G.GAME.selected_debuff_target = nil
+        end
+	end,
+    loc_vars = function(self)
+        return {vars = {self.config.extra.retriggers}}
+    end
+})
+
+SKHDecks.add_skh_b_side("b_skh_kindworm", "b_skh_forgotten_kind")
+
+SMODS.Back({
     key = "forgotten_patient",
     atlas = "forgotten_virtue",
     pos = { x = 2, y = 1 },

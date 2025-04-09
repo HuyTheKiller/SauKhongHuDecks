@@ -384,6 +384,17 @@ return {
                     "{s:0.8,C:inactive}hiệu quả để đem lại điều tốt.",
                 },
             },
+            b_skh_forgotten_kind = {
+                name = "Bộ Bài Sâu Tốt Bụng?",
+                text = {
+                    "{C:attention}Tái kích{} một joker ngẫu nhiên",
+                    "{C:attention}#1#{} lần trước khi {C:attention}vô hiệu{} nó",
+                    "Nếu mọi {C:attention}Joker{} bị vô hiệu,",
+                    "{C:red}thua{} trận tức thì",
+                    "{s:0.8,C:inactive}Lòng dạ con người",
+                    "{s:0.8,C:inactive}thật {s:0.8,C:red}khó đoán{s:0.8,C:inactive}.",
+                },
+            },
             b_skh_forgotten_patient = {
                 name = "Bộ Bài Sâu Điềm Tĩnh?",
                 text = {

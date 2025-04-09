@@ -82,15 +82,15 @@ There currently exist 2 sets:
 | Envious Worm Deck?  | Apply Envious Worm Deck; playing cards with enhancement, edition, and/or seal also have chance of being destroyed at end of round                                                    |
 | Prideful Worm Deck? | Destroy all scoring non-Aces-or-Kings; when Blind is selected, Common and Uncommon Jokers become negative rental; remove rental if a Rare joker or above is owned; only 1 Joker slot |
 
-| Forgotten Virtue Decks | Effect                                                                                                       |
-|------------------------|--------------------------------------------------------------------------------------------------------------|
-| Virgin Worm Deck?      | If scoring hand contains a King and a Jack, instantly lose the run                                           |
-| Humble Worm Deck?      | Mult cannot exceed 30\*Ante, Chips cannot exceed 75\*Ante                                                    |
-| Diligent Worm Deck?    | +1 Joker slot; debuff first joker; if score is over 200% requirement, instantly lose the run                 |
-| Abstemious Worm Deck?  | Combine hands and discards; total hand used every round is capped at 7                                       |
-| Kind Worm Deck?        | Retrigger a random joker 2 times before debuffing it; if all Jokers are debuffed, instantly lose the run     |
-| Generous Worm Deck?    | Go up to -$100 in debt; start with -$80; if money exceeds 0, instantly lose the run                          |
-| Patient Worm Deck?     | X4 base Blind size, reduce by half every 30 seconds, if base Blind size reaches X0.5, instantly lose the run |
+| Forgotten Virtue Decks | Effect                                                                                                                             |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Virgin Worm Deck?      | If scoring hand contains a King and a Jack, instantly lose the run                                                                 |
+| Humble Worm Deck?      | Mult cannot exceed 30\*Ante, Chips cannot exceed 75\*Ante                                                                          |
+| Diligent Worm Deck?    | +1 Joker slot; debuff first joker; if score is over 200% requirement, instantly lose the run                                       |
+| Abstemious Worm Deck?  | Combine hands and discards; total hand used every round is capped at 7                                                             |
+| Kind Worm Deck?        | Retrigger a random joker 2 times before debuffing it; if all Jokers are debuffed, instantly lose the run                           |
+| Generous Worm Deck?    | Go up to -$100 in debt; start with -$80; if money exceeds 0, instantly lose the run                                                |
+| Patient Worm Deck?     | X4 base Blind size, reduce by half every 30 seconds, reset at end of Ante; if base Blind size reaches X0.5, instantly lose the run |
 </details>
 
 ### Forgotten Decks are here!

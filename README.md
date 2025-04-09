@@ -80,7 +80,7 @@ There currently exist 2 sets:
 | Slothful Worm Deck? | Apply Slothful Worm Deck; unknown win Ante                                                                                                                                           |
 | Wrathful Worm Deck? | Apply Wrathful Worm Deck; when Blind is selected, 1 in 2 chance to flip and shuffle all Jokers                                                                                       |
 | Envious Worm Deck?  | Apply Envious Worm Deck; playing cards with enhancement, edition, and/or seal also have chance of being destroyed at end of round                                                    |
-| Prideful Worm Deck? | destroy all scoring non-Aces-or-Kings; when Blind is selected, Common and Uncommon Jokers become negative rental; remove rental if a Rare joker or above is owned; only 1 Joker slot |
+| Prideful Worm Deck? | Destroy all scoring non-Aces-or-Kings; when Blind is selected, Common and Uncommon Jokers become negative rental; remove rental if a Rare joker or above is owned; only 1 Joker slot |
 
 | Forgotten Virtue Decks | Effect                                                                                                       |
 |------------------------|--------------------------------------------------------------------------------------------------------------|

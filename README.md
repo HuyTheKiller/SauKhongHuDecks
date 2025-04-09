@@ -106,7 +106,7 @@ Worry not, you can go to Mods > SauKhongHu Decks > Config and enable "Disable De
 ### Talisman compatibility
 This mod should now function properly with or without [Talisman](https://github.com/SpectralPack/Talisman). Feel free to experience stuff along side with [Cryptid](https://github.com/SpectralPack/Cryptid).
 
-### Multiplayer conpatibility
+### Multiplayer compatibility
 If [Balatro Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer) is installed:
 * Several decks will be hidden from selection.
 * [Tattered Decks](https://github.com/survovoaneend/Tattered-Decks)-style button will be hidden, all supported Forgotten Decks will be exposed without the need of "Disable Deck Ovveride".

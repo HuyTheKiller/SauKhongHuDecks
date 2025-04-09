@@ -22,11 +22,20 @@ local mod_path = "" .. SKHDecks.path
 local files = NFS.getDirectoryItems(mod_path .. "lib")
 for _, file in ipairs(files) do
 	SMODS.load_file("lib/" .. file)()
+	sendInfoMessage("The library file " .. file .. " has been loaded!", "SKHDecks")
 end
 
 -- Load items if enabled
 for k, v in pairs(SKHDecks.load_table) do
-    if v then SMODS.load_file('items/'..k..'.lua')() end
+    if v then
+		SMODS.load_file('items/'..k..'.lua')()
+		sendInfoMessage("The item file " .. k .. ".lua has been loaded!", "SKHDecks")
+	end
+end
+
+-- Send a warning if Multiplayer is also installed
+if SKHDecks.multiplayer_loaded then
+	sendWarnMessage("Multiplayer mod detected! This prevents several decks from appearing. While there is a way to select those decks, doing so is NOT RECOMMENDED.", "SKHDecks")
 end
 
 SMODS.Atlas({

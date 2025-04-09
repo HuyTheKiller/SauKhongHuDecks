@@ -231,7 +231,7 @@ if Galdur then
 	end
 
 	for _, args in ipairs(Galdur.pages_to_add) do
-		if args.name == "gald_select_deck" and not config.DisableOverride then
+		if args.name == "gald_select_deck" and not config.DisableOverride and not SKHDecks.multiplayer_loaded then
 			args.definition = skh_custom_deck_select_page_deck
 		end
 	end

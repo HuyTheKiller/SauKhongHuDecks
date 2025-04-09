@@ -13,7 +13,8 @@ SKHDecks.b_side_table = {}
 SKHDecks.b_side_current = false
 
 SKHDecks.multiplayer_loaded = false
-if SMODS.Mods["Multiplayer"] and SMODS.Mods["Multiplayer"].can_load then
+if (SMODS.Mods["Multiplayer"] and SMODS.Mods["Multiplayer"].can_load)
+or (SMODS.Mods["NanoMultiplayer"] and SMODS.Mods["NanoMultiplayer"].can_load) then
 	SKHDecks.multiplayer_loaded = true
 end
 

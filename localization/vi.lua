@@ -74,6 +74,36 @@ return {
                     "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_hallucinatingworm1 = {
+                name = "Bộ Bài Sâu Chơi Đồ",
+                text = {
+                    "Một joker ngẫu nhiên bị",
+                    "{C:attention}thay thế{} ở cuối Ante",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}PHÊ{s:0.8,C:inactive}!!!",
+                },
+            },
+            b_skh_hallucinatingworm2 = {
+                name = "Bộ Bài Sâu Chơi Đồ",
+                text = {
+                    "Lá bài thường {C:attention}nhận{} {C:attention}bậc/chất{}, {C:attention}Chip{}",
+                    "và {C:attention}Nhân{} ngẫu nhiên khi ghi điểm",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}PHÊ{s:0.8,C:inactive}!!!",
+                },
+            },
+            b_skh_hallucinatingworm_collection = {
+                name = "Bộ Bài Sâu Chơi Đồ",
+                text = {
+                    "{C:red}Phá rối{} {C:attention}joker{} hoặc",
+                    "{C:attention}lá bài thường{}",
+                    "{C:inactive}(Xem hiệu ứng trong trận)",
+                    "{s:0.8,C:inactive}Tôi cảm thấy... {s:0.8,C:legendary}PHÊ{s:0.8,C:inactive}!!!",
+                },
+                unlock = {
+                    "Thắng một trận bằng mọi",
+                    "Bộ Bài {C:dark_edition}Thánh Vật{}",
+                    "ở bất kì độ khó nào"
+                },
+            },
             b_skh_lustyworm = {
                 name = "Bộ Bài Sâu Dục Vọng",
                 text = {

@@ -11,6 +11,7 @@ function Game:init_game_object()
 	ret.number_of_jokers = 0 -- Forgotten Kind
 	ret.chicot_count = {} -- Forgotten Patient
 	ret.chicot_coeffi = 1 -- Forgotten Patient
+	ret.random_choice = 1 -- Hallucinating Worm
 	return ret
 end
 
@@ -224,6 +225,7 @@ function mod_mult(_mult)
 	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
 		_mult = math.min(_mult, 30*math.max(G.GAME.round_resets.ante, 1))
 	end
+	_mult = math.max(_mult, 1) -- floor the mult at 1
 	return _mult
 end
 
@@ -233,6 +235,7 @@ function mod_chips(_chips)
 	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
 		_chips = math.min(_chips, 75*math.max(G.GAME.round_resets.ante, 1))
 	end
+	_chips = math.max(_chips, 0) -- floor the chips at 0
 	return _chips
 end
 

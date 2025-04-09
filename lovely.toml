@@ -130,7 +130,8 @@ payload = '''
   if G.GAME.selected_back.effect.center.key == "b_skh_patientworm" or
     G.GAME.selected_back.effect.center.key == "b_skh_virginworm" or
     G.GAME.selected_back.effect.center.key == "b_skh_wormychaos" or
-    G.GAME.selected_back.effect.center.key == "b_skh_omnipotentworm" then
+    G.GAME.selected_back.effect.center.key == "b_skh_omnipotentworm" or
+    G.GAME.selected_back.effect.center.key == "b_skh_hallucinatingworm" then
       G.GAME.selected_back.effect.center.config.extra.in_game = false
   end
 '''

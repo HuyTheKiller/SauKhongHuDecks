@@ -409,6 +409,92 @@ SMODS.Back({
 	end,
 })
 
+SMODS.Back({
+	key = "hallucinatingworm_collection",
+	atlas = "divine_entity",
+	pos = { x = 3, y = 1 },
+	omit = SKHDecks.multiplayer_loaded,
+	unlocked = false,
+	config = {extra = {in_game = false}},
+	calculate = function(self, back, context)
+		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
+		if G.GAME.random_choice == 1 then
+			if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
+				if G.jokers.cards[1] then
+					local target = pseudorandom(pseudoseed("hallucinating_joker"), 1, #G.jokers.cards)
+					if G.jokers.cards[target] then
+						_card = create_card("Joker", G.jokers, nil, nil, nil, nil, nil, "hallucinating_joker_gen")
+						G.jokers.cards[target]:remove_from_deck()
+						_card:add_to_deck()
+						_card:start_materialize()
+						G.jokers.cards[target] = _card
+						_card:set_card_area(G.jokers)
+						G.jokers:set_ranks()
+						G.jokers:align_cards()
+					end
+				end
+			end
+		elseif G.GAME.random_choice == 2 then
+			if context.individual and context.cardarea == G.play then
+				if not context.other_card.debuff then
+					local suits = {}
+					local temp = context.other_card
+					for _, v in pairs(SMODS.Suits) do
+						suits[#suits+1] = tostring(v.key)
+					end
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or pseudorandom("hallucinating_rank", 2, 14)
+							local rank_suffix = skh_get_rank_suffix(temp)
+							assert(SMODS.change_base(temp, pseudorandom_element(suits, pseudoseed("hallucinating_suit")), rank_suffix))
+
+							return true
+						end
+					}))
+					return {
+						chips = pseudorandom("hallucinating_chip", -25, 40),
+						mult = pseudorandom("hallucinating_mult", -10, 15),
+						card = context.other_card
+					}
+				end
+			end
+		end
+	end,
+	apply = function(self, back)
+		G.GAME.random_choice = pseudorandom("hallucinating_random", 1, 2)
+		self.config.extra.in_game = true
+	end,
+	loc_vars = function(self)
+		if self.config.extra.in_game then
+			return {
+				key = "b_skh_hallucinatingworm" .. tostring(G.GAME.random_choice)
+			}
+		else
+			return {key = "b_skh_hallucinatingworm_collection"}
+		end
+	end,
+	collection_loc_vars = function(self)
+		return {key = "b_skh_hallucinatingworm_collection"}
+	end,
+	locked_loc_vars = function(self)
+		return {key = "b_skh_hallucinatingworm_collection"}
+	end,
+	check_for_unlock = function(self, args)
+		local decks = {"b_skh_saukhonghu", "b_skh_sauhu", "b_skh_tsaunami",
+			"b_skh_absolute_cinema", "b_skh_plot_hole", "b_skh_sauphanim", "b_skh_weeormhole"}
+		local temp = true
+		for k, v in ipairs(decks) do
+			local deck_info = G.PROFILES[G.SETTINGS.profile]
+			and G.PROFILES[G.SETTINGS.profile].deck_usage
+			and G.PROFILES[G.SETTINGS.profile].deck_usage[v]
+			if not deck_info then temp = false
+			elseif next(deck_info.wins) == nil then temp = false end
+		end
+		self.unlocked = temp
+		if self.unlocked then return true end
+	end
+})
+
 if CardSleeves then
 
 	SMODS.Atlas({

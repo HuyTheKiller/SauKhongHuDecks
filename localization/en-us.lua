@@ -71,6 +71,36 @@ return {
                     "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}WEEEEEEE{s:0.8,C:inactive}!!!",
                 },
             },
+            b_skh_hallucinatingworm1 = {
+                name = "Hallucinating Worm Deck",
+                text = {
+                    "A random joker is {C:attention}replaced{}",
+                    "at end of Ante",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}HIGH{s:0.8,C:inactive}!!!",
+                },
+            },
+            b_skh_hallucinatingworm2 = {
+                name = "Hallucinating Worm Deck",
+                text = {
+                    "Playing cards {C:attention}get{} a random {C:attention}rank/suit{},",
+                    "{C:attention}Chips{} and {C:attention}Mult{} when scored",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}HIGH{s:0.8,C:inactive}!!!",
+                },
+            },
+            b_skh_hallucinatingworm_collection = {
+                name = "Hallucinating Worm Deck",
+                text = {
+                    "{C:red}Disrupt{} either {C:attention}jokers{}",
+                    "or {C:attention}playing cards{}",
+                    "{C:inactive}(View effect in a live run)",
+                    "{s:0.8,C:inactive}I feel... {s:0.8,C:legendary}HIGH{s:0.8,C:inactive}!!!",
+                },
+                unlock = {
+                    "Win a run with every",
+                    "{C:dark_edition}Divine Entity{} Deck",
+                    "on any difficulty"
+                },
+            },
             b_skh_lustyworm = {
                 name = "Lusty Worm Deck",
                 text = {

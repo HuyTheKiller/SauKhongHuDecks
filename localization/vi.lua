@@ -395,6 +395,16 @@ return {
                     "{s:0.8,C:inactive}thật {s:0.8,C:red}khó đoán{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_forgotten_generous = {
+                name = "Bộ Bài Sâu Hào Phóng?",
+                text = {
+                    "Ghi nợ tối đa {C:red}$100{}",
+                    "Bắt đầu với {C:money}-$#1#{}",
+                    "Nếu tiền vượt quá {C:money}$0{},",
+                    "{C:red}thua{} trận tức thì",
+                    "{s:0.8,C:inactive}Nợ {s:0.8,C:red}tuyệt đối{s:0.8,C:inactive}.",
+                },
+            },
             b_skh_forgotten_patient = {
                 name = "Bộ Bài Sâu Điềm Tĩnh?",
                 text = {

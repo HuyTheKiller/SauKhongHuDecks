@@ -390,6 +390,16 @@ return {
                     "{s:0.8,C:inactive}much {s:0.8,C:red}unpredictable{s:0.8,C:inactive}.",
                 },
             },
+            b_skh_forgotten_generous = {
+                name = "Generous Worm Deck?",
+                text = {
+                    "Go up to {C:red}-$100{} in debt",
+                    "Start with {C:money}-$#1#{}",
+                    "If money exceeds {C:money}$0{},",
+                    "instantly {C:red}lose{} the run",
+                    "{s:0.8,C:inactive}The {s:0.8,C:red}absolute{s:0.8,C:inactive} debt.",
+                },
+            },
             b_skh_forgotten_patient = {
                 name = "Patient Worm Deck?",
                 text = {

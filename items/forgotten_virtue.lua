@@ -159,6 +159,25 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_kindworm", "b_skh_forgotten_kind")
 
 SMODS.Back({
+	key = "forgotten_generous",
+	atlas = "forgotten_virtue",
+    pos = { x = 0, y = 1 },
+	config = {dollars = -84, b_side_lock = true},
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_generousworm'},
+	apply = function(self, back)
+		G.GAME.bankrupt_at = -100
+        G.GAME.banned_keys[#G.GAME.banned_keys+1] = {j_credit_card = true}
+	end,
+	loc_vars = function(self)
+		return {vars = {-self.config.dollars-4}}
+	end
+})
+
+SKHDecks.add_skh_b_side("b_skh_generousworm", "b_skh_forgotten_generous")
+
+SMODS.Back({
     key = "forgotten_patient",
     atlas = "forgotten_virtue",
     pos = { x = 2, y = 1 },

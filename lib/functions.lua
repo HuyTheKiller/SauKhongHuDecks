@@ -207,6 +207,14 @@ function Game:update(dt)
 			end
 		end
 	end
+	if -- Money-exceeds-0 triggers game over in Forgotten Generous
+		G.GAME
+		and G.GAME.selected_back
+		and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_generous"
+		and G.STATE ~= G.STATES.GAME_OVER
+	then
+		if G.GAME.dollars > to_big(0) then game_over() end
+	end
 end
 
 -- Cool, config tab

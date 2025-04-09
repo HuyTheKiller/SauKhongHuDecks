@@ -589,21 +589,26 @@ SMODS.Back({
 				end
 			end
 			if context.context == "final_scoring_step" then
-				local prideful_debuff_targets = {}
-				for i = 1, #G.jokers.cards do
-					local temp = G.jokers.cards[i]
-					if (temp.config.center.rarity == 1 or temp.config.center.rarity == 2) and not temp.debuff then
-						prideful_debuff_targets[#prideful_debuff_targets+1] = temp
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local prideful_debuff_targets = {}
+						for i = 1, #G.jokers.cards do
+							local temp = G.jokers.cards[i]
+							if (temp.config.center.rarity == 1 or temp.config.center.rarity == 2) and not temp.debuff then
+								prideful_debuff_targets[#prideful_debuff_targets+1] = temp
+							end
+						end
+						local joker_to_debuff = #prideful_debuff_targets > 0 and pseudorandom_element(prideful_debuff_targets, pseudoseed("chaos_prideful_debuff"))
+						if joker_to_debuff then
+							joker_to_debuff:set_debuff(true)
+							joker_to_debuff:juice_up()
+							G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
+								play_sound('tarot2', 0.76, 0.4);return true end}))
+							play_sound('tarot2', 1, 0.4)
+						end
+						return true
 					end
-				end
-				local joker_to_debuff = #prideful_debuff_targets > 0 and pseudorandom_element(prideful_debuff_targets, pseudoseed("chaos_prideful_debuff"))
-				if joker_to_debuff then
-					joker_to_debuff:set_debuff(true)
-					joker_to_debuff:juice_up()
-					G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
-						play_sound('tarot2', 0.76, 0.4);return true end}))
-					play_sound('tarot2', 1, 0.4)
-				end
+				}))
 			end
 			if context.context == "eval" then
 				for i = 1, #G.jokers.cards do

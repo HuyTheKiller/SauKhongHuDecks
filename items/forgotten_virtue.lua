@@ -186,6 +186,10 @@ SMODS.Back({
             G.GAME.chicot_coeffi = 1
         end
     end,
+    apply = function(self, back)
+        G.GAME.banned_keys[#G.GAME.banned_keys+1] = {v_hieroglyph = true}
+        G.GAME.banned_keys[#G.GAME.banned_keys+1] = {v_petroglyph = true}
+    end,
     loc_vars = function(self)
         return {vars = {self.config.ante_scaling}}
     end

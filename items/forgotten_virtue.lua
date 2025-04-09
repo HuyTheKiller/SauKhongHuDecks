@@ -37,6 +37,18 @@ SMODS.Back({
 SKHDecks.add_skh_b_side("b_skh_virginworm", "b_skh_forgotten_virgin")
 
 SMODS.Back({
+	key = "forgotten_humble",
+	atlas = "forgotten_virtue",
+    pos = { x = 1, y = 0 },
+	config = {b_side_lock = true},
+    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+	unlocked = false,
+	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
+})
+
+SKHDecks.add_skh_b_side("b_skh_humbleworm", "b_skh_forgotten_humble")
+
+SMODS.Back({
     key = "forgotten_diligent",
     atlas = "forgotten_virtue",
     pos = { x = 2, y = 0 },

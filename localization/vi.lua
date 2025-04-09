@@ -364,6 +364,14 @@ return {
                     "{s:0.8,C:inactive}Sao tôi lại đang {s:0.8,C:red}chảy máu{s:0.8,C:inactive} ở dưới đó?",
                 },
             },
+            b_skh_forgotten_humble = {
+                name = "Bộ Bài Sâu Nhún Nhường?",
+                text = {
+                    "{C:attention}Nhân{} không thể vượt quá {C:attention}30*Ante{}",
+                    "{C:attention}Chip{} không thể vượt quá {C:attention}75*Ante{}",
+                    "{s:0.8,C:inactive}Mọi thứ đều {s:0.8,C:red}phải có{s:0.8,C:inactive} giới hạn.",
+                },
+            },
             b_skh_forgotten_diligent = {
                 name = "Bộ Bài Sâu Siêng Năng?",
                 text = {

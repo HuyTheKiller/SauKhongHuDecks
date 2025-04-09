@@ -359,6 +359,14 @@ return {
                     "{s:0.8,C:inactive}Why am I {s:0.8,C:red}bleeding{s:0.8,C:inactive} down there?",
                 },
             },
+            b_skh_forgotten_humble = {
+                name = "Humble Worm Deck?",
+                text = {
+                    "{C:attention}Mult{} cannot exceed {C:attention}30*Ante{}",
+                    "{C:attention}Chips{} cannot exceed {C:attention}75*Ante{}",
+                    "{s:0.8,C:inactive}Everything {s:0.8,C:red}has{s:0.8,C:inactive} a limit.",
+                },
+            },
             b_skh_forgotten_diligent = {
                 name = "Diligent Worm Deck?",
                 text = {

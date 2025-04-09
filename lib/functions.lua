@@ -217,6 +217,25 @@ function Game:update(dt)
 	end
 end
 
+-- Forgotten Humble: Mult/chips cannot exceed x/y
+mod_mult_ref = mod_mult
+function mod_mult(_mult)
+	_mult = mod_mult_ref(_mult)
+	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
+		_mult = math.min(_mult, 30*math.max(G.GAME.round_resets.ante, 1))
+	end
+	return _mult
+end
+
+mod_chips_ref = mod_chips
+function mod_chips(_chips)
+	_chips = mod_chips_ref(_chips)
+	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
+		_chips = math.min(_chips, 75*math.max(G.GAME.round_resets.ante, 1))
+	end
+	return _chips
+end
+
 -- Cool, config tab
 config = SKHDecks.config
 

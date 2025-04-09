@@ -1,8 +1,7 @@
 # SauKhongHuDecks
 This mod aims to add several themed decks dedicated to [SauKhongHu](https://youtube.com/@saukhonghu-16hp)'s channel.
 ![SauKhongHuDecks](https://raw.githubusercontent.com/HuyTheKiller/SauKhongHuDecks/refs/heads/main/assets/Infographic.png)
-There are 3 different sets of decks. You proceed to unlock following a binary tree.
-The rest of the journey is left for you to discover without consequences... or is it?
+The journey is left for you to discover without consequences... or is it?
 <details>
     <summary>Spoiler warning!</summary>
 
@@ -63,5 +62,56 @@ After rerolling the shop, a sound effect will play, indicating the change. Click
 | Kind Worm Deck        | After Play or Discard, always draw 5 cards                                                                                                              |
 | Generous Worm Deck    | X3/X5 Mult when having $5/$0 or less                                                                                                                    |
 | Patient Worm Deck     | 1 in (2*Number of Jokers) chance for X3 Chips and Mult                                                                                                  |
-  
+
+v1.6.0 introduces the final quirk of Divine Entity Decks: Hallucinating Worm.
+This deck chooses one of the following effects at random at the start of the run.
+| Unique Name             | Effect                                                           |
+|-------------------------|------------------------------------------------------------------|
+| Joker Disruption        | One random joker is replaced at end of Ante                      |
+| Playing Card Disruption | Playing cards get a random rank/suit, Chips and Mult when scored |
+
+v1.6.0 also introduces Forgotten Decks - the harder counterparts of original decks.
+There currently exist 2 sets:
+| Forgotten Sin Decks | Effect                                                                                                                                                                               |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Lusty Worm Deck?    | If played hand contains n face cards, create n-1 random numbered cards [still one hidden mechanic - find it out yourself]                                                            |
+| Greedy Worm Deck?   | Start with $100; certain actions cost $1; Jokers give money based on rarity (lower = more money); lose 25% of money at end of Ante                                                   |
+| Gluttony Worm Deck? | Destroy all scoring cards; add a number of random cards equal to 25% of destroyed cards this round to deck at end of round                                                           |
+| Slothful Worm Deck? | Apply Slothful Worm Deck; unknown win Ante                                                                                                                                           |
+| Wrathful Worm Deck? | Apply Wrathful Worm Deck; when Blind is selected, 1 in 2 chance to flip and shuffle all Jokers                                                                                       |
+| Envious Worm Deck?  | Apply Envious Worm Deck; playing cards with enhancement, edition, and/or seal also have chance of being destroyed at end of round                                                    |
+| Prideful Worm Deck? | destroy all scoring non-Aces-or-Kings; when Blind is selected, Common and Uncommon Jokers become negative rental; remove rental if a Rare joker or above is owned; only 1 Joker slot |
+
+| Forgotten Virtue Decks | Effect                                                                                                       |
+|------------------------|--------------------------------------------------------------------------------------------------------------|
+| Virgin Worm Deck?      | If scoring hand contains a King and a Jack, instantly lose the run                                           |
+| Humble Worm Deck?      | Mult cannot exceed 30\*Ante, Chips cannot exceed 75\*Ante                                                    |
+| Diligent Worm Deck?    | +1 Joker slot; debuff first joker; if score is over 200% requirement, instantly lose the run                 |
+| Abstemious Worm Deck?  | Combine hands and discards; total hand used every round is capped at 7                                       |
+| Kind Worm Deck?        | Retrigger a random joker 2 times before debuffing it; if all Jokers are debuffed, instantly lose the run     |
+| Generous Worm Deck?    | Go up to -$100 in debt; start with -$80; if money exceeds 0, instantly lose the run                          |
+| Patient Worm Deck?     | X4 base Blind size, reduce by half every 30 seconds, if base Blind size reaches X0.5, instantly lose the run |
 </details>
+
+### Forgotten Decks are here!
+Harder counterparts of Deadly Sins and Heavenly Virtues are finally here!
+
+They use the modified mechanic of [Tattered Decks](https://github.com/survovoaneend/Tattered-Decks) - a button to switch between the decks and their counterparts.
+To enable the full experience, make sure [Galdur](https://github.com/Eremel/Galdur) is installed.
+
+[Galdur](https://github.com/Eremel/Galdur) is not installed? Or do you simply not like the Forgotten button?
+
+Worry not, you can go to Mods > SauKhongHu Decks > Config and enable "Disable Deck Override" to load the decks normally.
+
+### Talisman compatibility
+This mod should now function properly with or without [Talisman](https://github.com/SpectralPack/Talisman). Feel free to experience stuff along side with [Cryptid](https://github.com/SpectralPack/Cryptid).
+
+### Multiplayer conpatibility
+If [Balatro Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer) is installed:
+* Several decks will be hidden from selection.
+* [Tattered Decks](https://github.com/survovoaneend/Tattered-Decks)-style button will be hidden, all supported Forgotten Decks will be exposed without the need of "Disable Deck Ovveride".
+
+Currently, Multiplayer-supported decks include:
+* Deadly Sin Decks (plus Wormy Chaos)
+* Forgotten Sin Decks
+* Heavenly Virtue Decks (plus Omnipotent Worm)

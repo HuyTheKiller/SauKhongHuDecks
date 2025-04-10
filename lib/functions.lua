@@ -73,13 +73,22 @@ end
 
 -- A separate game_over() function to use instead of calling end_round() to trigger game over
 function game_over()
-	G.STATE = G.STATES.GAME_OVER
-	if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then 
-		G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
-	end
-	G:save_settings()
-	G.FILE_HANDLER.force = true
-	G.STATE_COMPLETE = false
+	-- G.E_MANAGER:add_event(Event({
+	-- 	trigger = 'after',
+	-- 	delay = 0.2,
+	-- 	func = function()
+			G.RESET_BLIND_STATES = true
+			G.RESET_JIGGLES = true
+			G.STATE = G.STATES.GAME_OVER
+			if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then 
+				G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+			end
+			G:save_settings()
+			G.FILE_HANDLER.force = true
+			G.STATE_COMPLETE = false
+	-- 		return true
+	-- 	end
+	-- }))
 end
 
 -- Forgotten Slothful shenanigan
@@ -201,7 +210,7 @@ function Game:update(dt)
 				and to_big(G.GAME.chips) >= to_big(G.GAME.blind.chips)
 				and G.STATE == G.STATES.SELECTING_HAND
 			then
-				G.GAME.chips = G.GAME.blind.chips
+				-- G.GAME.chips = G.GAME.blind.chips
 				G.STATE = G.STATES.HAND_PLAYED
 				G.STATE_COMPLETE = true
 				end_round()

@@ -109,7 +109,7 @@ This mod should now function properly with or without [Talisman](https://github.
 ### Multiplayer compatibility
 If [Balatro Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer) is installed:
 * Several decks will be hidden from selection.
-* [Tattered Decks](https://github.com/survovoaneend/Tattered-Decks)-style button will be hidden, all supported Forgotten Decks will be exposed without the need of "Disable Deck Ovveride".
+* [Tattered Decks](https://github.com/survovoaneend/Tattered-Decks)-style button will be hidden, all supported Forgotten Decks will be exposed without the need of "Disable Deck Override".
 
 Currently, Multiplayer-supported decks include:
 * Deadly Sin Decks (plus Wormy Chaos)

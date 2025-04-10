@@ -525,6 +525,8 @@ return {
             SKH_disable_override_desc = {"Tải Bộ Bài Lãng Quên riêng biệt", "(yêu cầu khởi động lại)"},
             SKH_alt_texture = "Skin Thay Thế",
             SKH_alt_texture_desc = {"Tải skin mặt sau lá bài thay thế", "(yêu cầu khởi động lại)"},
+            SKH_nerf_b_side_patient = "Giảm khó Điềm Tĩnh?",
+            SKH_nerf_b_side_patient_desc = {"Tăng thời gian tối đa bỏ ra", "ở mỗi Ante từ 90 lên 150 giây"},
             k_debaunched_ex = "Thác Loạn!",
         },
     },

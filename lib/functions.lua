@@ -1,3 +1,5 @@
+config = SKHDecks.config
+
 -- Inject global variable for various decks
 local igo = Game.init_game_object
 function Game:init_game_object()
@@ -173,7 +175,7 @@ function Game:update(dt)
 				and G.GAME.round_resets.blind_states[c] ~= "Defeated"
 			then
 				G.GAME.patient_scaling_table[c] = (G.GAME.patient_scaling_table[c] or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult)
-					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+				* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				if G.blind_select_opts then
 					local blind_UI = G.blind_select_opts[string.lower(c)].definition.nodes[1].nodes[1].nodes[1].nodes[1]
 					local chip_text_node = blind_UI.nodes[1].nodes[3].nodes[1].nodes[2].nodes[2].nodes[3]
@@ -197,7 +199,7 @@ function Game:update(dt)
 				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
 			then
 				G.GAME.blind.chips = G.GAME.blind.chips
-					* 1.023373^(-dt) -- ~30*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+					* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
 					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*G.GAME.chicot_coeffi^#G.GAME.chicot_count)
@@ -249,15 +251,16 @@ function mod_chips(_chips)
 end
 
 -- Cool, config tab
-config = SKHDecks.config
-
 SKHDecks.config_tab = function()
-    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
+    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 5}, nodes = {
         {n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_disable_override'), ref_table = config, ref_value = 'DisableOverride', info = localize('SKH_disable_override_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},
 		{n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_alt_texture'), ref_table = config, ref_value = 'AltTexture', info = localize('SKH_alt_texture_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
+		}},
+		{n=G.UIT.R, config = {align = 'cm'}, nodes={
+			create_toggle({label = localize('SKH_nerf_b_side_patient'), ref_table = config, ref_value = 'NerfBSidePatient', info = localize('SKH_nerf_b_side_patient_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},
     }}
 end

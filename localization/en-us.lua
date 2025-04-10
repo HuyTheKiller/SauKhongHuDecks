@@ -520,6 +520,8 @@ return {
             SKH_disable_override_desc = {"Load Forgotten Decks as standalone", "(requires game restart)"},
             SKH_alt_texture = "Alternative Texture",
             SKH_alt_texture_desc = {"Load alternative card backs instead", "(requires game restart)"},
+            SKH_nerf_b_side_patient = "Nerf Patient Worm Deck?",
+            SKH_nerf_b_side_patient_desc = {"Increase the possible time spent", "per Ante from 90 to 150 seconds"},
             k_debaunched_ex = "Debaunched!",
         },
     },

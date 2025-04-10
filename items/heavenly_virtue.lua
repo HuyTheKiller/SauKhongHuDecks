@@ -5,9 +5,16 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "heavenly_virtue_alt",
+    path = "HeavenlyVirtueAlt.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Back({
 	key = "virginworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 0, y = 0 },
 	config = {extra = {hand_this_round = localize("k_none"), hand_lock = false, in_game = false}},
 	calculate = function(self, back, context)
@@ -68,7 +75,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "humbleworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 1, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
@@ -117,7 +124,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "diligentworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 2, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
@@ -157,7 +164,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "abstemiousworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 3, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
@@ -196,7 +203,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "kindworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 1, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
@@ -225,7 +232,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "generousworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 0, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
@@ -288,7 +295,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "patientworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
     pos = { x = 2, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
@@ -350,7 +357,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "omnipotentworm",
-	atlas = "heavenly_virtue",
+	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",
 	pos = { x = 3, y = 1 },
 	unlocked = false,
 	config = {extra = {

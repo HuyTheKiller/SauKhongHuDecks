@@ -523,6 +523,8 @@ return {
             k_diet_ex = "Kiêng Tốt!",
             SKH_disable_override = "Tắt Nạp Chồng Bài",
             SKH_disable_override_desc = {"Tải Bộ Bài Lãng Quên riêng biệt", "(yêu cầu khởi động lại)"},
+            SKH_alt_texture = "Skin Thay Thế",
+            SKH_alt_texture_desc = {"Tải skin mặt sau lá bài thay thế", "(yêu cầu khởi động lại)"},
             k_debaunched_ex = "Thác Loạn!",
         },
     },

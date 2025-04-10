@@ -1,3 +1,4 @@
 return {
-    DisableOverride = false
+    DisableOverride = false,
+    AltTexture = false,
 }

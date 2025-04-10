@@ -518,6 +518,8 @@ return {
             k_diet_ex = "Good Diet!",
             SKH_disable_override = "Disable Deck Override",
             SKH_disable_override_desc = {"Load Forgotten Decks as standalone", "(requires game restart)"},
+            SKH_alt_texture = "Alternative Texture",
+            SKH_alt_texture_desc = {"Load alternative card backs instead", "(requires game restart)"},
             k_debaunched_ex = "Debaunched!",
         },
     },

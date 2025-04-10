@@ -5,11 +5,18 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "forgotten_virtue_alt",
+    path = "ForgottenVirtueAlt.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Back({
     key = "forgotten_virgin",
-    atlas = "forgotten_virtue",
+    atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 0, y = 0 },
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_virginworm'},
     config = {b_side_lock = true},
@@ -38,10 +45,10 @@ SKHDecks.add_skh_b_side("b_skh_virginworm", "b_skh_forgotten_virgin")
 
 SMODS.Back({
 	key = "forgotten_humble",
-	atlas = "forgotten_virtue",
+	atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 1, y = 0 },
 	config = {b_side_lock = true},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_humbleworm'},
 })
@@ -50,10 +57,10 @@ SKHDecks.add_skh_b_side("b_skh_humbleworm", "b_skh_forgotten_humble")
 
 SMODS.Back({
     key = "forgotten_diligent",
-    atlas = "forgotten_virtue",
+    atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 2, y = 0 },
     config = {joker_slot = 1, b_side_lock = true},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_diligentworm'},
     apply = function(self, back)
@@ -78,10 +85,10 @@ SKHDecks.add_skh_b_side("b_skh_diligentworm", "b_skh_forgotten_diligent")
 
 SMODS.Back({
     key = "forgotten_abstemious",
-    atlas = "forgotten_virtue",
+    atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 3, y = 0 },
     config = {hands = 3, discards = 4, b_side_lock = true, extra = {hand_discard_limit = 7}},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_abstemiousworm'},
     calculate = function(self, back, context)
@@ -113,10 +120,10 @@ SKHDecks.add_skh_b_side("b_skh_abstemiousworm", "b_skh_forgotten_abstemious")
 
 SMODS.Back({
 	key = "forgotten_kind",
-	atlas = "forgotten_virtue",
+	atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 1, y = 1 },
 	config = {b_side_lock = true, extra = {retriggers = 2}},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_kindworm'},
 	calculate = function(self, back, context)
@@ -172,10 +179,10 @@ SKHDecks.add_skh_b_side("b_skh_kindworm", "b_skh_forgotten_kind")
 
 SMODS.Back({
 	key = "forgotten_generous",
-	atlas = "forgotten_virtue",
+	atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 0, y = 1 },
 	config = {dollars = -84, b_side_lock = true},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_generousworm'},
 	apply = function(self, back)
@@ -191,10 +198,10 @@ SKHDecks.add_skh_b_side("b_skh_generousworm", "b_skh_forgotten_generous")
 
 SMODS.Back({
     key = "forgotten_patient",
-    atlas = "forgotten_virtue",
+    atlas = not config.AltTexture and "forgotten_virtue" or "forgotten_virtue_alt",
     pos = { x = 2, y = 1 },
     config = {b_side_lock = true, ante_scaling = 4},
-    omit = not config.DisableOverride or SKHDecks.multiplayer_loaded,
+    omit = not config.DisableOverride or SKHDecks.mod_list.multiplayer,
     unlocked = false,
     unlock_condition = {type = 'win_deck', deck = 'b_skh_patientworm'},
     calculate = function(self, back, context)

@@ -256,6 +256,9 @@ SKHDecks.config_tab = function()
         {n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_disable_override'), ref_table = config, ref_value = 'DisableOverride', info = localize('SKH_disable_override_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},
+		{n=G.UIT.R, config = {align = 'cm'}, nodes={
+			create_toggle({label = localize('SKH_alt_texture'), ref_table = config, ref_value = 'AltTexture', info = localize('SKH_alt_texture_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
+		}},
     }}
 end
 
@@ -290,7 +293,7 @@ if Galdur then
 	end
 
 	for _, args in ipairs(Galdur.pages_to_add) do
-		if args.name == "gald_select_deck" and not config.DisableOverride and not SKHDecks.multiplayer_loaded then
+		if args.name == "gald_select_deck" and not config.DisableOverride and not SKHDecks.mod_list.multiplayer then
 			args.definition = skh_custom_deck_select_page_deck
 		end
 	end

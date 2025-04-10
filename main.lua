@@ -13,11 +13,17 @@ SKHDecks.optional_features = {
 SKHDecks.b_side_table = {}
 SKHDecks.b_side_current = false
 
-SKHDecks.multiplayer_loaded = false
+SKHDecks.mod_list = {
+	multiplayer = false,
+	-- malverk = false,
+}
 if (SMODS.Mods["Multiplayer"] or {}).can_load
 or (SMODS.Mods["NanoMultiplayer"] or {}).can_load then
-	SKHDecks.multiplayer_loaded = true
+	SKHDecks.mod_list.multiplayer = true
 end
+-- if (SMODS.Mods["malverk"] or {}).can_load then
+-- 	SKHDecks.mod_list.malverk = true
+-- end
 
 -- Load library files
 local mod_path = "" .. SKHDecks.path
@@ -35,8 +41,14 @@ for k, v in pairs(SKHDecks.load_table) do
 	end
 end
 
+-- Use Malverk's AltTexture and disable built-in one if detected
+-- if SKHDecks.mod_list.malverk then
+-- 	sendInfoMessage("Malverk mod detected! \"Alternative Texture\" feature has been disabled.", "SKHDecks")
+-- end
+-- It turns out Malverk doesn't support modded decks lmao
+
 -- Send a warning if Multiplayer is also installed
-if SKHDecks.multiplayer_loaded then
+if SKHDecks.mod_list.multiplayer then
 	sendWarnMessage("Multiplayer mod detected! This prevents several decks from appearing. While there is a way to select those decks, doing so is NOT RECOMMENDED.", "SKHDecks")
 end
 

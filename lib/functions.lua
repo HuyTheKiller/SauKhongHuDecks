@@ -183,7 +183,7 @@ function Game:update(dt)
 				and G.GAME.round_resets.blind_states[c] ~= "Defeated"
 			then
 				G.GAME.patient_scaling_table[c] = (G.GAME.patient_scaling_table[c] or G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult)
-				* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+				* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt*(SKHDecks.debug and 10 or 1)) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				if G.blind_select_opts then
 					local blind_UI = G.blind_select_opts[string.lower(c)].definition.nodes[1].nodes[1].nodes[1].nodes[1]
 					local chip_text_node = blind_UI.nodes[1].nodes[3].nodes[1].nodes[2].nodes[2].nodes[3]
@@ -207,7 +207,7 @@ function Game:update(dt)
 				and to_big(G.GAME.chips) < to_big(G.GAME.blind.chips)
 			then
 				G.GAME.blind.chips = G.GAME.blind.chips
-					* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
+					* (config.NerfBSidePatient and 1.0139594 or 1.0233738)^(-dt*(SKHDecks.debug and 10 or 1)) -- ~(50 or 30)*log(2, 2*G.GAME.starting_params.ante_scaling) seconds per Ante
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if
 					G.GAME.blind.chips < get_blind_amount(G.GAME.round_resets.blind_ante)*G.P_BLINDS[G.GAME.round_resets.blind_choices[c]].mult/(2*G.GAME.chicot_coeffi^#G.GAME.chicot_count)

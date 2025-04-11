@@ -13,6 +13,9 @@ SKHDecks.optional_features = {
 SKHDecks.b_side_table = {}
 SKHDecks.b_side_current = false
 
+-- Danger zone
+SKHDecks.debug = false
+
 SKHDecks.mod_list = {
 	multiplayer = false,
 	-- malverk = false,

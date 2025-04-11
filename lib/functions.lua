@@ -309,21 +309,19 @@ if Galdur then
 		end
 	end
 
-	local original_deck_page = G.FUNCS.change_deck_page
-	G.FUNCS.change_deck_page = function(args)
-		original_deck_page(args)
+	local populate_deck_card_areas_ref = populate_deck_card_areas
+	function populate_deck_card_areas(page)
+		populate_deck_card_areas_ref(page)
 
-		if SKHDecks.b_side_current then
-			if SKHDecks.b_side_current then
-				G.E_MANAGER:add_event(Event({
-					trigger = "immediate",
-					blockable = false,
-					func = function()
-						G.FUNCS.apply_skh_b_sides()
-						return true
-					end
-				}))
-			end
+		if SKHDecks.b_side_current or config.DisableOverride then
+			G.E_MANAGER:add_event(Event({
+				trigger = "immediate",
+				blockable = false,
+				func = function()
+					G.FUNCS.apply_skh_b_sides()
+					return true
+				end
+			}))
 		end
 	end
 else
@@ -332,41 +330,97 @@ else
 	-- end
 end
 
+-- Helper function for G.FUNCS.apply_skh_b_sides
+function table_contains(t, x)
+    found = false
+    for _, v in pairs(t) do
+        if v == x then
+            found = true
+        end
+    end
+    return found
+end
+
+local forgotten_table = {
+	"b_skh_forgotten_lusty", "b_skh_forgotten_greedy", "b_skh_forgotten_gluttony", "b_skh_forgotten_slothful", "b_skh_forgotten_wrathful", "b_skh_forgotten_envious", "b_skh_forgotten_prideful",
+	"b_skh_forgotten_virgin", "b_skh_forgotten_humble", "b_skh_forgotten_diligent", "b_skh_forgotten_abstemious", "b_skh_forgotten_kind", "b_skh_forgotten_generous", "b_skh_forgotten_patient",
+}
+
 G.FUNCS.apply_skh_b_sides = function()
 	if Galdur and Galdur.config.use then
-		for _, deck_area in ipairs(Galdur.run_setup.deck_select_areas) do
-			if #deck_area.cards ~= 0 then
-				local card = deck_area.cards[1]
-				if SKHDecks.b_side_table[card.config.center.key] ~= nil then
-					local center = G.P_CENTERS[SKHDecks.b_side_table[card.config.center.key]]
-					local cards_to_remove = {}
-					for _, card in ipairs(deck_area.cards) do
-						table.insert(cards_to_remove, card)
-					end
-					G.E_MANAGER:add_event(Event({trigger = "immediate", blockable = false, func = function() 
-						for _, cards in ipairs(cards_to_remove) do
-							cards:remove()
+		if not config.DisableOverride then
+			for _, deck_area in ipairs(Galdur.run_setup.deck_select_areas) do
+				if #deck_area.cards ~= 0 then
+					local card = deck_area.cards[1]
+					if SKHDecks.b_side_table[card.config.center.key] ~= nil then
+						local center = G.P_CENTERS[SKHDecks.b_side_table[card.config.center.key]]
+						local cards_to_remove = {}
+						for _, card in ipairs(deck_area.cards) do
+							table.insert(cards_to_remove, card)
 						end
-						return true
-					end }))
-					for i = 1, Galdur.config.reduce and 1 or 10 do
-						G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, func = function()
-							local new_card = Card(deck_area.T.x, deck_area.T.y, G.CARD_W, G.CARD_H, center, center, {galdur_back = Back(center), deck_select = 1})
-							new_card.deck_select_position = true
-							new_card.sprite_facing = "back"
-							new_card.facing = "back"
-							new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.unlocked and center.atlas or center.config.b_side_lock and "skh_forgotten_locked" or "centers"], center.unlocked and center.pos or center.config.b_side_lock and {x = 0, y = 0} or {x = 4, y = 0})
-							new_card.children.back.states.hover = card.states.hover
-							new_card.children.back.states.click = card.states.click
-							new_card.children.back.states.drag = card.states.drag
-							new_card.children.back.states.collide.can = false
-							new_card.children.back:set_role({major = new_card, role_type = "Glued", draw_major = new_card})
-							deck_area:emplace(new_card)
-							if Galdur.config.reduce or i == 10 then
-								new_card.sticker = get_deck_win_sticker(center)
+						G.E_MANAGER:add_event(Event({trigger = "immediate", blockable = false, func = function() 
+							for _, cards in ipairs(cards_to_remove) do
+								cards:remove()
 							end
 							return true
-						end}))
+						end }))
+						for i = 1, Galdur.config.reduce and 1 or 10 do
+							G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, func = function()
+								local new_card = Card(deck_area.T.x, deck_area.T.y, G.CARD_W, G.CARD_H, center, center, {galdur_back = Back(center), deck_select = 1})
+								new_card.deck_select_position = true
+								new_card.sprite_facing = "back"
+								new_card.facing = "back"
+								new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.unlocked and center.atlas or center.config.b_side_lock and "skh_forgotten_locked" or "centers"], center.unlocked and center.pos or center.config.b_side_lock and {x = 0, y = 0} or {x = 4, y = 0})
+								new_card.children.back.states.hover = card.states.hover
+								new_card.children.back.states.click = card.states.click
+								new_card.children.back.states.drag = card.states.drag
+								new_card.children.back.states.collide.can = false
+								new_card.children.back:set_role({major = new_card, role_type = "Glued", draw_major = new_card})
+								deck_area:emplace(new_card)
+								if Galdur.config.reduce or i == 10 then
+									new_card.sticker = get_deck_win_sticker(center)
+								end
+								return true
+							end}))
+						end
+					end
+				end
+			end
+		else
+			for _, deck_area in ipairs(Galdur.run_setup.deck_select_areas) do
+				if #deck_area.cards ~= 0 then
+					local card = deck_area.cards[1]
+					if table_contains(forgotten_table, card.config.center.key) then
+						local center = G.P_CENTERS[card.config.center.key]
+						local cards_to_remove = {}
+						for _, card in ipairs(deck_area.cards) do
+							table.insert(cards_to_remove, card)
+						end
+						G.E_MANAGER:add_event(Event({trigger = "immediate", blockable = false, func = function() 
+							for _, cards in ipairs(cards_to_remove) do
+								cards:remove()
+							end
+							return true
+						end }))
+						for i = 1, Galdur.config.reduce and 1 or 10 do
+							G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, func = function()
+								local new_card = Card(deck_area.T.x, deck_area.T.y, G.CARD_W, G.CARD_H, center, center, {galdur_back = Back(center), deck_select = 1})
+								new_card.deck_select_position = true
+								new_card.sprite_facing = "back"
+								new_card.facing = "back"
+								new_card.children.back = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[center.unlocked and center.atlas or center.config.b_side_lock and "skh_forgotten_locked" or "centers"], center.unlocked and center.pos or center.config.b_side_lock and {x = 0, y = 0} or {x = 4, y = 0})
+								new_card.children.back.states.hover = card.states.hover
+								new_card.children.back.states.click = card.states.click
+								new_card.children.back.states.drag = card.states.drag
+								new_card.children.back.states.collide.can = false
+								new_card.children.back:set_role({major = new_card, role_type = "Glued", draw_major = new_card})
+								deck_area:emplace(new_card)
+								if Galdur.config.reduce or i == 10 then
+									new_card.sticker = get_deck_win_sticker(center)
+								end
+								return true
+							end}))
+						end
 					end
 				end
 			end

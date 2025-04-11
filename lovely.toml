@@ -71,6 +71,19 @@ end
 '''
 match_indent = true
 
+# Hopefully fix triggering game_over() in Forgotten Patient resulting in a crash on leaving game over screen
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''set_joker_loss()'''
+position = "at"
+payload = '''
+if G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_patient" then
+    set_joker_loss()
+end
+'''
+match_indent = true
+
 # Custom locked sprite for Forgotten Decks (not working)
 # [[patches]]
 # [patches.pattern]

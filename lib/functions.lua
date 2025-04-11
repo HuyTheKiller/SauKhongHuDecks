@@ -154,12 +154,12 @@ function Controller:L_cursor_press(x, y)
 end
 
 -- Hopefully fix triggering game_over() in Forgotten Patient resulting in a crash on leaving game over screen
--- local set_joker_loss_ref = set_joker_loss()
--- function set_joker_loss()
--- 	if G and G.jokers then
--- 		return set_joker_loss_ref()
--- 	end
--- end
+local set_joker_loss_ref = set_joker_loss
+function set_joker_loss()
+	if G and G.jokers and G.jokers.cards and G.jokers.cards[1] then
+		set_joker_loss_ref()
+	end
+end
 
 upd = Game.update
 function Game:update(dt)

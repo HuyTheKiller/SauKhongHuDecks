@@ -5,7 +5,7 @@
 	"description": "Adds a set of themed decks for SauKhongHu. Load this mod for more information.",
 	"prefix": "skh",
 	"main_file": "main.lua",
-	"priority": 0,
+	"priority": 10000000000000000,
 	"badge_colour": "0d0c4f",
 	"badge_text_colour": "0a81f1",
 	"display_name": "SKH Decks",

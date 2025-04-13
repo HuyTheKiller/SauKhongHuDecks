@@ -5,9 +5,16 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "deadly_sin_alt",
+    path = "DeadlySinAlt.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Back({
 	key = "lustyworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 0, y = 0 },
 	calculate = function(self, back, context)
 		if context.before then
@@ -51,7 +58,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "greedyworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 1, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_lustyworm'},
@@ -126,7 +133,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "gluttonyworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 2, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_lustyworm'},
@@ -166,7 +173,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "slothfulworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 0, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
@@ -192,7 +199,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "wrathfulworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 2, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
@@ -248,7 +255,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "enviousworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 3, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
@@ -291,7 +298,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "pridefulworm",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 1, y = 1 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
@@ -358,7 +365,7 @@ SMODS.Back({
 
 SMODS.Back({
 	key = "wormychaos",
-	atlas = "deadly_sin",
+	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",
     pos = { x = 3, y = 1 },
 	unlocked = false,
 	config = {extra = {

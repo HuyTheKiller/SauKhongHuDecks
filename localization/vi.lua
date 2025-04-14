@@ -454,6 +454,16 @@ return {
                     "{s:0.8,C:inactive}là thước đo của thành công.",
                 },
             },
+            b_skh_forgotten_generous_mp = {
+                name = "Bộ Bài Sâu Hào Phóng?",
+                text = {
+                    "Ghi nợ tối đa {C:red}$100{}",
+                    "Bắt đầu với {C:money}-$#1#{}",
+                    "Nếu tiền vượt quá {C:money}$0{},",
+                    "{C:red}mất{} một mạng ở cuối",
+                    "{C:attention}Blind không-phải-Đối-Đầu",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

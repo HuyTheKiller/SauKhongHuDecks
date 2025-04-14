@@ -14,6 +14,7 @@ function Game:init_game_object()
 	ret.chicot_count = {} -- Forgotten Patient
 	ret.chicot_coeffi = 1 -- Forgotten Patient
 	ret.random_choice = 1 -- Hallucinating Worm
+	ret.current_round.rule_broken_amount = 0 -- Number of times a deck rule is broken in Multiplayer in one specific round
 	return ret
 end
 
@@ -235,6 +236,18 @@ function Game:update(dt)
 	then
 		if G.GAME.dollars > to_big(0) then game_over() end
 	end
+	if -- Money-exceeds-0 triggers live loss in Forgotten Generous (Multiplayer)
+		G.GAME
+		and G.GAME.selected_back
+		and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_generous_mp"
+		and not MP.is_pvp_boss()
+	then
+		if G.GAME.dollars > to_big(0) then
+			G.GAME.current_round.rule_broken_amount = 1
+		else
+			G.GAME.current_round.rule_broken_amount = 0
+		end
+	end
 end
 
 -- Forgotten Humble: Mult/chips cannot exceed x/y
@@ -258,6 +271,21 @@ function mod_chips(_chips)
 	return _chips
 end
 
+-- Trigger live loss at end of round equal to number of times a rule has been broken in that round
+if SKHDecks.mod_list.multiplayer then
+	local update_new_round_ref = Game.update_new_round
+	function Game:update_new_round(dt)
+		if MP.LOBBY.code and not G.STATE_COMPLETE then
+			if G.GAME.current_round.rule_broken_amount > 0 then
+				for _ = 1, G.GAME.current_round.rule_broken_amount do
+					MP.ACTIONS.fail_round(G.GAME.current_round.hands_played)
+				end
+				G.GAME.current_round.rule_broken_amount = 0
+			end
+		end
+		update_new_round_ref(self, dt)
+	end
+end
 -- Cool, config tab
 SKHDecks.config_tab = function()
     return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 5}, nodes = {

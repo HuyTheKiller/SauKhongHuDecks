@@ -5,6 +5,7 @@ SKHDecks.load_table = {
 	heavenly_virtue = true,
 	forgotten_sin = true,
 	forgotten_virtue = true,
+	forgotten_virtue_mp = false,
 }
 SKHDecks.optional_features = {
 	retrigger_joker = true,
@@ -37,6 +38,7 @@ if SKHDecks.mod_list.multiplayer then
 	sendInfoMessage("Multiplayer mod detected!", "SKHDecks")
 	SKHDecks.load_table.divine_entity = false
 	SKHDecks.load_table.forgotten_virtue = false
+	SKHDecks.load_table.forgotten_virtue_mp = true
 	for k, v in pairs(SKHDecks.load_table) do
 		if not v then
 			sendInfoMessage("Blocking item file " .. k .. ".lua ...", "SKHDecks")

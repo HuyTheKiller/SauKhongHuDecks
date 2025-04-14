@@ -449,6 +449,16 @@ return {
                     "{s:0.8,C:inactive}is the key to success.",
                 },
             },
+            b_skh_forgotten_generous_mp = {
+                name = "Generous Worm Deck?",
+                text = {
+                    "Go up to {C:red}-$100{} in debt",
+                    "Start with {C:money}-$#1#{}",
+                    "If money exceeds {C:money}$0{},",
+                    "{C:red}lose{} a life at end",
+                    "of {C:attention}non-PvP Blind",
+                },
+            },
         },
         Mod = {
             SKHDecks = {

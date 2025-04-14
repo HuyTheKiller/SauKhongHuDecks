@@ -1,17 +1,3 @@
-SMODS.Atlas({
-    key = "forgotten_sin",
-    path = "ForgottenSin.png",
-    px = 71,
-    py = 95,
-})
-
-SMODS.Atlas({
-    key = "forgotten_sin_alt",
-    path = "ForgottenSinAlt.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Back({
     key = "forgotten_lusty",
     atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",

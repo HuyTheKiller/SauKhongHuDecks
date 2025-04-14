@@ -1,17 +1,3 @@
-SMODS.Atlas({
-    key = "deadly_sin",
-    path = "DeadlySin.png",
-    px = 71,
-    py = 95,
-})
-
-SMODS.Atlas({
-    key = "deadly_sin_alt",
-    path = "DeadlySinAlt.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Back({
 	key = "lustyworm",
 	atlas = not config.AltTexture and "deadly_sin" or "deadly_sin_alt",

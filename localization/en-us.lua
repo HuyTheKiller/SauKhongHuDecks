@@ -327,7 +327,7 @@ return {
                     "Jokers give {C:money}money{} when triggered",
                     "depending on {C:attention}rarity{}",
                     "Lose {C:attention}25%{} of money at end of Ante",
-                    "{s:0.8,C:red}Absolute {s:0.8,C:red}capitalism{s:0.8,C:inactive}.",
+                    "{s:0.8,C:inactive}Absolute {s:0.8,C:red}capitalism{s:0.8,C:inactive}.",
                 },
             },
             b_skh_forgotten_gluttony = {

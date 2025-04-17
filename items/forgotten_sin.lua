@@ -1,13 +1,6 @@
-SMODS.Atlas({
-    key = "forgotten_sin",
-    path = "ForgottenSin.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Back({
     key = "forgotten_lusty",
-    atlas = "forgotten_sin",
+    atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 0, y = 0 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
     unlocked = false,
@@ -63,7 +56,7 @@ SKHDecks.add_skh_b_side("b_skh_lustyworm", "b_skh_forgotten_lusty")
 
 SMODS.Back({
     key = "forgotten_greedy",
-    atlas = "forgotten_sin",
+    atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 1, y = 0 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,
@@ -116,7 +109,7 @@ SKHDecks.add_skh_b_side("b_skh_greedyworm", "b_skh_forgotten_greedy")
 
 SMODS.Back({
     key = "forgotten_gluttony",
-    atlas = "forgotten_sin",
+    atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 2, y = 0 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,
@@ -149,7 +142,7 @@ SKHDecks.add_skh_b_side("b_skh_gluttonyworm", "b_skh_forgotten_gluttony")
 
 SMODS.Back({
 	key = "forgotten_slothful",
-	atlas = "forgotten_sin",
+	atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 0, y = 1 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,
@@ -175,7 +168,7 @@ SKHDecks.add_skh_b_side("b_skh_slothfulworm", "b_skh_forgotten_slothful")
 
 SMODS.Back({
 	key = "forgotten_wrathful",
-	atlas = "forgotten_sin",
+	atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 2, y = 1 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,
@@ -255,7 +248,7 @@ SKHDecks.add_skh_b_side("b_skh_wrathfulworm", "b_skh_forgotten_wrathful")
 
 SMODS.Back({
 	key = "forgotten_envious",
-	atlas = "forgotten_sin",
+	atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 3, y = 0 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,
@@ -319,7 +312,7 @@ SKHDecks.add_skh_b_side("b_skh_enviousworm", "b_skh_forgotten_envious")
 
 SMODS.Back({
 	key = "forgotten_prideful",
-	atlas = "forgotten_sin",
+	atlas = not config.AltTexture and "forgotten_sin" or "forgotten_sin_alt",
     pos = { x = 1, y = 1 },
     omit = not config.DisableOverride and not SKHDecks.mod_list.multiplayer,
 	unlocked = false,

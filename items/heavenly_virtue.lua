@@ -1,17 +1,3 @@
-SMODS.Atlas({
-    key = "heavenly_virtue",
-    path = "HeavenlyVirtue.png",
-    px = 71,
-    py = 95,
-})
-
-SMODS.Atlas({
-    key = "heavenly_virtue_alt",
-    path = "HeavenlyVirtueAlt.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Back({
 	key = "virginworm",
 	atlas = not config.AltTexture and "heavenly_virtue" or "heavenly_virtue_alt",

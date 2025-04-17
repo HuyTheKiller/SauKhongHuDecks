@@ -236,15 +236,19 @@ function Game:update(dt)
 	then
 		if G.GAME.dollars > to_big(0) then game_over() end
 	end
-	if -- Money-exceeds-0 triggers live loss in Forgotten Generous (Multiplayer)
+	if -- Money-exceeds-0 triggers live loss (Multiplayer) or game over (Singleplayer) in reworked Forgotten Generous
 		G.GAME
 		and G.GAME.selected_back
 		and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_generous_mp"
-		and not MP.is_pvp_boss()
+		and G.STATE ~= G.STATES.GAME_OVER
 	then
 		if G.GAME.dollars > to_big(0) then
-			G.GAME.current_round.rule_broken_amount = 1
-		else
+			if MP.LOBBY.code then
+				if not MP.is_pvp_boss() then
+				G.GAME.current_round.rule_broken_amount = 1
+				end
+			else game_over() end
+		elseif G.GAME.dollars <= to_big(0) or MP.is_pvp_boss() then
 			G.GAME.current_round.rule_broken_amount = 0
 		end
 	end

@@ -14,6 +14,8 @@ function Game:init_game_object()
 	ret.chicot_count = {} -- Forgotten Patient
 	ret.chicot_coeffi = 1 -- Forgotten Patient
 	ret.random_choice = 1 -- Hallucinating Worm
+	ret.click_count = 0 -- Forgotten Hallucinating
+	ret.click_threshold = 25 -- Forgotten Hallucinating
 	ret.current_round.rule_broken_amount = 0 -- Number of times a deck rule is broken in Multiplayer in one specific round
 	return ret
 end

@@ -101,6 +101,36 @@ return {
                     "on any difficulty"
                 },
             },
+            b_skh_forgotten_hallucinating1 = {
+                name = "Hallucinating Worm Deck?",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "shuffle all Jokers",
+                    "{C:green}Unknown{} chance to shuffle",
+                    "and/or replace Jokers on click",
+                },
+            },
+            b_skh_forgotten_hallucinating2 = {
+                name = "Hallucinating Worm Deck?",
+                text = {
+                    "{C:attention}Change{} the {C:attention}rank/suit{} of",
+                    "{C:attention}highlighed{} cards on every 6th click",
+                    "{C:green}Unknown{} chance to do so",
+                    "to all cards in hand",
+                    "Scoring cards {C:attention}give{} random",
+                    "{C:attention}Chips{} and {C:attention}Mult{}",
+                },
+            },
+            b_skh_forgotten_hallucinating_collection = {
+                name = "Hallucinating Worm Deck?",
+                text = {
+                    "Further {C:red}disrupt{} either",
+                    "{C:attention}jokers{} or {C:attention}playing cards{}",
+                    "{C:inactive}(View effect in a live run)",
+                    "{s:0.8,C:red}Attempt to index local",
+                    "{s:0.8,C:legendary}\"GLITCH\"{s:0.8,C:red} (a nil value)",
+                },
+            },
             b_skh_lustyworm = {
                 name = "Lusty Worm Deck",
                 text = {

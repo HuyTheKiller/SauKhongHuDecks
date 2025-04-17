@@ -104,6 +104,36 @@ return {
                     "ở bất kì độ khó nào"
                 },
             },
+            b_skh_forgotten_hallucinating1 = {
+                name = "Bộ Bài Sâu Chơi Đồ?",
+                text = {
+                    "Khi {C:attention}Blind{} được chọn,",
+                    "trộn các Joker",
+                    "Xác suất {C:green}không rõ{} để trộn và/hoặc",
+                    "thay thế Joker khi nhấp chuột",
+                },
+            },
+            b_skh_forgotten_hallucinating2 = {
+                name = "Bộ Bài Sâu Chơi Đồ?",
+                text = {
+                    "{C:attention}Biến đổi bậc/chất{} của các lá",
+                    "{C:attention}đã chọn{} sau mỗi 6 lần nhấp chuột",
+                    "Xác suất {C:green}không rõ{} để áp dụng",
+                    "lên mọi lá bài trên tay",
+                    "Lá ghi điểm {C:attention}cho{} {C:attention}Chip{}",
+                    "và {C:attention}Nhân{} ngẫu nhiên",
+                },
+            },
+            b_skh_forgotten_hallucinating_collection = {
+                name = "Bộ Bài Sâu Chơi Đồ?",
+                text = {
+                    "Siêu {C:red}phá rối{} {C:attention}joker{}",
+                    "hoặc {C:attention}lá bài thường{}",
+                    "{C:inactive}(Xem hiệu ứng trong trận)",
+                    "{s:0.8,C:red}Attempt to index local",
+                    "{s:0.8,C:legendary}\"GLITCH\"{s:0.8,C:red} (a nil value)",
+                },
+            },
             b_skh_lustyworm = {
                 name = "Bộ Bài Sâu Dục Vọng",
                 text = {

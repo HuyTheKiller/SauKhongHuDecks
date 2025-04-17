@@ -3,6 +3,7 @@ SKHDecks.load_table = {
 	divine_entity = true,
 	deadly_sin = true,
 	heavenly_virtue = true,
+	forgotten_entity = true,
 	forgotten_sin = true,
 	forgotten_virtue = true,
 	forgotten_virtue_mp = false,
@@ -38,6 +39,7 @@ if SKHDecks.mod_list.multiplayer then
 	sendInfoMessage("Multiplayer mod detected!", "SKHDecks")
 	SKHDecks.load_table.divine_entity = false
 	SKHDecks.load_table.forgotten_virtue = false
+	SKHDecks.load_table.forgotten_entity = false
 	SKHDecks.load_table.forgotten_virtue_mp = true
 	for k, v in pairs(SKHDecks.load_table) do
 		if not v then

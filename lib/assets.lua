@@ -64,6 +64,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = "forgotten_entity",
+    path = "ForgottenEntity.png",
+    px = 71,
+    py = 95,
+})
+
+SMODS.Atlas({
     key = "deadly_sin",
     path = "DeadlySin.png",
     px = 71,

@@ -29,8 +29,8 @@ end
 local mod_path = "" .. SKHDecks.path
 local files = NFS.getDirectoryItems(mod_path .. "lib")
 for _, file in ipairs(files) do
+	sendInfoMessage("Loading library file " .. file, "SKHDecks")
 	SMODS.load_file("lib/" .. file)()
-	sendInfoMessage("The library file " .. file .. " has been loaded!", "SKHDecks")
 end
 
 -- Notify and block several files if Multiplayer is also installed
@@ -41,7 +41,7 @@ if SKHDecks.mod_list.multiplayer then
 	SKHDecks.load_table.forgotten_virtue_mp = true
 	for k, v in pairs(SKHDecks.load_table) do
 		if not v then
-			sendInfoMessage("Blocking item file " .. k .. ".lua ...", "SKHDecks")
+			sendInfoMessage("Blocking " .. k .. ".lua", "SKHDecks")
 		end
 	end
 end
@@ -49,8 +49,8 @@ end
 -- Load items if enabled
 for k, v in pairs(SKHDecks.load_table) do
     if v then
+		sendInfoMessage("Loading " .. k .. ".lua", "SKHDecks")
 		SMODS.load_file('items/'..k..'.lua')()
-		sendInfoMessage("The item file " .. k .. ".lua has been loaded!", "SKHDecks")
 	end
 end
 

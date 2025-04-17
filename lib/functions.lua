@@ -368,6 +368,7 @@ function table_contains(t, x)
     for _, v in pairs(t) do
         if v == x then
             found = true
+			break
         end
     end
     return found

@@ -140,9 +140,6 @@ SMODS.Back({
 	collection_loc_vars = function(self)
 		return {key = "b_skh_forgotten_hallucinating_collection"}
 	end,
-	locked_loc_vars = function(self)
-		return {key = "b_skh_forgotten_hallucinating_collection"}
-	end,
 })
 
 SKHDecks.add_skh_b_side("b_skh_hallucinatingworm_collection", "b_skh_forgotten_hallucinating_collection")

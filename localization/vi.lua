@@ -108,9 +108,9 @@ return {
                 name = "Bộ Bài Sâu Chơi Đồ?",
                 text = {
                     "Khi {C:attention}Blind{} được chọn,",
-                    "trộn các Joker",
+                    "{C:attention}trộn{} các Joker",
                     "Xác suất {C:green}không rõ{} để trộn và/hoặc",
-                    "thay thế Joker khi nhấp chuột",
+                    "thay thế Joker khi {C:attention}nhấp chuột{}",
                 },
             },
             b_skh_forgotten_hallucinating2 = {

@@ -105,9 +105,9 @@ return {
                 name = "Hallucinating Worm Deck?",
                 text = {
                     "When {C:attention}Blind{} is selected,",
-                    "shuffle all Jokers",
+                    "{C:attention}shuffle{} all Jokers",
                     "{C:green}Unknown{} chance to shuffle",
-                    "and/or replace Jokers on click",
+                    "and/or replace Jokers {C:attention}on click{}",
                 },
             },
             b_skh_forgotten_hallucinating2 = {

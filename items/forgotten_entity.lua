@@ -8,7 +8,7 @@ SMODS.Back({
 	config = {b_side_lock = true, extra = {in_game = false}},
 	calculate = function(self, back, context)
 		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
-		if G.GAME.random_choice == 1 then
+		if G.GAME.random_choice == 1 or config.InsaneHallu then
 			if context.setting_blind then
 				G.jokers:unhighlight_all()
                 if #G.jokers.cards > 1 then
@@ -65,7 +65,8 @@ SMODS.Back({
                     if v.facing == 'back' then v:flip() end
                 end
             end
-		elseif G.GAME.random_choice == 2 then
+        end
+		if G.GAME.random_choice == 2 or config.InsaneHallu then
             if context.skh_press and G.GAME.facing_blind then
                 G.GAME.click_count = G.GAME.click_count + 1
                 if G.GAME.click_count <= G.GAME.click_threshold then
@@ -129,7 +130,7 @@ SMODS.Back({
 		self.config.extra.in_game = true
 	end,
 	loc_vars = function(self)
-		if self.config.extra.in_game then
+		if self.config.extra.in_game and not config.InsaneHallu then
 			return {
 				key = "b_skh_forgotten_hallucinating" .. tostring(G.GAME.random_choice)
 			}

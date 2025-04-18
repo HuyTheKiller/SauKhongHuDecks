@@ -562,6 +562,8 @@ return {
             SKH_alt_texture_desc = {"Load alternative card backs instead", "(requires game restart)"},
             SKH_nerf_b_side_patient = "Nerf Patient Worm Deck?",
             SKH_nerf_b_side_patient_desc = {"Increase the possible time spent", "per Ante from 90 to 150 seconds"},
+            SKH_insane_hallu = "Insane Hallucination",
+            SKH_insane_hallu_desc = {"Combine 2 distinct effects of both", "Hallucinating Decks into one (hard)"},
             k_debaunched_ex = "Debaunched!",
         },
     },

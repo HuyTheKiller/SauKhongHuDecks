@@ -294,7 +294,7 @@ if SKHDecks.mod_list.multiplayer then
 end
 -- Cool, config tab
 SKHDecks.config_tab = function()
-    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 5}, nodes = {
+    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 7}, nodes = {
         {n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_disable_override'), ref_table = config, ref_value = 'DisableOverride', info = localize('SKH_disable_override_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},
@@ -303,6 +303,9 @@ SKHDecks.config_tab = function()
 		}},
 		{n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_nerf_b_side_patient'), ref_table = config, ref_value = 'NerfBSidePatient', info = localize('SKH_nerf_b_side_patient_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
+		}},
+		{n=G.UIT.R, config = {align = 'cm'}, nodes={
+			create_toggle({label = localize('SKH_insane_hallu'), ref_table = config, ref_value = 'InsaneHallu', info = localize('SKH_insane_hallu_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},
     }}
 end

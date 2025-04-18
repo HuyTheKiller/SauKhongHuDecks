@@ -567,6 +567,8 @@ return {
             SKH_alt_texture_desc = {"Tải skin mặt sau lá bài thay thế", "(yêu cầu khởi động lại)"},
             SKH_nerf_b_side_patient = "Giảm khó Điềm Tĩnh?",
             SKH_nerf_b_side_patient_desc = {"Tăng thời gian tối đa bỏ ra", "ở mỗi Ante từ 90 lên 150 giây"},
+            SKH_insane_hallu = "Chơi Đồ Level MAX",
+            SKH_insane_hallu_desc = {"Kết hợp 2 hiệu ứng riêng biệt của", "các Bộ Chơi Đồ thành một (khó)"},
             k_debaunched_ex = "Thác Loạn!",
         },
     },

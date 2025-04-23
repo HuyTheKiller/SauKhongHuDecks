@@ -19,6 +19,20 @@ SMODS.Back({
 					break
 				end -- this is to optimize performance in some way by limiting iterations whenever possible
 			end
+			local king_count = 0
+			local queen_count = 0
+			for i = 1, #context.full_hand do
+				local temp = context.full_hand[i]
+				if temp:get_id() == 13 then
+					king_count = king_count + 1
+				elseif temp:get_id() == 12 then
+					queen_count = queen_count + 1
+				end
+			end
+			if (king_count == 4 and queen_count == 1)
+			or (queen_count == 4 and king_count == 1) then
+				check_for_unlock({type = "harem_of_a_kind"})
+			end
 			if #suits == 2 then
 				local new_jack = copy_card(context.full_hand[1], nil, nil, G.playing_card)
 				assert(SMODS.change_base(new_jack, pseudorandom_element(suits, pseudoseed("lusty_deck_reproduce")), "Jack"))

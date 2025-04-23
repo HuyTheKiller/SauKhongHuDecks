@@ -501,7 +501,7 @@ return {
                 text = {
                     "{s:1.3}Thêm một nhóm {s:1.3,C:attention}bộ bài {s:1.3,C:dark_edition}đặc thù {s:1.3}cho Sâu Không Hư.",
                     " ",
-                    "Lời cảm ơn chân thành đến HuyCorn cho việc thiết kế mặt sau bộ bài.",
+                    "Lời cảm ơn chân thành đến HuyCorn và Amy cho việc thiết kế nhiều bộ skin.",
                 },
             },
         },
@@ -544,6 +544,20 @@ return {
         },
     },
     misc = {
+        achievement_names = {
+            ach_skh_i_dont_need_those = "Tôi Không Cần Chúng!",
+            ach_skh_the_harem = "Dàn Harem",
+            ach_skh_absolute_saunema = "Tuyệt Đối Sâu Ảnh",
+            ach_skh_smart_kid = "Đứa Thông Minh",
+            ach_skh_you_broke_the_rules = "Luật Bị Phá",
+        },
+        achievement_descriptions = {
+            ach_skh_i_dont_need_those = "Bán Kịch Câm và Nam Tước khởi đầu khi chơi Bộ Bài Sâu Không Hư",
+            ach_skh_the_harem = "Chơi tay bài chứa 4 Đầm và 1 Già hoặc ngược lại khi chơi Bộ Bài Sâu Dục Vọng",
+            ach_skh_absolute_saunema = "Thắng một trận bằng Bộ Bài Tuyệt Đối Điện Ảnh ở bất kì độ khó nào",
+            ach_skh_smart_kid = "Thắng 2 ván liên tiếp mà không dùng tay bài cuối khi chơi Bộ Bài Sâu Siêng Năng",
+            ach_skh_you_broke_the_rules = "Phá luật khi chơi bất kì Bộ Bài Mỹ Đức Lãng Quên nào",
+        },
         dictionary = {
             b_forgotten = "Lãng Quên",
             k_wee_ex = "WEE!",

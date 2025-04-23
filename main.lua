@@ -1,5 +1,6 @@
 SKHDecks = SMODS.current_mod
 SKHDecks.load_table = {
+	achievement = true,
 	divine_entity = true,
 	deadly_sin = true,
 	heavenly_virtue = true,

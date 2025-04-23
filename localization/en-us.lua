@@ -496,7 +496,7 @@ return {
                 text = {
                     "{s:1.3}Adds a set of {s:1.3,C:dark_edition}themed {s:1.3,C:attention}decks {s:1.3}for SauKhongHu.",
                     " ",
-                    "Special thanks to HuyCorn for designing the card backs.",
+                    "Special thanks to HuyCorn and Amy for designing several assets.",
                 },
             },
         },
@@ -539,6 +539,20 @@ return {
         },
     },
     misc = {
+        achievement_names = {
+            ach_skh_i_dont_need_those = "I Don't Need Those!",
+            ach_skh_the_harem = "The Harem",
+            ach_skh_absolute_saunema = "Absolute Saunema",
+            ach_skh_smart_kid = "Smart Kid",
+            ach_skh_you_broke_the_rules = "Broken Rules",
+        },
+        achievement_descriptions = {
+            ach_skh_i_dont_need_those = "Sell starting Mime and Baron in SauKhongHu Deck",
+            ach_skh_the_harem = "Play a full hand containing 4 Queens and 1 King or vise versa in Lusty Worm Deck",
+            ach_skh_absolute_saunema = "Win a run with Absolute Cinema Deck on any difficulty",
+            ach_skh_smart_kid = "Win 2 consecutive rounds without using final hand in Diligent Worm Deck",
+            ach_skh_you_broke_the_rules = "Break the rule of any Forgotten Virtue Deck",
+        },
         dictionary = {
             b_forgotten = "Forgotten",
             k_wee_ex = "WEE!",

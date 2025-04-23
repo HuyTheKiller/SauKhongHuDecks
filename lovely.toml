@@ -67,6 +67,22 @@ position = "before"
 payload = '''
 if G.GAME.chips - G.GAME.blind.chips >= G.GAME.blind.chips and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_diligent" then
     game_over = true
+    check_for_unlock({type = "forgotten_virtue_game_over"})
+end
+'''
+match_indent = true
+
+# Patch related to Diligent Worm's achievement
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''G.GAME.unused_discards = (G.GAME.unused_discards or 0) + G.GAME.current_round.discards_left'''
+position = "before"
+payload = '''
+if G.GAME.current_round.hands_left > 0 then
+    G.GAME.non_final_hand_streak = (G.GAME.non_final_hand_streak or 0) + 1
+else
+    G.GAME.non_final_hand_streak = 0
 end
 '''
 match_indent = true
@@ -120,7 +136,7 @@ end
 '''
 match_indent = true
 
-# Apply Patient, Virgin, Chaos and Omnipotent loc handling when exiting to Menu
+# Apply loc handling when exiting to Menu
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"

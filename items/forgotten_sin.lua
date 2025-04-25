@@ -148,10 +148,15 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_slothfulworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
-				extra = {odds = 6, ante_loss = 1}, b_side_lock = true},
+				extra = {odds1 = 4, odds2 = 6, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)
 		if context.end_of_round and not context.repetition and not context.individual then
-			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds then
+			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds2 then
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss

@@ -26,7 +26,7 @@ SMODS.Back({
                         for i=2, face_count do
                             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                             local new_card = copy_card(context.full_hand[i], nil, nil, G.playing_card)
-                            SMODS.change_base(new_card, nil, pseudorandom_element(ranks, pseudoseed('forgotten_lusty_debaunched')))
+                            SMODS.change_base(new_card, nil, pseudorandom_element(ranks, pseudoseed('b_lusty_debaunched')))
                             playing_card_randomise(new_card)
                             table.insert(new_cards, new_card)
                         end
@@ -39,7 +39,7 @@ SMODS.Back({
                             new_card:juice_up()
                         end
                         playing_card_joker_effects(new_cards)
-                        G.deck:shuffle('forgotten_lusty_shuffle')
+                        G.deck:shuffle('b_lusty_shuffle')
                         return true
                     end
                 }))
@@ -151,12 +151,12 @@ SMODS.Back({
 				extra = {odds1 = 4, odds2 = 6, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)
 		if context.end_of_round and not context.repetition and not context.individual then
-			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+			if pseudorandom("b_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
-			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds2 then
+			if pseudorandom("b_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss

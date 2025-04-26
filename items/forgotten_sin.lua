@@ -259,21 +259,20 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_enviousworm'},
 	config = {b_side_lock = true, extra = {
-        odds_common = nil,       odds_uncommon = 150,
-        odds_rare = 100,         odds_cry_epic = 80,
-        odds_legendary = 60,     odds_cry_exotic = 40,
-        odds_cry_candy = 100,    odds_cry_cursed = nil,
+        odds_common = nil,       odds_uncommon = 20,
+        odds_rare = 15,         odds_cry_epic = 12,
+        odds_legendary = 10,     odds_cry_exotic = 8,
+        odds_cry_candy = 15,    odds_cry_cursed = nil,
         odds_playing_card = 8}},
 	calculate = function(self, back, context)
-		if context.end_of_round then
+		if context.end_of_round and not context.repetition and not context.individual then
 			local killed = false
 			local has_common = false
 			for i = 1, #G.jokers.cards do
 				local temp = G.jokers.cards[i]
 				if temp.config.center.rarity == 1 then
 					has_common = true
-				end
-				if temp.config.center.rarity == 2 then
+                elseif temp.config.center.rarity == 2 then
 					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i)
 				elseif temp.config.center.rarity == 3 then
 					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i) or killed

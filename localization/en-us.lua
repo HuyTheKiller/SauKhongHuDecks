@@ -579,6 +579,7 @@ return {
             SKH_insane_hallu = "Insane Hallucination",
             SKH_insane_hallu_desc = {"Combine 2 distinct effects of both", "Hallucinating Decks into one (hard)"},
             k_debaunched_ex = "Debaunched!",
+            k_zzz = "ZZZ",
         },
     },
 }

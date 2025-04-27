@@ -40,13 +40,19 @@ SMODS.Back({
                         end
                         playing_card_joker_effects(new_cards)
                         G.deck:shuffle('b_lusty_shuffle')
+                        local text = localize("k_debaunched_ex")
+                        play_sound("skh_debaunched", 1, 1)
+                        attention_text({
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = "cm",
+                            offset = { x = 0, y = -2.7 },
+                            major = G.play,
+                        })
                         return true
                     end
                 }))
-                return {
-					message = localize('k_debaunched_ex'),
-					colour = G.C.RED,
-				}
             end
         end
     end
@@ -151,21 +157,42 @@ SMODS.Back({
 				extra = {odds1 = 4, odds2 = 4, odds3 = 4, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)
 		if context.end_of_round and not context.repetition and not context.individual then
+            local has_dropped = false
 			if pseudorandom("b_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+                has_dropped = true
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
 			if pseudorandom("b_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
-				ease_ante(-self.config.extra.ante_loss)
+				has_dropped = true
+                ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
             if pseudorandom("b_slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.odds3 then
-				ease_ante(-self.config.extra.ante_loss)
+				has_dropped = true
+                ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
+            if has_dropped then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local text = localize("k_zzz")
+                        play_sound("skh_sleeping", 1, 1)
+                        attention_text({
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = "cm",
+                            offset = { x = 0, y = -2.7 },
+                            major = G.play,
+                        })
+                        return true
+                    end,
+                }))
+            end
 		end
 	end,
 	apply = function(self, back)

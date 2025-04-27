@@ -584,6 +584,7 @@ return {
             SKH_insane_hallu = "Chơi Đồ Level MAX",
             SKH_insane_hallu_desc = {"Kết hợp 2 hiệu ứng riêng biệt của", "các Bộ Chơi Đồ thành một (khó)"},
             k_debaunched_ex = "Thác Loạn!",
+            k_zzz = "ZZZ",
         },
     },
 }

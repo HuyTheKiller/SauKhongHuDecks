@@ -1,6 +1,6 @@
 SMODS.Achievement({
     key = "i_dont_need_those",
-    reset_on_startup = true,
+    -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
     unlock_condition = function(self, args)
@@ -25,7 +25,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "the_harem",
-    reset_on_startup = true,
+    -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
     unlock_condition = function(self, args)
@@ -37,7 +37,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "absolute_saunema",
-    reset_on_startup = true,
+    -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
     unlock_condition = function(self, args)
@@ -51,7 +51,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "you_broke_the_rules",
-    reset_on_startup = true,
+    -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
     unlock_condition = function(self, args)
@@ -63,7 +63,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "smart_kid",
-    reset_on_startup = true,
+    -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
     unlock_condition = function(self, args)

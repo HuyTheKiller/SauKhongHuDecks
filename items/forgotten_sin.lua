@@ -148,7 +148,7 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_slothfulworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
-				extra = {odds1 = 4, odds2 = 6, ante_loss = 1}, b_side_lock = true},
+				extra = {odds1 = 4, odds2 = 4, odds3 = 4, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)
 		if context.end_of_round and not context.repetition and not context.individual then
 			if pseudorandom("b_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
@@ -157,6 +157,11 @@ SMODS.Back({
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
 			if pseudorandom("b_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+            if pseudorandom("b_slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.odds3 then
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
@@ -273,7 +278,7 @@ SMODS.Back({
 				if temp.config.center.rarity == 1 then
 					has_common = true
                 elseif temp.config.center.rarity == 2 then
-					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i)
+					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i) or killed
 				elseif temp.config.center.rarity == 3 then
 					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i) or killed
 				elseif temp.config.center.rarity == 4 then

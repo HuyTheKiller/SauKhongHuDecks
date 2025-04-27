@@ -26,7 +26,7 @@ SMODS.Back({
                         for i=2, face_count do
                             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                             local new_card = copy_card(context.full_hand[i], nil, nil, G.playing_card)
-                            SMODS.change_base(new_card, nil, pseudorandom_element(ranks, pseudoseed('forgotten_lusty_debaunched')))
+                            SMODS.change_base(new_card, nil, pseudorandom_element(ranks, pseudoseed('b_lusty_debaunched')))
                             playing_card_randomise(new_card)
                             table.insert(new_cards, new_card)
                         end
@@ -39,14 +39,20 @@ SMODS.Back({
                             new_card:juice_up()
                         end
                         playing_card_joker_effects(new_cards)
-                        G.deck:shuffle('forgotten_lusty_shuffle')
+                        G.deck:shuffle('b_lusty_shuffle')
+                        local text = localize("k_debaunched_ex")
+                        play_sound("skh_debaunched", 1, 1)
+                        attention_text({
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = "cm",
+                            offset = { x = 0, y = -2.7 },
+                            major = G.play,
+                        })
                         return true
                     end
                 }))
-                return {
-					message = localize('k_debaunched_ex'),
-					colour = G.C.RED,
-				}
             end
         end
     end
@@ -148,14 +154,45 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_slothfulworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
-				extra = {odds = 30, ante_loss = 1}, b_side_lock = true},
+				extra = {odds1 = 4, odds2 = 4, odds3 = 4, ante_loss = 1}, b_side_lock = true},
 	calculate = function(self, back, context)
-		if context.end_of_round then
-			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds then
+		if context.end_of_round and not context.repetition and not context.individual then
+            local has_dropped = false
+			if pseudorandom("b_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+                has_dropped = true
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
+			if pseudorandom("b_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
+				has_dropped = true
+                ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+            if pseudorandom("b_slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.odds3 then
+				has_dropped = true
+                ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+            if has_dropped then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local text = localize("k_zzz")
+                        play_sound("skh_sleeping", 1, 1)
+                        attention_text({
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = "cm",
+                            offset = { x = 0, y = -2.7 },
+                            major = G.play,
+                        })
+                        return true
+                    end,
+                }))
+            end
 		end
 	end,
 	apply = function(self, back)
@@ -254,22 +291,21 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_enviousworm'},
 	config = {b_side_lock = true, extra = {
-        odds_common = nil,       odds_uncommon = 150,
-        odds_rare = 100,         odds_cry_epic = 80,
-        odds_legendary = 60,     odds_cry_exotic = 40,
-        odds_cry_candy = 100,    odds_cry_cursed = nil,
+        odds_common = nil,       odds_uncommon = 20,
+        odds_rare = 15,         odds_cry_epic = 12,
+        odds_legendary = 10,     odds_cry_exotic = 8,
+        odds_cry_candy = 15,    odds_cry_cursed = nil,
         odds_playing_card = 8}},
 	calculate = function(self, back, context)
-		if context.end_of_round then
+		if context.end_of_round and not context.repetition and not context.individual then
 			local killed = false
 			local has_common = false
 			for i = 1, #G.jokers.cards do
 				local temp = G.jokers.cards[i]
 				if temp.config.center.rarity == 1 then
 					has_common = true
-				end
-				if temp.config.center.rarity == 2 then
-					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i)
+                elseif temp.config.center.rarity == 2 then
+					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i) or killed
 				elseif temp.config.center.rarity == 3 then
 					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i) or killed
 				elseif temp.config.center.rarity == 4 then

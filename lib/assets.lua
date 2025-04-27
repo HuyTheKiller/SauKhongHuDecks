@@ -48,6 +48,20 @@ SMODS.Sound({
 	volume = 0.3
 })
 
+SMODS.Sound({
+	key = "sleeping",
+	path = "sleeping.ogg",
+	pitch = 0.7,
+	volume = 0.3
+})
+
+SMODS.Sound({
+	key = "debaunched",
+	path = "debaunched.ogg",
+	pitch = 0.7,
+	volume = 0.3
+})
+
 SMODS.Atlas({
     key = "forgotten_locked",
     path = "ForgottenLocked.png",

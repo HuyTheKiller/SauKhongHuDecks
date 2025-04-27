@@ -78,22 +78,16 @@ end
 
 -- A separate game_over() function to use instead of calling end_round() to trigger game over
 function game_over()
-	-- G.E_MANAGER:add_event(Event({
-	-- 	trigger = 'after',
-	-- 	delay = 0.2,
-	-- 	func = function()
-			G.RESET_BLIND_STATES = true
-			G.RESET_JIGGLES = true
-			G.STATE = G.STATES.GAME_OVER
-			if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then 
-				G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
-			end
-			G:save_settings()
-			G.FILE_HANDLER.force = true
-			G.STATE_COMPLETE = false
-	-- 		return true
-	-- 	end
-	-- }))
+	check_for_unlock({type = "forgotten_virtue_game_over"})
+	G.RESET_BLIND_STATES = true
+	G.RESET_JIGGLES = true
+	G.STATE = G.STATES.GAME_OVER
+	if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then 
+		G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+	end
+	G:save_settings()
+	G.FILE_HANDLER.force = true
+	G.STATE_COMPLETE = false
 end
 
 -- Forgotten Slothful shenanigan
@@ -263,7 +257,10 @@ function mod_mult(_mult)
 	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
 		_mult = math.min(_mult, 30*math.max(G.GAME.round_resets.ante, 1))
 	end
-	_mult = math.max(_mult, 1) -- floor the mult at 1
+	if G.GAME.selected_back.effect.center.key == "b_skh_hallucinatingworm_collection"
+	or G.GAME.selected_back.effect.center.key == "b_skh_forgotten_hallucinating_collection" then
+		_mult = math.max(_mult, 1) -- floor the mult at 1
+	end
 	return _mult
 end
 
@@ -273,7 +270,10 @@ function mod_chips(_chips)
 	if G.GAME.selected_back.effect.center.key == "b_skh_forgotten_humble" then
 		_chips = math.min(_chips, 75*math.max(G.GAME.round_resets.ante, 1))
 	end
-	_chips = math.max(_chips, 0) -- floor the chips at 0
+	if G.GAME.selected_back.effect.center.key == "b_skh_hallucinatingworm_collection"
+	or G.GAME.selected_back.effect.center.key == "b_skh_forgotten_hallucinating_collection" then
+		_chips = math.max(_chips, 0) -- floor the chips at 0
+	end
 	return _chips
 end
 
@@ -294,7 +294,7 @@ if SKHDecks.mod_list.multiplayer then
 end
 -- Cool, config tab
 SKHDecks.config_tab = function()
-    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 7}, nodes = {
+    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 6}, nodes = {
         {n=G.UIT.R, config = {align = 'cm'}, nodes={
 			create_toggle({label = localize('SKH_disable_override'), ref_table = config, ref_value = 'DisableOverride', info = localize('SKH_disable_override_desc'), active_colour = SKHDecks.badge_text_colour, right = true}),
 		}},

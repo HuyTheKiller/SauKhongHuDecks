@@ -19,6 +19,20 @@ SMODS.Back({
 					break
 				end -- this is to optimize performance in some way by limiting iterations whenever possible
 			end
+			local king_count = 0
+			local queen_count = 0
+			for i = 1, #context.full_hand do
+				local temp = context.full_hand[i]
+				if temp:get_id() == 13 then
+					king_count = king_count + 1
+				elseif temp:get_id() == 12 then
+					queen_count = queen_count + 1
+				end
+			end
+			if (king_count == 4 and queen_count == 1)
+			or (queen_count == 4 and king_count == 1) then
+				check_for_unlock({type = "harem_of_a_kind"})
+			end
 			if #suits == 2 then
 				local new_jack = copy_card(context.full_hand[1], nil, nil, G.playing_card)
 				assert(SMODS.change_base(new_jack, pseudorandom_element(suits, pseudoseed("lusty_deck_reproduce")), "Jack"))
@@ -164,14 +178,45 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_greedyworm'},
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
-				extra = {odds = 30, ante_loss = 1, win_ante_loss = 1}},
+				extra = {odds1 = 4, odds2 = 4, odds3 = 4, ante_loss = 1, win_ante_loss = 1}},
 	calculate = function(self, back, context)
-		if context.end_of_round then
-			if pseudorandom("slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.odds then
+		if context.end_of_round and not context.repetition and not context.individual then
+			local has_dropped = false
+			if pseudorandom("slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+				has_dropped = true
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
+			if pseudorandom("slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
+				has_dropped = true
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+			if pseudorandom("slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.odds3 then
+				has_dropped = true
+				ease_ante(-self.config.extra.ante_loss)
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
+			end
+			if has_dropped then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local text = localize("k_zzz")
+                        play_sound("skh_sleeping", 1, 1)
+                        attention_text({
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = "cm",
+                            offset = { x = 0, y = -2.7 },
+                            major = G.play,
+                        })
+                        return true
+                    end,
+                }))
+            end
 		end
 	end,
 	apply = function(self, back)
@@ -245,21 +290,20 @@ SMODS.Back({
     pos = { x = 3, y = 0 },
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_gluttonyworm'},
-	config = {extra = {odds_common = nil,    odds_uncommon = 150,
-					   odds_rare = 100,      odds_cry_epic = 80,
-					   odds_legendary = 60,  odds_cry_exotic = 40,
-					   odds_cry_candy = 100, odds_cry_cursed = nil}},
+	config = {extra = {odds_common = nil,    odds_uncommon = 20,
+					   odds_rare = 15,      odds_cry_epic = 12,
+					   odds_legendary = 10,  odds_cry_exotic = 8,
+					   odds_cry_candy = 15, odds_cry_cursed = nil}},
 	calculate = function(self, back, context)
-		if context.end_of_round then
+		if context.end_of_round and not context.repetition and not context.individual then
 			local killed = false
 			local has_common = false
 			for i = 1, #G.jokers.cards do
 				local temp = G.jokers.cards[i]
 				if temp.config.center.rarity == 1 then
 					has_common = true
-				end
-				if temp.config.center.rarity == 2 then
-					killed = envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i)
+				elseif temp.config.center.rarity == 2 then
+					killed = envious_roulette(temp, "envious_uncommon", self.config.extra.odds_uncommon, i) or killed
 				elseif temp.config.center.rarity == 3 then
 					killed = envious_roulette(temp, "envious_rare", self.config.extra.odds_rare, i) or killed
 				elseif temp.config.center.rarity == 4 then
@@ -360,7 +404,9 @@ SMODS.Back({
 			triggered = nil,
 			greedy_money = 8,
 			gluttony_odds = 6,
-			slothful_odds = 30,
+			slothful_odds1 = 4,
+			slothful_odds2 = 4,
+			slothful_odds3 = 4,
 			slothful_ante_loss = 1,
 			wrathful_hands = 3,
 			wrathful_xchipmult = 2,
@@ -490,11 +536,42 @@ SMODS.Back({
 				}))
 			end
 		elseif G.GAME.chaos_roll == "b_skh_slothfulworm" then
-			if context.end_of_round then
-				if pseudorandom("chaos_slothful_backstep") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds then
+			if context.end_of_round and not context.repetition and not context.individual then
+				local has_dropped = false
+				if pseudorandom("chaos_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds1 then
+					has_dropped = true
 					ease_ante(-self.config.extra.current_deck_config.slothful_ante_loss)
 					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.current_deck_config.slothful_ante_loss
+				end
+				if pseudorandom("chaos_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds2 then
+					has_dropped = true
+					ease_ante(-self.config.extra.current_deck_config.slothful_ante_loss)
+					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.current_deck_config.slothful_ante_loss
+				end
+				if pseudorandom("chaos_slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.slothful_odds3 then
+					has_dropped = true
+					ease_ante(-self.config.extra.current_deck_config.slothful_ante_loss)
+					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+					G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.current_deck_config.slothful_ante_loss
+				end
+				if has_dropped then
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							local text = localize("k_zzz")
+							play_sound("skh_sleeping", 1, 1)
+							attention_text({
+								scale = 1.4,
+								text = text,
+								hold = 2,
+								align = "cm",
+								offset = { x = 0, y = -2.7 },
+								major = G.play,
+							})
+							return true
+						end,
+					}))
 				end
 			end
 		elseif G.GAME.chaos_roll == "b_skh_wrathfulworm" then
@@ -547,9 +624,8 @@ SMODS.Back({
 					local temp = G.jokers.cards[i]
 					if temp.config.center.rarity == 1 then
 						has_common = true
-					end
-					if temp.config.center.rarity == 2 then
-						killed = envious_roulette(temp, "chaos_envious_uncommon", self.config.extra.current_deck_config.odds_uncommon, i)
+					elseif temp.config.center.rarity == 2 then
+						killed = envious_roulette(temp, "chaos_envious_uncommon", self.config.extra.current_deck_config.odds_uncommon, i) or killed
 					elseif temp.config.center.rarity == 3 then
 						killed = envious_roulette(temp, "chaos_envious_rare", self.config.extra.current_deck_config.odds_rare, i) or killed
 					elseif temp.config.center.rarity == 4 then

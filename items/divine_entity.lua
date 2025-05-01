@@ -76,17 +76,6 @@ SMODS.Back({
 			}
 		end
 	end,
-	apply = function(self, back)
-		SMODS.Joker:take_ownership('splash',
-			{
-				discovered = true,
-				in_pool = function(self, args)
-					return true, {allow_duplicates = true}
-				end,
-			},
-			true
-		)
-	end
 })
 
 SMODS.Back({
@@ -509,17 +498,7 @@ if CardSleeves then
 			end
 		end,
 		apply = function(self, sleeve)
-			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
-				SMODS.Joker:take_ownership('splash',
-					{
-						discovered = true,
-						in_pool = function(self, args)
-							return true, {allow_duplicates = true}
-						end,
-					},
-					true
-				)
-			else
+			if self.get_current_deck_key() == "b_skh_tsaunami" then
 				delay(0.4)
 				G.E_MANAGER:add_event(Event({
 					func = function()
@@ -629,3 +608,20 @@ if CardSleeves then
 		end,
 	})
 end
+
+SMODS.Joker:take_ownership('splash',
+	{
+		discovered = true,
+		in_pool = function(self, args)
+			local ret_table = {
+				allow_duplicates = G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
+			}
+			if CardSleeves then
+				ret_table.allow_duplicates = G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
+				or G.GAME.selected_sleeve == "sleeve_skh_tsaunami"
+			end
+			return true, ret_table
+		end,
+	},
+	true
+)

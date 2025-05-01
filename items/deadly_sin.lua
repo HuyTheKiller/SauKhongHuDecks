@@ -145,7 +145,7 @@ SMODS.Back({
 					for k, v in pairs(G.playing_cards) do
 						if pseudorandom('gluttony_deck_chomp') < G.GAME.probabilities.normal/self.config.extra.odds then
 							play_sound("skh_chomp", 0.7, 0.3)
-							card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex')})
+							card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex'), instant = true})
 							v.to_remove = true
 						end
 					end
@@ -340,7 +340,7 @@ SMODS.Back({
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							play_sound('tarot1')
-							card_eval_status_text(temp, 'extra', nil, nil, nil, {message = localize('k_weak_ex')})
+							card_eval_status_text(temp, 'extra', nil, nil, nil, {message = localize('k_weak_ex'), instant = true})
 							temp.T.r = -0.2
 							temp:juice_up(0.3, 0.4)
 							temp.states.drag.is = true
@@ -519,7 +519,7 @@ SMODS.Back({
 						for k, v in pairs(G.playing_cards) do
 							if pseudorandom('chaos_gluttony_deck_chomp') < G.GAME.probabilities.normal/self.config.extra.current_deck_config.gluttony_odds then
 								play_sound("skh_chomp", 0.7, 0.3)
-								card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex')})
+								card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_chomp_ex'), instant = true})
 								v.to_remove = true
 							end
 						end

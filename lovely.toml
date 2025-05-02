@@ -65,7 +65,7 @@ target = "functions/state_events.lua"
 pattern = '''if game_over then'''
 position = "before"
 payload = '''
-if G.GAME.chips - G.GAME.blind.chips >= G.GAME.blind.chips and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_diligent" then
+if to_big(G.GAME.chips) >= to_big(2*G.GAME.blind.chips) and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_diligent" then
     game_over = true
     check_for_unlock({type = "forgotten_virtue_game_over"})
 end

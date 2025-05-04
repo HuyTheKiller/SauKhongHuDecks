@@ -614,11 +614,11 @@ SMODS.Joker:take_ownership('splash',
 		discovered = true,
 		in_pool = function(self, args)
 			local ret_table = {
-				allow_duplicates = G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
+				allow_duplicates = G.GAME and G.GAME.selected_back.effect.center.key == "b_skh_tsaunami" and true or false
 			}
 			if CardSleeves then
-				ret_table.allow_duplicates = G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
-				or G.GAME.selected_sleeve == "sleeve_skh_tsaunami"
+				ret_table.allow_duplicates = G.GAME and (G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
+				or G.GAME.selected_sleeve == "sleeve_skh_tsaunami") and true or false
 			end
 			return true, ret_table
 		end,

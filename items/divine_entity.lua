@@ -67,11 +67,10 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
 	calculate = function(self, back, context)
-		if context.repetition and context.cardarea == G.play then
-			local splash_retrig = find_joker('Splash')
+		if context.repetition and context.cardarea == G.play and #find_joker('Splash') > 0 then
 			return {
 				message = localize("k_again_ex"),
-				repetitions = #splash_retrig,
+				repetitions = #find_joker('Splash'),
 				card = card,
 			}
 		end
@@ -487,11 +486,10 @@ if CardSleeves then
 		unlock_condition = { deck = "b_skh_tsaunami", stake = "stake_blue" },
 		calculate = function(self, sleeve, context)
 			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
-				if context.repetition and context.cardarea == G.play then
-					local splash_retrig = find_joker('Splash')
+				if context.repetition and context.cardarea == G.play and #find_joker('Splash') > 0 then
 					return {
 						message = localize("k_again_ex"),
-						repetitions = #splash_retrig,
+						repetitions = #find_joker('Splash'),
 						card = card,
 					}
 				end

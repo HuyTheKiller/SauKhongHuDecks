@@ -67,6 +67,9 @@ SMODS.Back({
 	unlocked = false,
 	unlock_condition = {type = 'win_deck', deck = 'b_skh_saukhonghu'},
 	calculate = function(self, back, context)
+		if context.modify_scoring_hand then
+			return {add_to_hand = true}
+		end
 		if context.repetition and context.cardarea == G.play and #find_joker('Splash') > 0 then
 			return {
 				message = localize("k_again_ex"),
@@ -486,6 +489,9 @@ if CardSleeves then
 		unlock_condition = { deck = "b_skh_tsaunami", stake = "stake_blue" },
 		calculate = function(self, sleeve, context)
 			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
+				if context.modify_scoring_hand then
+					return {add_to_hand = true}
+				end -- This works on Tsaunami deck but not sleeve
 				if context.repetition and context.cardarea == G.play and #find_joker('Splash') > 0 then
 					return {
 						message = localize("k_again_ex"),

@@ -3,19 +3,6 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Apply Splash logic to Tsaunami Deck/Sleeve
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))'''
-position = "after"
-payload = '''
--- SMODS has provided a context check to add/remove cards from scoring hands, but it doesn't work on sleeves
--- splashed = splashed or G.GAME.selected_back.effect.center.key == "b_skh_tsaunami"
-if CardSleeves then splashed = splashed or G.GAME.selected_sleeve == "sleeve_skh_tsaunami" end
-'''
-match_indent = true
-
 # Apply Serpent logic (but 5 cards) to Kind Worm and Omnipotent Worm (rolling on Kind Worm) Deck
 [[patches]]
 [patches.pattern]

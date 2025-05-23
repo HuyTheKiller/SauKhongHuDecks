@@ -491,7 +491,7 @@ if CardSleeves then
 			if self.get_current_deck_key() ~= "b_skh_tsaunami" then
 				if context.modify_scoring_hand then
 					return {add_to_hand = true}
-				end -- This works on Tsaunami deck but not sleeve
+				end
 				if context.repetition and context.cardarea == G.play and #find_joker('Splash') > 0 then
 					return {
 						message = localize("k_again_ex"),

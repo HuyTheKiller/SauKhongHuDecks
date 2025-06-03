@@ -1,5 +1,6 @@
 SMODS.Achievement({
     key = "i_dont_need_those",
+    atlas = "achievements",
     -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
@@ -25,6 +26,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "the_harem",
+    atlas = "achievements",
     -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
@@ -37,6 +39,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "absolute_saunema",
+    atlas = "achievements",
     -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
@@ -51,6 +54,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "you_broke_the_rules",
+    atlas = "achievements",
     -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,
@@ -63,6 +67,7 @@ SMODS.Achievement({
 
 SMODS.Achievement({
     key = "smart_kid",
+    atlas = "achievements",
     -- reset_on_startup = true,
     hidden_name = false,
     hidden_text = true,

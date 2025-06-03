@@ -139,3 +139,10 @@ SMODS.Atlas({
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "achievements",
+    path = "skh_achievements.png",
+    px = 66,
+    py = 66,
+})

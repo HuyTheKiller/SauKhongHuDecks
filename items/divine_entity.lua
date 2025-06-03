@@ -394,7 +394,7 @@ SMODS.Back({
 	config = {extra = {in_game = false}},
 	calculate = function(self, back, context)
 		if G.GAME.facing_blind or not self.config.extra.in_game then self.config.extra.in_game = true end
-		if G.GAME.random_choice == 1 then
+		if G.GAME.random_choice == 1 or config.InsaneHallu then
 			if context.context == "eval" and G.GAME.last_blind and G.GAME.last_blind.boss then
 				if G.jokers.cards[1] then
 					local target = pseudorandom(pseudoseed("hallucinating_joker"), 1, #G.jokers.cards)
@@ -410,7 +410,7 @@ SMODS.Back({
 					end
 				end
 			end
-		elseif G.GAME.random_choice == 2 then
+		elseif G.GAME.random_choice == 2 or config.InsaneHallu then
 			if context.individual and context.cardarea == G.play then
 				if not context.other_card.debuff then
 					local suits = {}
@@ -441,7 +441,7 @@ SMODS.Back({
 		self.config.extra.in_game = true
 	end,
 	loc_vars = function(self)
-		if self.config.extra.in_game then
+		if self.config.extra.in_game and not config.InsaneHallu then
 			return {
 				key = "b_skh_hallucinatingworm" .. tostring(G.GAME.random_choice)
 			}

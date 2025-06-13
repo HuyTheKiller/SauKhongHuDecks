@@ -344,12 +344,10 @@ SMODS.Back({
 		if context.individual and context.cardarea == G.play then
 			if not context.other_card.debuff then
 				local temp = context.other_card
-				if SMODS.has_no_rank(temp) or temp:get_id() > 2 then
+				if not SMODS.has_no_rank(temp) and temp:get_id() > 2 then
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
-							local rank_suffix = skh_get_rank_suffix(temp)
-							assert(SMODS.change_base(temp, nil, rank_suffix))
+							assert(SMODS.modify_rank(temp, -1))
 
 							return true
 						end
@@ -413,16 +411,14 @@ SMODS.Back({
 		elseif G.GAME.random_choice == 2 or config.InsaneHallu then
 			if context.individual and context.cardarea == G.play then
 				if not context.other_card.debuff then
-					local suits = {}
 					local temp = context.other_card
-					for _, v in pairs(SMODS.Suits) do
-						suits[#suits+1] = tostring(v.key)
-					end
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or pseudorandom("hallucinating_rank", 2, 14)
-							local rank_suffix = skh_get_rank_suffix(temp)
-							assert(SMODS.change_base(temp, pseudorandom_element(suits, pseudoseed("hallucinating_suit")), rank_suffix))
+							if not SMODS.has_no_rank(temp) then
+								local _rank = pseudorandom_element(SMODS.Ranks, pseudoseed('hallucinating_rank'))
+								local _suit = pseudorandom_element(SMODS.Suits, pseudoseed('hallucinating_suit'))
+								assert(SMODS.change_base(temp, _suit.key, _rank.key))
+							end
 
 							return true
 						end
@@ -547,12 +543,10 @@ if CardSleeves then
 				if context.individual and context.cardarea == G.play then
 					if not context.other_card.debuff then
 						local temp = context.other_card
-						if SMODS.has_no_rank(temp) or temp:get_id() > 2 then
+						if not SMODS.has_no_rank(temp) and temp:get_id() > 2 then
 							G.E_MANAGER:add_event(Event({
 								func = function()
-									temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or math.max(2, temp.base.id - 1)
-									local rank_suffix = skh_get_rank_suffix(temp)
-									assert(SMODS.change_base(temp, nil, rank_suffix))
+									assert(SMODS.modify_rank(temp, -1))
 
 									return true
 								end

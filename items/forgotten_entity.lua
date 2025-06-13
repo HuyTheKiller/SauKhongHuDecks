@@ -80,9 +80,11 @@ SMODS.Back({
                                 end
                                 G.E_MANAGER:add_event(Event({
                                     func = function()
-                                        temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or pseudorandom("b_hallucinating_rank", 2, 14)
-                                        local rank_suffix = skh_get_rank_suffix(temp)
-                                        assert(SMODS.change_base(temp, pseudorandom_element(suits, pseudoseed("b_hallucinating_suit")), rank_suffix))
+                                        if not SMODS.has_no_rank(temp) then
+                                            local _rank = pseudorandom_element(SMODS.Ranks, pseudoseed('b_hallucinating_rank'))
+                                            local _suit = pseudorandom_element(SMODS.Suits, pseudoseed('b_hallucinating_suit'))
+                                            assert(SMODS.change_base(temp, _suit.key, _rank.key))
+                                        end
 
                                         return true
                                     end
@@ -94,17 +96,14 @@ SMODS.Back({
                     G.GAME.click_count = 0
                     G.GAME.click_threshold = pseudorandom("b_hallucinating_new_click_threshold", 25, 40)
                     for i = 1, #G.hand.cards do
-                        local suits = {}
                         local temp = G.hand.cards[i]
-                        for _, v in pairs(SMODS.Suits) do
-                            suits[#suits+1] = tostring(v.key)
-                        end
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                temp.base.id = SMODS.has_no_rank(temp) and temp.base.id or pseudorandom("b_hallucinating_rank_hand", 2, 14)
-                                local rank_suffix = skh_get_rank_suffix(temp)
-                                assert(SMODS.change_base(temp, pseudorandom_element(suits, pseudoseed("b_hallucinating_suit_hand")), rank_suffix))
-
+                                if not SMODS.has_no_rank(temp) then
+                                    local _rank = pseudorandom_element(SMODS.Ranks, pseudoseed('b_hallucinating_rank_hand'))
+                                    local _suit = pseudorandom_element(SMODS.Suits, pseudoseed('b_hallucinating_suit_hand'))
+                                    assert(SMODS.change_base(temp, _suit.key, _rank.key))
+                                end
                                 return true
                             end
                         }))

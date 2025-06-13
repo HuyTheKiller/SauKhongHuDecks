@@ -28,18 +28,6 @@ to_number = to_number or function(x)
 	return x
 end
 
--- copy-pasted from Ortalab, renamed with mod id prefix for uniqueness
-function skh_get_rank_suffix(card)
-    local rank_suffix = (card.base.id - 2) % 13 + 2
-    if rank_suffix < 11 then rank_suffix = tostring(rank_suffix)
-    elseif rank_suffix == 11 then rank_suffix = 'Jack'
-    elseif rank_suffix == 12 then rank_suffix = 'Queen'
-    elseif rank_suffix == 13 then rank_suffix = 'King'
-    elseif rank_suffix == 14 then rank_suffix = 'Ace'
-    end
-    return rank_suffix
-end
-
 -- also copy-pasted from Ortalab, with some tweaks to not guarantee enhancement
 function playing_card_randomise(card)
     local modifier = 8

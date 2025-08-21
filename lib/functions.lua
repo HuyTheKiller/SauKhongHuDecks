@@ -67,6 +67,7 @@ end
 -- A separate game_over() function to use instead of calling end_round() to trigger game over
 function game_over()
 	check_for_unlock({type = "forgotten_virtue_game_over"})
+	SKHDecks.game_over = true
 	G.RESET_BLIND_STATES = true
 	G.RESET_JIGGLES = true
 	G.STATE = G.STATES.GAME_OVER
@@ -155,7 +156,8 @@ function Game:update(dt)
 	G.GAME.patient_scaling_table = G.GAME.patient_scaling_table or {}
 	for _, c in pairs(choices) do
 		if
-			G.GAME
+			not SKHDecks.game_over
+			and G.GAME
 			and G.GAME.round_resets
 			and G.GAME.round_resets.blind_choices
 			and G.GAME.round_resets.blind_choices[c]
@@ -213,7 +215,8 @@ function Game:update(dt)
 		end
 	end
 	if -- Money-exceeds-0 triggers game over in Forgotten Generous
-		G.GAME
+		not SKHDecks.game_over
+		and G.GAME
 		and G.GAME.selected_back
 		and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_generous"
 		and G.STATE ~= G.STATES.GAME_OVER
@@ -221,7 +224,8 @@ function Game:update(dt)
 		if G.GAME.dollars > to_big(0) then game_over() end
 	end
 	if -- Money-exceeds-0 triggers live loss (Multiplayer) or game over (Singleplayer) in reworked Forgotten Generous
-		G.GAME
+		not SKHDecks.game_over
+		and G.GAME
 		and G.GAME.selected_back
 		and G.GAME.selected_back.effect.center.key == "b_skh_forgotten_generous_mp"
 		and G.STATE ~= G.STATES.GAME_OVER
@@ -236,6 +240,12 @@ function Game:update(dt)
 			G.GAME.current_round.rule_broken_amount = 0
 		end
 	end
+end
+
+local start_run_ref = Game.start_run
+function Game:start_run(args)
+	start_run_ref(self, args)
+	SKHDecks.game_over = false
 end
 
 -- Forgotten Humble: Mult/chips cannot exceed x/y

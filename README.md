@@ -91,6 +91,13 @@ There currently exist 2 sets:
 | Kind Worm Deck?        | Retrigger a random joker 2 times before debuffing it; if all Jokers are debuffed, instantly lose the run                           |
 | Generous Worm Deck?    | Go up to -$100 in debt; start with -$80; if money exceeds 0, instantly lose the run                                                |
 | Patient Worm Deck?     | X4 base Blind size, reduce by half every 30 seconds, reset at end of Ante; if base Blind size reaches X0.5, instantly lose the run |
+
+v1.6.1 introduces Forgotten Hallucinating Worm - a beefed up version of Hallucinating Worm.
+This deck also chooses one of the following effects at random at the start of the run.
+| Unique Name             | Effect                                                                                                                                                        |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Joker Disruption        | When Blind is selected, shuffle all jokers; flip them on click; reshuffle or replace a random joker once every few clicks                                     |
+| Playing Card Disruption | Randomize the rank and suit of selected cards once every few clicks; do so to all cards in hand every few more clicks; give random Chips and Mult when scored |
 </details>
 
 ### Forgotten Decks are here!

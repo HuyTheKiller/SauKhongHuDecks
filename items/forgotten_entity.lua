@@ -73,17 +73,14 @@ SMODS.Back({
                     if G.GAME.click_count % 7 == 0 then
                         if #G.hand.highlighted > 0 then
                             for i = 1, #G.hand.highlighted do
-                                local suits = {}
                                 local temp = G.hand.highlighted[i]
-                                for _, v in pairs(SMODS.Suits) do
-                                    suits[#suits+1] = tostring(v.key)
-                                end
                                 G.E_MANAGER:add_event(Event({
                                     func = function()
                                         if not SMODS.has_no_rank(temp) then
                                             local _rank = pseudorandom_element(SMODS.Ranks, pseudoseed('b_hallucinating_rank'))
                                             local _suit = pseudorandom_element(SMODS.Suits, pseudoseed('b_hallucinating_suit'))
                                             assert(SMODS.change_base(temp, _suit.key, _rank.key))
+                                            temp:juice_up()
                                         end
 
                                         return true
@@ -103,6 +100,7 @@ SMODS.Back({
                                     local _rank = pseudorandom_element(SMODS.Ranks, pseudoseed('b_hallucinating_rank_hand'))
                                     local _suit = pseudorandom_element(SMODS.Suits, pseudoseed('b_hallucinating_suit_hand'))
                                     assert(SMODS.change_base(temp, _suit.key, _rank.key))
+                                    temp:juice_up()
                                 end
                                 return true
                             end

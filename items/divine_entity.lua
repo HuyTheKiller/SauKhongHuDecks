@@ -356,8 +356,8 @@ SMODS.Back({
 			end
 		end
 		if context.destroy_card and context.cardarea == G.play then
-			if not context.destroying_card.debuff then
-				local temp = context.destroying_card
+			if not context.destroy_card.debuff then
+				local temp = context.destroy_card
 				if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 					return {
 						message = localize("k_wee_ex"),
@@ -555,8 +555,8 @@ if CardSleeves then
 					end
 				end
 				if context.destroy_card and context.cardarea == G.play then
-					if not context.destroying_card.debuff then
-						local temp = context.destroying_card
+					if not context.destroy_card.debuff then
+						local temp = context.destroy_card
 						if not SMODS.has_no_rank(temp) and temp:get_id() <= 2 then
 							return {
 								message = localize("k_wee_ex"),

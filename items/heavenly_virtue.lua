@@ -291,7 +291,7 @@ SMODS.Back({
 		else self.config.extra.odds = math.max(1, 3*#G.jokers.cards) end
 		if context.before then
 			self.config.extra.calm = false
-			if pseudorandom("patient_calm") < G.GAME.probabilities.normal/self.config.extra.odds then
+			if SMODS.pseudorandom_probability(back, 'patient_calm', 1, self.config.extra.odds, 'patient_deck') then
 				self.config.extra.calm = true
 			end
 		end
@@ -324,18 +324,19 @@ SMODS.Back({
 		self.config.extra.in_game = true
 	end,
 	loc_vars = function(self)
+		local n, d = SMODS.get_probability_vars(G.GAME.selected_back, 1, self.config.extra.odds, "patient_deck")
 		if self.config.extra.in_game then
-			return {vars = {G.GAME.probabilities.normal, self.config.extra.odds, self.config.extra.xchipmult}}
+			return {vars = {n, d, self.config.extra.xchipmult}}
 		else
 			return {
-				vars = {G.GAME.probabilities.normal, self.config.extra.xchipmult},
+				vars = {n, self.config.extra.xchipmult},
 				key = "b_skh_patientworm_collection"
 			}
 		end
 	end,
 	collection_loc_vars = function(self)
 		return {
-			vars = {G.GAME.probabilities.normal, self.config.extra.xchipmult},
+			vars = {n, self.config.extra.xchipmult},
 			key = "b_skh_patientworm_collection"
 		}
 	end
@@ -578,7 +579,7 @@ SMODS.Back({
 				self.config.extra.current_deck_config.patient_odds = math.max(1, 2*#G.jokers.cards)
 			end
 			if context.before then
-				if pseudorandom("omnipotent_patient_calm") < G.GAME.probabilities.normal/self.config.extra.current_deck_config.patient_odds then
+				if SMODS.pseudorandom_probability(back, 'omnipotent_patient_calm', 1, self.config.extra.current_deck_config.patient_odds, 'omnipotent_patient_deck') then
 					self.config.extra.current_deck_config.triggered = true
 				end
 			end

@@ -40,8 +40,8 @@ function playing_card_randomise(card)
 end
 
 -- Gros Michel logic - copy-pasted and modified
-function envious_roulette(card, odd_seed, odd_type, iteration)
-	if pseudorandom(odd_seed) < G.GAME.probabilities.normal/odd_type then
+function envious_roulette(card, odd_seed, odd_type, iteration, trigger_obj)
+	if SMODS.pseudorandom_probability(trigger_obj, odd_seed, 1, odd_type) then
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				-- play_sound('tarot1')

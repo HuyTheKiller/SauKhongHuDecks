@@ -158,19 +158,19 @@ SMODS.Back({
 	calculate = function(self, back, context)
 		if context.end_of_round and not context.repetition and not context.individual then
             local has_dropped = false
-			if pseudorandom("b_slothful_backstep1") < G.GAME.probabilities.normal/self.config.extra.odds1 then
+			if SMODS.pseudorandom_probability(back, 'b_slothful_backstep1', 1, self.config.extra.odds1, 'b_slothful_deck1') then
                 has_dropped = true
 				ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
-			if pseudorandom("b_slothful_backstep2") < G.GAME.probabilities.normal/self.config.extra.odds2 then
+			if SMODS.pseudorandom_probability(back, 'b_slothful_backstep2', 1, self.config.extra.odds2, 'b_slothful_deck2') then
 				has_dropped = true
                 ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - self.config.extra.ante_loss
 			end
-            if pseudorandom("b_slothful_backstep3") < G.GAME.probabilities.normal/self.config.extra.odds3 then
+            if SMODS.pseudorandom_probability(back, 'b_slothful_backstep3', 1, self.config.extra.odds3, 'b_slothful_deck3') then
 				has_dropped = true
                 ease_ante(-self.config.extra.ante_loss)
 				G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
@@ -217,7 +217,7 @@ SMODS.Back({
 				ease_discard(-G.GAME.current_round.discards_left, nil, true)
 				ease_hands_played(self.config.extra.hands)
 				return true end }))
-            if pseudorandom("b_wrathful_flip") < G.GAME.probabilities.normal/self.config.extra.odds_flip and #G.jokers.cards > 0 then
+            if SMODS.pseudorandom_probability(back, 'b_wrathful_flip', 1, self.config.extra.odds_flip, 'b_wrathful_deck2') and #G.jokers.cards > 0 then
                 G.jokers:unhighlight_all()
                 for k, v in ipairs(G.jokers.cards) do
                     v:flip()
@@ -236,7 +236,7 @@ SMODS.Back({
 		end
 		if context.before then
 			self.config.extra.smash = false
-			if pseudorandom("wrathful_smash") < G.GAME.probabilities.normal/self.config.extra.odds then
+			if SMODS.pseudorandom_probability(back, 'b_wrathful_smash', 1, self.config.extra.odds, 'b_wrathful_deck1') then
 				self.config.extra.smash = true
 			end
 		end
@@ -277,7 +277,7 @@ SMODS.Back({
         end
 	end,
 	loc_vars = function(self)
-		return {vars = {G.GAME.probabilities.normal, self.config.extra.odds_flip}}
+		return {vars = {SMODS.get_probability_vars(G.GAME.selected_back, 1, self.config.extra.odds_flip, "b_wrathful_deck2")}}
 	end
 })
 
@@ -305,19 +305,19 @@ SMODS.Back({
 				if temp.config.center.rarity == 1 then
 					has_common = true
                 elseif temp.config.center.rarity == 2 then
-					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i) or killed
+					killed = envious_roulette(temp, "b_envious_uncommon", self.config.extra.odds_uncommon, i, back) or killed
 				elseif temp.config.center.rarity == 3 then
-					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i) or killed
+					killed = envious_roulette(temp, "b_envious_rare", self.config.extra.odds_rare, i, back) or killed
 				elseif temp.config.center.rarity == 4 then
-					killed = envious_roulette(temp, "b_envious_legendary", self.config.extra.odds_legendary, i) or killed
+					killed = envious_roulette(temp, "b_envious_legendary", self.config.extra.odds_legendary, i, back) or killed
 				end
 				if Cryptid then
 					if temp.config.center.rarity == 'cry_epic' then
-						killed = envious_roulette(temp, "b_envious_cry_epic", self.config.extra.odds_cry_epic, i) or killed
+						killed = envious_roulette(temp, "b_envious_cry_epic", self.config.extra.odds_cry_epic, i, back) or killed
 					elseif temp.config.center.rarity == 'cry_exotic' then
-						killed = envious_roulette(temp, "b_envious_cry_exotic", self.config.extra.odds_cry_exotic, i) or killed
+						killed = envious_roulette(temp, "b_envious_cry_exotic", self.config.extra.odds_cry_exotic, i, back) or killed
 					elseif temp.config.center.rarity == 'cry_candy' then
-						killed = envious_roulette(temp, "b_envious_cry_candy", self.config.extra.odds_cry_candy, i) or killed
+						killed = envious_roulette(temp, "b_envious_cry_candy", self.config.extra.odds_cry_candy, i, back) or killed
 					end
 				end
 			end
@@ -330,13 +330,13 @@ SMODS.Back({
 				local temp = G.playing_cards[c]
 				if not temp.debuff then
 					if temp.edition then
-						envious_roulette(temp, "b_envious_edition", self.config.extra.odds_playing_card, c)
+						envious_roulette(temp, "b_envious_edition", self.config.extra.odds_playing_card, c, back)
 					end
 					if temp.seal then
-						envious_roulette(temp, "b_envious_seal", self.config.extra.odds_playing_card, c)
+						envious_roulette(temp, "b_envious_seal", self.config.extra.odds_playing_card, c, back)
 					end
 					if temp.ability.set == "Enhanced" then
-						envious_roulette(temp, "b_envious_enhancement", self.config.extra.odds_playing_card, c)
+						envious_roulette(temp, "b_envious_enhancement", self.config.extra.odds_playing_card, c, back)
 					end
 				end
 			end

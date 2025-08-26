@@ -184,7 +184,7 @@ SMODS.Back({
 	config = {joker_slot = -3, consumable_slot = -1, hands = -1, discards = -2,
 				extra = {odds1 = 4, odds2 = 4, odds3 = 4, ante_loss = 1, win_ante_loss = 1}},
 	calculate = function(self, back, context)
-		if context.end_of_round and context.main_eval then
+		if context.end_of_round and not context.repetition and not context.individual then
 			local has_dropped = false
 			if SMODS.pseudorandom_probability(back, 'slothful_backstep1', 1, self.config.extra.odds1, 'slothful_deck1') then
 				has_dropped = true
@@ -299,7 +299,7 @@ SMODS.Back({
 					   odds_legendary = 10,  odds_cry_exotic = 8,
 					   odds_cry_candy = 15, odds_cry_cursed = nil}},
 	calculate = function(self, back, context)
-		if context.end_of_round and context.main_eval then
+		if context.end_of_round and not context.repetition and not context.individual then
 			local killed = false
 			local has_common = false
 			for i = 1, #G.jokers.cards do
@@ -540,7 +540,7 @@ SMODS.Back({
 				}))
 			end
 		elseif G.GAME.chaos_roll == "b_skh_slothfulworm" then
-			if context.end_of_round and context.main_eval then
+			if context.end_of_round and not context.repetition and not context.individual then
 				local has_dropped = false
 				if SMODS.pseudorandom_probability(back, 'chaos_slothful_backstep1', 1, self.config.extra.current_deck_config.slothful_odds1, 'chaos_slothful_deck1') then
 					has_dropped = true

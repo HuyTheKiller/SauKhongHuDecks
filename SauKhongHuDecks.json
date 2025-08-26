@@ -11,5 +11,5 @@
 	"display_name": "SKH Decks",
 	"dependencies": ["Steamodded (>=1.0.0~BETA-0711a)"],
 	"conflicts": ["CardSleeves (<=1.6.9)"],
-	"version": "1.6.1"
+	"version": "1.6.1a"
 }

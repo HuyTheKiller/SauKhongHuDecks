@@ -171,7 +171,7 @@ pattern = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAM
 position = "at"
 payload = '''
 {n=G.UIT.O, config={object = DynaText({string = G.GAME.selected_back.effect.center.key ~= "b_skh_forgotten_slothful" and {{ref_table = G.GAME.round_resets, ref_value = 'ante'..(Talisman and '_disp' or '')}} or "?",
-  colours = {G.C.IMPORTANT},shadow = true, font = G.LANGUAGES['en-us'].font, scale = 2*scale}),id = 'ante_UI_count'}},
+  colours = {G.C.IMPORTANT},shadow = true, font = G.LANGUAGES['en-us'].font, scale = Talisman and scale_number(G.GAME.round_resets.ante, 2*scale, 10) or 2*scale}),id = 'ante_UI_count'}},
 '''
 match_indent = true
 
